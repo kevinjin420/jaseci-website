@@ -71,7 +71,7 @@
     background-image: var(--gradient-primary);
     -webkit-background-clip: text;
     background-clip: text;
-    color: tomato;
+    color: #f97316;
     line-height: 1.1;
 }
 
