@@ -1,4 +1,4 @@
-# Jac & Jaseci Website Docs
+# Jaseci Website - jaseci.org
 
 This folder contains the static documentation website for the Jac programming language and the Jaseci runtime stack. The site introduces Jac, its features, community, and provides resources for getting started, learning, and contributing.
 
