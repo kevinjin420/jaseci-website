@@ -62,10 +62,17 @@
 }
 
 .ch-hero__title {
-    font-size: clamp(2rem, 3.4vw, 2.5rem);
+    font-size: clamp(3.75rem, 3.4vw, 2.5rem);
     font-weight: 800;
     text-align: center;
     margin: 0.2rem !important;
+    font-weight: 800;
+    margin-bottom: 4rem;
+    background-image: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: tomato;
+    line-height: 1.1;
 }
 
 .ch-hero__subhead {

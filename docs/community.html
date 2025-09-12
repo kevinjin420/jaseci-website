@@ -16,19 +16,45 @@
   </head>
 
   <body>
+    <header class="header">
+            <div class="top-bar">
+                <div class="top-bar-content">
+                    <div class="logo">
+                        <a href="index.html">
+                            <img src="/assets/logo.png" alt="Jaseci Logo" class="logo-img"
+                                style="width:32px; height:32px;border-radius:6px;">
+                        </a>
+                        <span>The Jac Programming Language and Jaseci Stack</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Floating Navigation moved to hero section -->
+        </header>
+
+        <section id="hero" class="hero-section">
+            <!-- Floating Navigation overlay -->
+            <div class="floating-nav hero-nav-overlay">
+                <div class="nav-container">
+                    <nav class="nav-links">
+                        <a href="https://www.jac-lang.org/learn/introduction" class="nav-link">Learn</a>
+                        <a href="community.html" class="nav-link active">Community Hub</a>
+                        <a href="aboutus.html" class="nav-link">About Us</a>
+                    </nav>
+                </div>
+            </div>
+            <div class="hero-background-overlay"></div>
+            <div class="hero-animated-blobs">
+                <div class="blob blob-1"></div>
+                <div class="blob blob-2"></div>
+            </div>
+
+      </section>
+
     <main class="ch-community">
       <!-- Hero -->
       <section class="ch-hero">
         <div class="ch-container">
-          <div class="ch-hero__icon">
-            <img
-              src="/assets/logo.png"
-              width="56"
-              height="56"
-              alt=""
-              aria-hidden="true"
-            />
-          </div>
           <h1 class="ch-hero__title">Community</h1>
           <div class="ch-hero__subhead">
             <div class="ch-hero__badge">
@@ -341,6 +367,23 @@
           </a>
         </div>
       </section>
+
+      <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-links">
+                        <a href="https://github.com/Jaseci-Labs/jaseci" target="_blank">GitHub</a>
+                        <a href="https://discord.gg/6j3QNdtcN6" target="_blank">Community</a>
+                        <a href="https://www.jac-lang.org/learn/getting_started/">Documentation</a>
+                    </div>
+                    <p>© 2025 Jac Hackers Everywhere. All rights reserved.</p>
+                    <p style="margin-top: 10px; color: #666;">Built with passion for innovative programming languages
+                    </p>
+                </div>
+            </div>
+        </footer>
+        
     </main>
     <script src="js/subscribe.js"></script>
   </body>
