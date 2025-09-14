@@ -26,8 +26,7 @@ export const CodeBlock = ({
 
   return (
     <div className={`relative group bg-[hsl(var(--code-bg))] rounded-lg overflow-hidden ${className}`}>
-      <div className="flex items-center justify-between px-4 py-2 border-b border-white/10">
-        <span className="text-sm text-[hsl(var(--code-comment))] font-mono">{language}</span>
+      {/* <div className="flex items-center justify-between px-4 py-2 border-b border-white/10">
         <button
           onClick={handleCopy}
           className="h-6 w-6 p-0 opacity-60 hover:opacity-100 text-white hover:text-white hover:bg-white/10"
@@ -35,7 +34,7 @@ export const CodeBlock = ({
         >
           {copied ? '✔️' : '📋'}
         </button>
-      </div>
+      </div> */}
       <pre className={`line-numbers p-4 overflow-x-auto`}>
         <code className={`language-${language} text-[hsl(var(--code-text))] font-mono text-sm leading-relaxed`}>
           {code.trim()}
