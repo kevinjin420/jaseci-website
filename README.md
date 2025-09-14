@@ -57,8 +57,6 @@ docs/
     npm run dev
     ```
 
-   Then visit [http://localhost:8000](http://localhost:8000) in your browser.
-
 ---
 
 After finishing all the customization, you can create a production build by running this command.
