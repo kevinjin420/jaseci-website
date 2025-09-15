@@ -25,4 +25,4 @@ In addition to being an entrepreneur and CEO of several startups, including Zero
 
 This article was originally posted on nvidia.com, click the link below to read the complete article.
 
-[https://blogs.nvidia.com/blog/2022/04/27/what-is-conversational-ai-jason-mars/](https://blogs.nvidia.com/blog/2022/04/27/what-is-conversational-ai-jason-mars/)
+[click here](https://blogs.nvidia.com/blog/2022/04/27/what-is-conversational-ai-jason-mars/)
