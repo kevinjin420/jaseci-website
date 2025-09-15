@@ -15,8 +15,11 @@ const Posts = ({ posts, className, authors }) => {
         >
           {post.frontmatter.image && (
             <div
-              className={`relative rounded-lg overflow-hidden ${
-                i === 0 ? "w-[925px] h-[475px]" : "w-[445px] h-[230px]"
+              className={`relative w-full overflow-hidden rounded-lg ${
+                // Bigger hero image for the first post, smaller but still responsive for the rest
+                i === 0
+                  ? "h-52 sm:h-64 md:h-72 lg:h-96 xl:h-[475px]"
+                  : "h-44 sm:h-48 md:h-56 lg:h-60 xl:h-[230px]"
               }`}
             >
               <Image
@@ -25,6 +28,11 @@ const Posts = ({ posts, className, authors }) => {
                 alt={post.frontmatter.title}
                 fill
                 priority={i === 0}
+                sizes={
+                  i === 0
+                    ? "(min-width: 1280px) 925px, (min-width: 1024px) 75vw, (min-width: 640px) 100vw, 100vw"
+                    : "(min-width: 768px) 50vw, 100vw"
+                }
               />
             </div>
           )}

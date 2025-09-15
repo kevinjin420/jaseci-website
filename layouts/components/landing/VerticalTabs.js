@@ -1,10 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import { Highlight} from "prism-react-renderer";
 import "../../../lib/prism-jac";
 import { CodeBlock } from "../CodeBlock";
-
 
 import { jacTabsData, pythonTabsData, tabsData } from "@lib/data/verticalTabs";
 
@@ -13,7 +11,6 @@ const LearnMoreIcon = () => (
     <path d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z" />
   </svg>
 );
-
 
 const VerticalTabs = () => {
   const [activeVerticalTab, setActiveVerticalTab] = useState(0);
@@ -62,15 +59,14 @@ const VerticalTabs = () => {
         </div>
 
         {/* Right: Content Area */}
-<div className="w-full max-w-full lg:max-w-[inherit] bg-[#2d2d2d] p-6 sm:p-8 lg:p-12 flex flex-col rounded-t-2xl lg:rounded-l-none lg:rounded-r-2xl overflow-x-auto">
-  <div className="text-white text-lg font-medium min-h-[60px] leading-relaxed">
-    {tabsData[activeVerticalTab].summary}
-  </div>
-  <div className="mt-4 flex-1 flex flex-col bg-[#282C34] rounded-xl shadow-lg overflow-hidden min-h-[350px]">
-    {/* Language Tabs */}
-    <div className="bg-[#3c4043] h-14 flex items-center justify-center px-4 relative">
-      <div className="flex p-1.5 gap-2 rounded-lg">
-
+        <div className="w-full max-w-full lg:max-w-[inherit] bg-[#2d2d2d] p-6 sm:p-8 lg:p-12 flex flex-col rounded-t-2xl lg:rounded-l-none lg:rounded-r-2xl overflow-x-auto">
+          <div className="text-white text-lg font-medium min-h-[60px] leading-relaxed">
+            {tabsData[activeVerticalTab].summary}
+          </div>
+          <div className="mt-4 flex-1 flex flex-col bg-[#282C34] rounded-xl shadow-lg overflow-hidden min-h-[350px]">
+            {/* Language Tabs */}
+            <div className="bg-[#3c4043] h-14 flex items-center justify-center px-4 relative">
+              <div className="flex p-1.5 gap-2 rounded-lg">
                 <button
                   onClick={() => setActiveLanguage("jac")}
                   className={`min-w-[90px] py-1.5 px-4 text-sm font-medium rounded-md transition-all duration-300

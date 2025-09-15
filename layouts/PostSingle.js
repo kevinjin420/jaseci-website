@@ -25,7 +25,7 @@ const PostSingle = ({ post, posts, authors, slug }) => {
                   .filter((author) =>
                     frontmatter.authors
                       .map((author) => slugify(author))
-                      .includes(slugify(author.frontmatter.title))
+                      .includes(slugify(author.frontmatter.title)),
                   )
                   .map((author, i) => (
                     <Link
@@ -71,7 +71,7 @@ const PostSingle = ({ post, posts, authors, slug }) => {
                 className="rounded-lg"
               />
             )}
-            <div className="content mb-16 text-left">
+            <div className="content mb-16 text-justify">
               <MDXContent content={content} />
             </div>
             <div className="flex flex-wrap items-center justify-between">

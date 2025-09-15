@@ -48,16 +48,23 @@ input#nav-toggle:checked ~ #nav-menu {
   @apply min-w-[150px] py-1 text-lg font-semibold text-dark transition hover:text-primary;
 }
 
-// search style
+// search style (mobile-first, full-screen overlay)
 .search-modal {
-  @apply invisible absolute top-0 left-0 right-0 z-20 h-10 bg-white opacity-0 transition md:h-full;
+  @apply fixed inset-0 z-[60] flex items-center justify-center bg-black/60 opacity-0 invisible transition-opacity duration-200 ease-out p-4;
+
+  .search-box {
+    @apply relative w-full max-w-md md:max-w-2xl bg-medium-bg border border-light-bg/50 rounded-xl shadow-2xl p-3 md:p-5 backdrop-blur;
+  }
+
   .form-input {
-    @apply h-full w-full border-0 text-lg;
+    @apply w-full h-12 md:h-14 rounded-lg bg-[#1f1f1f] text-white placeholder-gray-400 px-4 border border-light-bg/40 focus:outline-none focus:ring-2 focus:ring-primary;
   }
+
   .search-close {
-    @apply absolute top-1/2 right-2 -translate-y-1/2 p-3 text-h4;
+    @apply absolute top-2 right-2 md:top-3 md:right-3 p-1.5 md:p-2 text-2xl text-white/80 hover:text-white;
   }
+
   &.open {
-    @apply visible opacity-100;
+    @apply opacity-100 visible;
   }
 }
