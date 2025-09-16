@@ -98,10 +98,11 @@ jobs:
           # Build and push multi-architecture image
           docker buildx build \
             --platform linux/amd64 \
+            -f jaseci-org/dockerfile \
             -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG \
             -t $ECR_REGISTRY/$ECR_REPOSITORY:latest \
             --push \
-            .
+            ./jaseci-org
 
   summary:
     needs: [deploy-jaseci-website]

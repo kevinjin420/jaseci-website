@@ -18,7 +18,7 @@ def calc_distance(x1: float, y1: float, x2: float, y2: float) -> float {
 }
 
 
-# The Main Execution Block
+# The Main Execution Block.
 # The 'with entry' block is the starting point for running the script.
 with entry {
     # This code is identical to how you would write it in a Python script.
