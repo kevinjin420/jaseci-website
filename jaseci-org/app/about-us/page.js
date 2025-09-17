@@ -127,11 +127,11 @@ const testimonials = [
   },
   {
     quote:
-      "Jaseci's open-source approach has revolutionized how we develop and deploy AI applications. The scalability is unmatched.",
-    author: "Sarah Chen",
-    title: "Lead AI Engineer",
-    company: "TechFlow Solutions",
-    logo: "/images/assets/partners/techflow.png",
+      "Jaseci is a new programming language and runtime system that has the potential to hide the complexity of backend systems for many AI practitioners and thus lowers the barrier of entry for general developers, leading to great improvement of developers' productivity.",
+    author: "Robert Hundt",
+    title: "Distinguished Engineer",
+    company: "Google",
+    logo: "/images/assets/partners/google.png",
   },
   {
     quote:
