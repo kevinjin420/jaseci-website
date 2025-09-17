@@ -104,7 +104,7 @@ const Hero = () => {
       </div>
       <div className="flex gap-5 justify-center mb-5">
         <a
-          href="#learn"
+          href="https://www.jac-lang.org/learn/getting_started"
           className="bg-gradient-to-r from-primary-orange to-primary-yellow text-white px-8 py-3.5 rounded-lg text-base font-semibold no-underline transition-transform duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_25px_rgba(255,107,53,0.3)]"
         >
           Get Started

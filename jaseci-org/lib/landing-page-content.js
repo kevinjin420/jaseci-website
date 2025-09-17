@@ -65,7 +65,7 @@ export const gettingStartedSlides = [
       title: "AI Programming",
       description:
         "Master AI integration with byLLM and multimodal models in Jac.",
-      link: "https://www.jac-lang.org/learn/jac-byllm/quickstart/",
+      link: "https://www.byllm.ai/",
       linkText: "AI Guide",
     },
     {
