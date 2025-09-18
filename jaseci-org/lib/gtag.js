@@ -1,7 +1,7 @@
 // gtag.js utility for Google Analytics event tracking
 // Usage: import { pageview, event } from './gtag';
 
-export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+export const GA_MEASUREMENT_ID = "G-V1KRXTNCWJ";
 
 // Track pageviews
 export const pageview = (url) => {

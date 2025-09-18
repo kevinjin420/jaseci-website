@@ -1,6 +1,5 @@
 import config from "@config/config.json";
 import theme from "@config/theme.json";
-import TwSizeIndicator from "@layouts/components/TwSizeIndicator";
 import Footer from "@layouts/partials/Footer";
 import Header from "@layouts/partials/Header";
 import Providers from "@layouts/partials/Providers";
@@ -10,7 +9,7 @@ import "../styles/style.scss";
 export default function RootLayout({ children }) {
   const pf = theme.fonts.font_family.primary;
   const sf = theme.fonts.font_family.secondary;
-  const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+  const GA_ID = "G-V1KRXTNCWJ";
   return (
     <html suppressHydrationWarning={true} lang="en">
       <head>
