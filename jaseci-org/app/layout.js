@@ -14,24 +14,20 @@ export default function RootLayout({ children }) {
     <html suppressHydrationWarning={true} lang="en">
       <head>
         {/* Google tag (gtag.js) */}
-        {GA_ID && (
-          <>
-            <script
-              async
-              src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
-            ></script>
-            <script
-              dangerouslySetInnerHTML={{
-                __html: `
+        <script
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=G-V1KRXTNCWJ`}
+        ></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
                   window.dataLayer = window.dataLayer || [];
                   function gtag(){dataLayer.push(arguments);} 
                   gtag('js', new Date());
-                  gtag('config', '${GA_ID}', { send_page_view: false });
+                  gtag('config', 'G-V1KRXTNCWJ', { send_page_view: false });
                 `,
-              }}
-            />
-          </>
-        )}
+          }}
+        />
         {/* responsive meta */}
         <meta
           name="viewport"
