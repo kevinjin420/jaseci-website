@@ -39,7 +39,7 @@ export const gettingStartedSlides = [
       title: "RAG Chatbot",
       description:
         "Create an AI-powered conversational chatbot with retrieval-augmented generation.",
-      link: "https://www.jac-lang.org/learn/examples/rag_chatbot/readme/",
+      link: "https://www.jac-lang.org/learn/examples/rag_chatbot/Overview/",
       linkText: "Build Chatbot",
     },
     {
