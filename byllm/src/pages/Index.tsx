@@ -21,6 +21,7 @@ import fig23 from '../assets/fig23.png';
 import evaluationPECode from '../assets/evalPE.py?raw';
 import evaluationDSPyCode from '../assets/evaldspy.py?raw';
 import evaluationJacCode from '../assets/byllmeval.jac?raw';
+import evaluationPyCode from '../assets/byllmeval.py?raw';  
 
 // Import JAC examples
 import firstexampleCode from '../assets/firstexample.jac?raw';
@@ -101,11 +102,11 @@ const Index = () => {
 
                   {/* Text on the right */}
                   <div className="flex flex-col">
-                    <h1 className="text-5xl font-bold leading-tight bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
+                    <h1 className="text-6xl font-bold leading-tight bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
                       <strong>byLLM</strong>
                     </h1>
-                    <p className="text-body-large text-muted-foreground mt-1">
-                      Prompt No More!
+                    <p className="text-base text-muted-foreground mt-1">
+                      Prompt Less, Code More!
                     </p>
                   </div>
                 </div>
@@ -169,7 +170,7 @@ const Index = () => {
                   <div className="flex-1">
                     <h3 className="text-xl font-bold mb-3">No Prompt Engineering</h3>
                     <p className="text-muted-foreground leading-relaxed">
-                      Write natural function signatures and let byLLM handle prompt generation automatically. High accuracy right out of the box relative to DSPy and LMQL frameworks. 
+                      Write natural function signatures and let byLLM handle prompt generation automatically. High accuracy right out of the box relative to DSPy and LMQL frameworks.
                     </p>
                   </div>
                 </div>
@@ -246,27 +247,27 @@ const Index = () => {
               </div>
 
               <div className="text-center mb-16">
-              <h4 className="text-section mb-4">How to use byLLM?</h4>
-            </div>
+                <h4 className="text-section mb-4">How to use byLLM?</h4>
+              </div>
 
-          <div className="max-w-4xl mx-auto mb-8">
-              <Tabs defaultValue="jac" className="w-full">
-                <TabsList className="grid w-full grid-cols-2 mb-4">
-                  <TabsTrigger value="jac">Jac</TabsTrigger>
-                  <TabsTrigger value="python">Python</TabsTrigger>
-                </TabsList>
-                <TabsContent value="jac">
-                  <CodeBlock code={firstexampleCode} language="jac" />
-                </TabsContent>
-                <TabsContent value="python">
-                  <CodeBlock code={firstexamplecodepython} language="python" />
-                </TabsContent>
-              </Tabs>
-            </div>
+              <div className="max-w-4xl mx-auto mb-8">
+                <Tabs defaultValue="jac" className="w-full">
+                  <TabsList className="grid w-full grid-cols-2 mb-4">
+                    <TabsTrigger value="jac">Jac</TabsTrigger>
+                    <TabsTrigger value="python">Python</TabsTrigger>
+                  </TabsList>
+                  <TabsContent value="jac">
+                    <CodeBlock code={firstexampleCode} language="jac" />
+                  </TabsContent>
+                  <TabsContent value="python">
+                    <CodeBlock code={firstexamplecodepython} language="python" />
+                  </TabsContent>
+                </Tabs>
+              </div>
 
               <div className="text-center mb-16">
-              <p className="text-base font-semibold italic text-primary mb-4">IT IS THAT SIMPLE!</p>
-            </div>
+                <p className="text-base font-semibold italic text-primary mb-4">IT IS THAT SIMPLE!</p>
+              </div>
 
               <div className="text-center mb-8">
                 <h3 className="text-section mb-4">Let's look at some simple examples to understand how byLLM is used.</h3>
@@ -281,7 +282,7 @@ const Index = () => {
               </div>
 
               <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-                <TabsList className="grid w-full grid-cols-2 md:grid-cols-3 mb-8">
+                <TabsList className="grid w-full grid-cols-3 md:grid-cols-3 mb-8">
                   <TabsTrigger value="areyouai">AreYouAI</TabsTrigger>
                   <TabsTrigger value="personalityfinder">PersonalityFinder</TabsTrigger>
                   <TabsTrigger value="wikisearch">WikiSearch</TabsTrigger>
@@ -383,9 +384,9 @@ const Index = () => {
             </div>
           </div>
         </section> */}
-        
+
         {/* How Users React to byLLM */}
-        <section className="py-12">
+        {/* <section className="py-12">
           <div className="container">
             <div className="text-center mb-12">
               <h2 className="text-section mb-4">How Users React to byLLM</h2>
@@ -401,107 +402,115 @@ const Index = () => {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* Runtime Speed and Cost Improvements */}
-        
-<section className="py-12">
-  <div className="container">
-    <div className="text-center mb-16">
-      <h2 className="text-section mb-8">Evaluation Metrices</h2>
-      <p className="text-body-large text-muted-foreground max-w-2xl mx-auto">
-        Comparison of runtime performance and cost efficiency across frameworks
-      </p>
-    </div>
 
-    
-    {/* Figures */}
-<div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-4">
-  <Card>
-    <CardContent className="p-4 flex flex-col items-center justify-center">
-      <img
-        src={fig22}
-        alt="Figure 22: Runtime Speed Comparison"
-        className="max-h-72 w-auto object-contain"
-      />
-      <div className="text-xs text-muted-foreground mt-2 text-center">
-        Token usage comparison between MTP and DSPy.
-      </div>
-    </CardContent>
-  </Card>
-  <Card>
-    <CardContent className="p-4 flex flex-col items-center justify-center">
-      <img
-        src={fig23}
-        alt="Figure 23: Cost Efficiency Comparison"
-        className="max-h-72 w-auto object-contain"
-      />
-      <div className="text-xs text-muted-foreground mt-2 text-center">
-        Cost and runtime speed comparison between MTP and DSPy.
-      </div>
-    </CardContent>
-  </Card>
-</div>
-<div className="text-center mb-16">
-  <span className="text-base font-semibold text-primary">
-    Lower latency and cost on average
-  </span>
-</div>
-
-{/* Code Examples Section */}
-<div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto items-start">
-
-  {/* Title below the grid */}
-  <div className="col-span-2 mb-4">
-    <h3 className="text-section text-center font-bold text-2xl">
-      Side-by-side code comparison
-    </h3>
-  </div>
-  
-  {/* Left Tabs */}
-  <div>
-    <Tabs defaultValue="jac" className="w-full">
-      <TabsList className="grid w-full grid-cols-2 mb-4">
-        <TabsTrigger value="jac">Prompt Engineering</TabsTrigger>
-        <TabsTrigger value="python">DSPy</TabsTrigger>
-      </TabsList>
-      <TabsContent value="jac">
-        <Card>
-          <CardContent className="p-4">
-            <CodeBlock code={evaluationPECode} language="python" />
-          </CardContent>
-        </Card>
-      </TabsContent>
-      <TabsContent value="python">
-        <Card>
-          <CardContent className="p-4">
-            <CodeBlock code={evaluationDSPyCode} language="python" />
-          </CardContent>
-        </Card>
-      </TabsContent>
-    </Tabs>
-  </div>
-
-  {/* Right Jac Tab */}
-  <div>
-    <Tabs defaultValue="jac-impl" className="w-full">
-      <TabsList className="grid w-full grid-cols-1 mb-4">
-        <TabsTrigger value="jac-impl">Jac Implementation</TabsTrigger>
-      </TabsList>
-      <TabsContent value="jac-impl">
-        <Card>
-          <CardContent className="p-4">
-            <CodeBlock code={evaluationJacCode} language="jac" />
-          </CardContent>
-        </Card>
-      </TabsContent>
-    </Tabs>
-  </div>
-</div>
+        <section className="py-12">
+          <div className="container">
+            {/* <div className="text-center mb-16">
+              <h2 className="text-section mb-8">Evaluation Metrices</h2>
+              <p className="text-body-large text-muted-foreground max-w-2xl mx-auto">
+                Comparison of runtime performance and cost efficiency across frameworks
+              </p>
+            </div> */}
 
 
-  </div>
-</section>
+            {/* Figures */}
+            {/* <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-4">
+              <Card>
+                <CardContent className="p-4 flex flex-col items-center justify-center">
+                  <img
+                    src={fig22}
+                    alt="Figure 22: Runtime Speed Comparison"
+                    className="max-h-72 w-auto object-contain"
+                  />
+                  <div className="text-xs text-muted-foreground mt-2 text-center">
+                    Token usage comparison between MTP and DSPy.
+                  </div>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardContent className="p-4 flex flex-col items-center justify-center">
+                  <img
+                    src={fig23}
+                    alt="Figure 23: Cost Efficiency Comparison"
+                    className="max-h-72 w-auto object-contain"
+                  />
+                  <div className="text-xs text-muted-foreground mt-2 text-center">
+                    Cost and runtime speed comparison between MTP and DSPy.
+                  </div>
+                </CardContent>
+              </Card>
+            </div> */}
+            {/* <div className="text-center mb-16">
+              <span className="text-base font-semibold text-primary">
+                Lower latency and cost on average
+              </span>
+            </div> */}
+
+            {/* Code Examples Section */}
+            <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto items-start">
+
+              {/* Title below the grid */}
+              <div className="col-span-2 mb-4">
+                <h3 className="text-section text-center font-bold text-2xl">
+                  Side-by-side code comparison
+                </h3>
+              </div>
+
+              {/* Left Tabs */}
+              <div>
+                <Tabs defaultValue="jac" className="w-full">
+                  <TabsList className="grid w-full grid-cols-1 mb-4">
+                    <TabsTrigger value="jac">Prompt Engineering</TabsTrigger>
+                    {/* <TabsTrigger value="python">DSPy</TabsTrigger> */}
+                  </TabsList>
+                  <TabsContent value="jac">
+                    <Card>
+                      <CardContent className="p-4">
+                        <CodeBlock code={evaluationPECode} language="jac" />
+                      </CardContent>
+                    </Card>
+                  </TabsContent>
+                  {/* <TabsContent value="python">
+                    <Card>
+                      <CardContent className="p-4">
+                        <CodeBlock code={evaluationDSPyCode} language="python" />
+                      </CardContent>
+                    </Card>
+                  </TabsContent> */}
+                </Tabs>
+              </div>
+
+              {/* Right Jac Tab */}
+              <div>
+                <Tabs defaultValue="jac-impl" className="w-full">
+                  <TabsList className="grid w-full grid-cols-2 mb-4">
+                    <TabsTrigger value="jac-impl">byLLM Jac</TabsTrigger>
+                    <TabsTrigger value="py-impl">byLLM Python</TabsTrigger>
+                  </TabsList>
+                  <TabsContent value="jac-impl">
+                    <Card>
+                      <CardContent className="p-4">
+                        <CodeBlock code={evaluationJacCode} language="jac" />
+                      </CardContent>
+                    </Card>
+                  </TabsContent>
+                  <TabsContent value="py-impl">
+                    <Card>
+                      <CardContent className="p-4">
+                        <CodeBlock code={evaluationPyCode} language="jac" />
+                      </CardContent>
+                    </Card>
+                  </TabsContent>
+                </Tabs>
+              </div>
+            </div>
+
+
+          </div>
+        </section>
 
 
         {/* How it Works */}
@@ -587,7 +596,7 @@ const Index = () => {
           </div>
         </section>
 
-        
+
 
         {/* References */}
         <section className="py-12">
