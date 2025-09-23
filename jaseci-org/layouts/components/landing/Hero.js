@@ -45,14 +45,13 @@ const Hero = () => {
 
   return (
     <>
-      <section ref={heroRef} className="min-h-[80vh] flex items-center py-12 sm:py-16 lg:py-20 bg-dark-bg relative overflow-hidden mt-5">
+      <section ref={heroRef} className="min-h-[70vh] lg:min-h-[80vh] flex items-center py-12 sm:py-16 lg:py-20 bg-dark-bg relative overflow-hidden mt-5">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-10 right-20 w-40 h-40 bg-gradient-to-br from-primary-orange to-primary-yellow rounded-full blur-xl animate-pulse"></div>
           <div className="absolute bottom-20 left-10 w-32 h-32 bg-gradient-to-br from-primary-yellow to-primary-orange rounded-full blur-lg animate-pulse delay-1000"></div>
           <div className="absolute top-1/2 left-1/3 w-24 h-24 bg-gradient-to-br from-primary-orange/50 to-primary-yellow/50 rounded-full blur-xl animate-pulse delay-500"></div>
         </div>
 
-        {/* Cursor Following Animation */}
         <div 
           ref={cursorRef}
           className="absolute w-96 h-96 pointer-events-none opacity-0 transition-all duration-300 ease-out z-0"
@@ -65,7 +64,6 @@ const Hero = () => {
           }}
         />
 
-        {/* Additional cursor trail effects */}
         <div className="absolute inset-0 pointer-events-none">
           <div 
             className="absolute w-32 h-32 opacity-0 transition-all duration-700 ease-out"
@@ -85,11 +83,11 @@ const Hero = () => {
           />
         </div>
 
-        <div className="container mx-auto max-w-6xl px-4 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
-            <div className="text-center lg:text-left">
+        <div className="container mx-auto max-w-7xl px-4 relative z-10">
+          <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 items-center">
+            <div className="lg:col-span-3 text-center lg:text-left">
               <div className="mb-6">
-                <h1 className="font-bold tracking-tight text-balance leading-tight text-3xl sm:text-4xl lg:text-5xl">
+                <h1 className="font-bold tracking-tight text-balance leading-tight text-3xl sm:text-4xl lg:text-5xl xl:text-6xl">
                   <span 
                     className="block text-white"
                     style={{ animation: 'fadeInUp 0.6s ease-out 0s both' }}
@@ -113,7 +111,7 @@ const Hero = () => {
               </div>
 
               <p 
-                className="mt-4 sm:mt-5 text-sm sm:text-base lg:text-lg text-dark-text/90 leading-relaxed max-w-prose mx-auto lg:mx-0"
+                className="mt-4 sm:mt-6 text-sm sm:text-base lg:text-lg xl:text-xl text-dark-text/90 leading-relaxed max-w-2xl mx-auto lg:mx-0"
                 style={{ animation: 'fadeInUp 0.6s ease-out 0.8s both' }}
               >
                 The Jac programming language and Jaseci runtime stack builds on Python, introducing
@@ -123,7 +121,7 @@ const Hero = () => {
               </p>
 
               <div 
-                className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start"
+                className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center lg:justify-start"
                 style={{ animation: 'fadeInUp 0.6s ease-out 1s both' }}
               >
                 <a
@@ -156,106 +154,46 @@ const Hero = () => {
             </div>
 
             <div 
-              className="order-first lg:order-last"
+              className="hidden lg:block lg:col-span-2 order-first lg:order-last"
               style={{ animation: 'fadeInUp 0.6s ease-out 0.4s both' }}
             >
-              <div className="group rounded-2xl border border-light-bg/20 bg-gradient-to-br from-dark-bg/80 via-dark-bg/60 to-dark-bg/80 backdrop-blur-sm p-5 hover:border-primary-orange/30 transition-all duration-300 hover:shadow-xl hover:shadow-primary-orange/10 relative overflow-hidden">
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-red-500 transition-all duration-300 group-hover:shadow-sm group-hover:shadow-red-500/50" />
-                    <span className="w-2.5 h-2.5 rounded-full bg-yellow-500 transition-all duration-300 group-hover:shadow-sm group-hover:shadow-yellow-500/50" />
-                    <span className="w-2.5 h-2.5 rounded-full bg-green-500 transition-all duration-300 group-hover:shadow-sm group-hover:shadow-green-500/50" />
+              <div className="relative group">
+                <div className="absolute -inset-6 bg-gradient-to-r from-primary-orange/3 via-primary-yellow/2 to-primary-orange/3 rounded-full blur-3xl opacity-10 group-hover:opacity-20 transition-all duration-1000 scale-110 animate-breathe"></div>
+                <div className="absolute -inset-8 bg-gradient-to-br from-primary-orange/2 to-primary-yellow/2 rounded-full blur-2xl opacity-5 group-hover:opacity-10 transition-all duration-700 animate-slow-pulse"></div>
+                
+                <div className="relative flex items-center justify-center min-h-[450px]">
+                  <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                    <div className="hero-particle hero-particle-1"></div>
+                    <div className="hero-particle hero-particle-2"></div>
+                    <div className="hero-particle hero-particle-3"></div>
+                    <div className="hero-particle hero-particle-4"></div>
+                    <div className="hero-particle hero-particle-5"></div>
+                    <div className="hero-particle hero-particle-6"></div>
+                    <div className="hero-particle hero-particle-7"></div>
                   </div>
-                  <span className="text-[10px] text-dark-text/80 group-hover:text-primary-orange transition-colors duration-300">jaseci-stack</span>
-                </div>
-
-                {/* Animated Stack Visualization */}
-                <div className="relative h-[360px] bg-gradient-to-br from-[#0d1117] to-[#161b22] rounded-lg border border-light-bg/5 overflow-hidden">
-                  {/* Background animated grid */}
-                  <div className="absolute inset-0 opacity-20">
-                    <div className="grid-background"></div>
-                  </div>
-
-                  {/* Stack Layers - Animated from bottom to top */}
-                  <div className="absolute inset-0 flex flex-col justify-end p-4 space-y-2">
-                    {/* Layer 4 - Applications */}
-                    <div 
-                      className="stack-layer bg-gradient-to-r from-primary-orange/30 to-primary-yellow/30 border border-primary-orange/40 rounded-lg p-3 backdrop-blur-sm"
-                      style={{ animation: 'stackSlideUp 0.8s ease-out 0.6s both' }}
-                    >
-                      <div className="flex items-center justify-between">
-                        <span className="text-xs font-semibold text-white">Applications</span>
-                        <div className="flex space-x-1">
-                          <div className="w-2 h-2 bg-primary-orange rounded-full animate-pulse"></div>
-                          <div className="w-2 h-2 bg-primary-yellow rounded-full animate-pulse delay-200"></div>
-                        </div>
-                      </div>
-                      <div className="text-[10px] text-gray-300 mt-1">AI-Powered Web Apps, APIs, Microservices</div>
-                    </div>
-
-                    {/* Layer 3 - Jac Language */}
-                    <div 
-                      className="stack-layer bg-gradient-to-r from-blue-500/30 to-purple-500/30 border border-blue-400/40 rounded-lg p-3 backdrop-blur-sm"
-                      style={{ animation: 'stackSlideUp 0.8s ease-out 0.4s both' }}
-                    >
-                      <div className="flex items-center justify-between">
-                        <span className="text-xs font-semibold text-white">Jac Language</span>
-                        <div className="flex space-x-1">
-                          <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
-                          <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse delay-300"></div>
-                        </div>
-                      </div>
-                      <div className="text-[10px] text-gray-300 mt-1">AI-First Programming, Object-Spatial</div>
-                    </div>
-
-                    {/* Layer 2 - Jaseci Runtime */}
-                    <div 
-                      className="stack-layer bg-gradient-to-r from-green-500/30 to-teal-500/30 border border-green-400/40 rounded-lg p-3 backdrop-blur-sm"
-                      style={{ animation: 'stackSlideUp 0.8s ease-out 0.2s both' }}
-                    >
-                      <div className="flex items-center justify-between">
-                        <span className="text-xs font-semibold text-white">Jaseci Runtime</span>
-                        <div className="flex space-x-1">
-                          <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse delay-100"></div>
-                          <div className="w-2 h-2 bg-teal-400 rounded-full animate-pulse delay-400"></div>
-                        </div>
-                      </div>
-                      <div className="text-[10px] text-gray-300 mt-1">Scale-Native Execution, Cloud Ready</div>
-                    </div>
-
-                    {/* Layer 1 - Python Foundation */}
-                    <div 
-                      className="stack-layer bg-gradient-to-r from-yellow-600/30 to-blue-600/30 border border-yellow-500/40 rounded-lg p-3 backdrop-blur-sm"
-                      style={{ animation: 'stackSlideUp 0.8s ease-out 0s both' }}
-                    >
-                      <div className="flex items-center justify-between">
-                        <span className="text-xs font-semibold text-white">Python Foundation</span>
-                        <div className="flex space-x-1">
-                          <div className="w-2 h-2 bg-yellow-500 rounded-full animate-pulse delay-500"></div>
-                          <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse delay-600"></div>
-                        </div>
-                      </div>
-                      <div className="text-[10px] text-gray-300 mt-1">Familiar Syntax, Powerful Extensions</div>
-                    </div>
-                  </div>
-
-                  {/* Animated data flow particles */}
-                  <div className="absolute inset-0 pointer-events-none">
-                    <div className="particle particle-1"></div>
-                    <div className="particle particle-2"></div>
-                    <div className="particle particle-3"></div>
-                    <div className="particle particle-4"></div>
-                  </div>
-
-                  {/* Floating code snippets */}
-                  <div className="absolute top-4 right-4 opacity-60 group-hover:opacity-80 transition-opacity duration-300">
-                    <div className="text-[8px] font-mono text-primary-orange bg-black/50 px-2 py-1 rounded animate-float">
-                      {"with entry { ... }"}
-                    </div>
-                  </div>
-                  <div className="absolute bottom-4 left-4 opacity-40 group-hover:opacity-60 transition-opacity duration-300">
-                    <div className="text-[8px] font-mono text-blue-400 bg-black/50 px-2 py-1 rounded animate-float-delayed">
-                      {"node.ai_connect()"}
+                  
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary-orange/4 to-primary-yellow/4 rounded-2xl blur-2xl opacity-0 group-hover:opacity-15 transition-all duration-1000 scale-110 animate-glow-pulse"></div>
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary-orange/3 via-transparent to-primary-yellow/3 rounded-xl blur-xl opacity-8 group-hover:opacity-20 transition-all duration-800 animate-shimmer"></div>
+                    
+                    <Image
+                      src="/images/assets/hero.png"
+                      alt="Jaseci Stack"
+                      width={1400}
+                      height={1200}
+                      className="w-full h-auto max-w-lg lg:max-w-2xl xl:max-w-3xl mx-auto transition-all duration-1000 ease-out group-hover:scale-110 animate-professional-float drop-shadow-[0_25px_50px_rgba(0,0,0,0.3)] group-hover:drop-shadow-[0_50px_100px_rgba(255,149,0,0.06)] transform-gpu"
+                      priority
+                    />
+                    
+                    <div className="absolute -top-4 -right-4 w-3 h-3 bg-gradient-to-r from-primary-orange to-primary-yellow rounded-full animate-orbit opacity-70 shadow-lg shadow-primary-orange/50"></div>
+                    <div className="absolute -bottom-6 -left-6 w-5 h-5 border-2 border-primary-yellow/50 rounded-full animate-reverse-orbit opacity-50 backdrop-blur-sm"></div>
+                    <div className="absolute top-1/4 -right-6 w-1.5 h-1.5 bg-primary-orange/60 rounded-full animate-float-up opacity-60"></div>
+                    <div className="absolute bottom-1/3 -left-4 w-2 h-2 border border-primary-yellow/40 rounded-full animate-float-down opacity-50"></div>
+                    
+                    <div className="absolute inset-0 pointer-events-none">
+                      <div className="absolute top-1/4 left-1/4 w-12 h-0.5 bg-gradient-to-r from-primary-orange/30 to-transparent animate-magnetic-line-1 rounded-full"></div>
+                      <div className="absolute bottom-1/3 right-1/4 w-16 h-0.5 bg-gradient-to-l from-primary-yellow/25 to-transparent animate-magnetic-line-2 rounded-full"></div>
+                      <div className="absolute top-2/3 left-1/3 w-10 h-0.5 bg-gradient-to-r from-primary-orange/20 to-transparent animate-magnetic-line-3 rounded-full"></div>
                     </div>
                   </div>
                 </div>
@@ -287,115 +225,303 @@ const Hero = () => {
             }
           }
 
-          @keyframes stackSlideUp {
-            from {
-              opacity: 0;
-              transform: translateY(20px);
+          @keyframes professionalFloat {
+            0%, 100% { 
+              transform: translateY(0px) rotate(0deg); 
             }
-            to {
-              opacity: 1;
-              transform: translateY(0);
+            25% { 
+              transform: translateY(-15px) rotate(0.5deg); 
+            }
+            50% { 
+              transform: translateY(-20px) rotate(0deg); 
+            }
+            75% { 
+              transform: translateY(-10px) rotate(-0.5deg); 
             }
           }
 
-          @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+          @keyframes breathe {
+            0%, 100% { 
+              transform: scale(1) rotate(0deg); 
+              opacity: 0.4; 
+            }
+            50% { 
+              transform: scale(1.1) rotate(1deg); 
+              opacity: 0.7; 
+            }
           }
 
-          @keyframes floatDelayed {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
+          @keyframes slowPulse {
+            0%, 100% { 
+              opacity: 0.2; 
+              transform: scale(1); 
+            }
+            50% { 
+              opacity: 0.4; 
+              transform: scale(1.05); 
+            }
           }
 
-          .grid-background {
-            background-image: 
-              linear-gradient(rgba(255, 149, 0, 0.1) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(255, 149, 0, 0.1) 1px, transparent 1px);
-            background-size: 20px 20px;
-            animation: gridMove 20s linear infinite;
-          }
-
-          @keyframes gridMove {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(20px, 20px); }
-          }
-
-          .stack-layer {
-            position: relative;
-            overflow: hidden;
-          }
-
-          .stack-layer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-            animation: shimmer 3s infinite;
+          @keyframes glowPulse {
+            0%, 100% { 
+              opacity: 0; 
+              transform: scale(1); 
+            }
+            50% { 
+              opacity: 0.6; 
+              transform: scale(1.1); 
+            }
           }
 
           @keyframes shimmer {
-            0% { left: -100%; }
-            100% { left: 100%; }
+            0% { 
+              transform: translateX(-100%) rotate(0deg); 
+              opacity: 0; 
+            }
+            50% { 
+              transform: translateX(0%) rotate(2deg); 
+              opacity: 0.8; 
+            }
+            100% { 
+              transform: translateX(100%) rotate(0deg); 
+              opacity: 0; 
+            }
           }
 
-          .particle {
+          @keyframes orbit {
+            0% { 
+              transform: rotate(0deg) translateX(20px) rotate(0deg); 
+            }
+            100% { 
+              transform: rotate(360deg) translateX(20px) rotate(-360deg); 
+            }
+          }
+
+          @keyframes reverseOrbit {
+            0% { 
+              transform: rotate(0deg) translateX(25px) rotate(0deg); 
+            }
+            100% { 
+              transform: rotate(-360deg) translateX(25px) rotate(360deg); 
+            }
+          }
+
+          @keyframes floatUp {
+            0%, 100% { 
+              transform: translateY(0px) scale(1); 
+              opacity: 0.6; 
+            }
+            50% { 
+              transform: translateY(-30px) scale(1.2); 
+              opacity: 1; 
+            }
+          }
+
+          @keyframes floatDown {
+            0%, 100% { 
+              transform: translateY(0px) scale(1); 
+              opacity: 0.5; 
+            }
+            50% { 
+              transform: translateY(25px) scale(0.8); 
+              opacity: 0.8; 
+            }
+          }
+
+          @keyframes magneticLine1 {
+            0%, 100% { 
+              opacity: 0; 
+              transform: translateX(0) scaleX(0); 
+            }
+            25% { 
+              opacity: 0.3; 
+              transform: translateX(10px) scaleX(1); 
+            }
+            75% { 
+              opacity: 0.6; 
+              transform: translateX(5px) scaleX(1.2); 
+            }
+          }
+
+          @keyframes magneticLine2 {
+            0%, 100% { 
+              opacity: 0; 
+              transform: translateX(0) scaleX(0); 
+            }
+            33% { 
+              opacity: 0.25; 
+              transform: translateX(-15px) scaleX(1); 
+            }
+            66% { 
+              opacity: 0.5; 
+              transform: translateX(-8px) scaleX(1.1); 
+            }
+          }
+
+          @keyframes magneticLine3 {
+            0%, 100% { 
+              opacity: 0; 
+              transform: translateX(0) scaleX(0); 
+            }
+            40% { 
+              opacity: 0.2; 
+              transform: translateX(12px) scaleX(1); 
+            }
+            80% { 
+              opacity: 0.4; 
+              transform: translateX(6px) scaleX(0.9); 
+            }
+          }
+
+          .hero-particle {
             position: absolute;
-            width: 3px;
-            height: 3px;
-            background: rgba(255, 149, 0, 0.6);
+            background: rgba(255, 149, 0, 0.5);
             border-radius: 50%;
+            pointer-events: none;
+            filter: blur(0.5px);
           }
 
-          .particle-1 {
-            top: 80%; left: 20%;
-            animation: particleFloat1 4s infinite ease-in-out;
+          .hero-particle-1 {
+            width: 2px; height: 2px;
+            top: 15%; left: 10%;
+            animation: heroParticleFloat1 12s infinite ease-in-out;
           }
 
-          .particle-2 {
-            top: 60%; left: 70%;
-            animation: particleFloat2 3s infinite ease-in-out 1s;
+          .hero-particle-2 {
+            width: 1.5px; height: 1.5px;
+            top: 70%; right: 15%;
+            animation: heroParticleFloat2 10s infinite ease-in-out 2s;
           }
 
-          .particle-3 {
-            top: 40%; left: 50%;
-            animation: particleFloat3 5s infinite ease-in-out 2s;
+          .hero-particle-3 {
+            width: 2.5px; height: 2.5px;
+            bottom: 60%; left: 15%;
+            animation: heroParticleFloat3 15s infinite ease-in-out 4s;
           }
 
-          .particle-4 {
-            top: 20%; left: 30%;
-            animation: particleFloat4 3.5s infinite ease-in-out 0.5s;
+          .hero-particle-4 {
+            width: 1px; height: 1px;
+            top: 30%; right: 25%;
+            animation: heroParticleFloat4 8s infinite ease-in-out 1s;
           }
 
-          @keyframes particleFloat1 {
-            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
-            50% { transform: translate(-20px, -60px) scale(1.2); opacity: 1; }
+          .hero-particle-5 {
+            width: 2px; height: 2px;
+            bottom: 25%; right: 40%;
+            animation: heroParticleFloat5 14s infinite ease-in-out 3s;
           }
 
-          @keyframes particleFloat2 {
-            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.4; }
-            50% { transform: translate(15px, -80px) scale(0.8); opacity: 0.8; }
+          .hero-particle-6 {
+            width: 1.5px; height: 1.5px;
+            top: 50%; left: 5%;
+            animation: heroParticleFloat6 11s infinite ease-in-out 5s;
           }
 
-          @keyframes particleFloat3 {
+          .hero-particle-7 {
+            width: 2px; height: 2px;
+            top: 80%; right: 5%;
+            animation: heroParticleFloat7 13s infinite ease-in-out 6s;
+          }
+
+          @keyframes heroParticleFloat1 {
             0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.5; }
-            50% { transform: translate(-30px, -40px) scale(1.5); opacity: 1; }
+            25% { transform: translate(40px, -50px) scale(1.5); opacity: 0.8; }
+            50% { transform: translate(-20px, -80px) scale(1.2); opacity: 1; }
+            75% { transform: translate(60px, -30px) scale(0.8); opacity: 0.6; }
           }
 
-          @keyframes particleFloat4 {
+          @keyframes heroParticleFloat2 {
+            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.4; }
+            33% { transform: translate(-35px, 60px) scale(1.3); opacity: 0.7; }
+            66% { transform: translate(25px, -40px) scale(0.9); opacity: 0.9; }
+          }
+
+          @keyframes heroParticleFloat3 {
+            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+            50% { transform: translate(50px, -70px) scale(1.8); opacity: 1; }
+          }
+
+          @keyframes heroParticleFloat4 {
             0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
-            50% { transform: translate(25px, -70px) scale(0.9); opacity: 0.7; }
+            25% { transform: translate(-30px, 40px) scale(1.4); opacity: 0.6; }
+            75% { transform: translate(35px, -55px) scale(1.1); opacity: 0.8; }
           }
 
-          .animate-float {
-            animation: float 3s ease-in-out infinite;
+          @keyframes heroParticleFloat5 {
+            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.5; }
+            40% { transform: translate(45px, -35px) scale(1.3); opacity: 0.9; }
+            80% { transform: translate(-25px, 25px) scale(0.7); opacity: 0.7; }
           }
 
-          .animate-float-delayed {
-            animation: floatDelayed 4s ease-in-out infinite 1s;
+          @keyframes heroParticleFloat6 {
+            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.4; }
+            50% { transform: translate(30px, -45px) scale(1.5); opacity: 0.8; }
+          }
+
+          @keyframes heroParticleFloat7 {
+            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.5; }
+            33% { transform: translate(-40px, -30px) scale(1.2); opacity: 0.7; }
+            66% { transform: translate(20px, 50px) scale(0.9); opacity: 0.9; }
+          }
+
+          .animate-professional-float {
+            animation: professionalFloat 16s ease-in-out infinite;
+          }
+
+          .animate-breathe {
+            animation: breathe 8s ease-in-out infinite;
+          }
+
+          .animate-slow-pulse {
+            animation: slowPulse 6s ease-in-out infinite;
+          }
+
+          .animate-glow-pulse {
+            animation: glowPulse 4s ease-in-out infinite;
+          }
+
+          .animate-shimmer {
+            animation: shimmer 8s ease-in-out infinite;
+          }
+
+          .animate-orbit {
+            animation: orbit 20s linear infinite;
+          }
+
+          .animate-reverse-orbit {
+            animation: reverseOrbit 25s linear infinite;
+          }
+
+          .animate-float-up {
+            animation: floatUp 7s ease-in-out infinite;
+          }
+
+          .animate-float-down {
+            animation: floatDown 9s ease-in-out infinite;
+          }
+
+          .animate-magnetic-line-1 {
+            animation: magneticLine1 6s ease-in-out infinite;
+          }
+
+          .animate-magnetic-line-2 {
+            animation: magneticLine2 8s ease-in-out infinite 2s;
+          }
+
+          .animate-magnetic-line-3 {
+            animation: magneticLine3 7s ease-in-out infinite 4s;
+          }
+
+          @media (max-width: 768px) {
+            .hero-particle {
+              width: 1px !important;
+              height: 1px !important;
+              opacity: 0.7;
+            }
+            
+            .animate-professional-float {
+              animation: professionalFloat 12s ease-in-out infinite;
+            }
           }
         `}</style>
       </section>
@@ -403,7 +529,7 @@ const Hero = () => {
       <section className="pt-0 pb-8 bg-dark-bg/30 relative">
         <div className="container mx-auto max-w-6xl px-4">
           <div 
-            className="text-center py-6 sm:py-8 px-6 sm:px-8 bg-gradient-to-br from-dark-bg/80 via-dark-bg/60 to-dark-bg/80 backdrop-blur-sm rounded-2xl border border-light-bg/20 hover:border-primary-orange/30 transition-all duration-500 hover:shadow-xl hover:shadow-primary-orange/5"
+            className="text-center py-6 sm:py-8 px-6 sm:px-8 transition-all duration-500"
             style={{ animation: 'fadeInUp 0.6s ease-out 1.8s both' }}
           >
             <div className="mb-6">
@@ -437,9 +563,9 @@ const Hero = () => {
                       <Image
                         src={item.logo}
                         alt={`Affiliation ${index + 1}`}
-                        width={150}
-                        height={80}
-                        className="h-16 w-auto opacity-90 group-hover:opacity-100 transition-all duration-300 group-hover:drop-shadow-lg"
+                        width={200}
+                        height={100}
+                        className="h-20 w-auto opacity-90 group-hover:opacity-100 transition-all duration-300 group-hover:drop-shadow-lg"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-primary-orange/5 to-transparent rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
@@ -448,7 +574,6 @@ const Hero = () => {
                     </p>
                   </div>
                   
-                  {/* Vertical separator line - only show between items, not after the last one */}
                   {index < 2 && (
                     <div className="hidden sm:block w-px h-20 bg-gradient-to-b from-transparent via-light-bg/30 to-transparent mx-4 lg:mx-6">
                       <div className="w-full h-full bg-gradient-to-b from-transparent via-primary-orange/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>

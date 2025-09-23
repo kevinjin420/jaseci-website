@@ -231,6 +231,13 @@ const Journey = () => {
             </div>
           </div>
         </div>
+        
+        {/* Journey continues message */}
+        <div className="text-center mt-12 pt-8 border-t border-light-bg/10">
+          <p className="text-lg sm:text-xl text-primary-orange font-medium italic opacity-80 hover:opacity-100 transition-opacity duration-300">
+            And the journey continues...
+          </p>
+        </div>
       </div>
 
       <style jsx>{`

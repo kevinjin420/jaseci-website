@@ -39,7 +39,7 @@ with entry{
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-3 bg-gradient-to-r from-white via-blue-400 to-primary-orange bg-clip-text text-transparent">
             Jac Supersets Python
           </h2>
-          <div className="h-1 bg-gradient-to-r from-transparent via-blue-400 to-transparent mx-auto w-24 mb-3"></div>
+          <div className="h-1 bg-gradient-to-r from-transparent via-orange-400 to-transparent mx-auto w-24 mb-3"></div>
           <p className="text-base sm:text-lg text-gray-300 max-w-3xl mx-auto leading-normal">
             Like TypeScript for JavaScript, Jac extends Python with it's own features
           </p>
