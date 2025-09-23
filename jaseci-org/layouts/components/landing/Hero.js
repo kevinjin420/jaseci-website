@@ -187,9 +187,9 @@ const Hero = () => {
                     <Image
                       src="/images/assets/hero.png"
                       alt="Jaseci Stack"
-                      width={1200}
-                      height={1000}
-                      className="w-full h-auto max-w-xl xl:max-w-2xl mx-auto transition-all duration-1000 ease-out group-hover:scale-110 animate-professional-float drop-shadow-[0_25px_50px_rgba(0,0,0,0.3)] group-hover:drop-shadow-[0_50px_100px_rgba(255,149,0,0.06)] transform-gpu"
+                      width={1400}
+                      height={1200}
+                      className="w-full h-auto max-w-lg lg:max-w-2xl xl:max-w-3xl mx-auto transition-all duration-1000 ease-out group-hover:scale-110 animate-professional-float drop-shadow-[0_25px_50px_rgba(0,0,0,0.3)] group-hover:drop-shadow-[0_50px_100px_rgba(255,149,0,0.06)] transform-gpu"
                       priority
                     />
                     
