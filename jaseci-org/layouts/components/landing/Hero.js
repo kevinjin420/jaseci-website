@@ -85,11 +85,11 @@ const Hero = () => {
           />
         </div>
 
-        <div className="container mx-auto max-w-6xl px-4 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
-            <div className="text-center lg:text-left">
+        <div className="container mx-auto max-w-7xl px-4 relative z-10">
+          <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 items-center">
+            <div className="lg:col-span-3 text-center lg:text-left">
               <div className="mb-6">
-                <h1 className="font-bold tracking-tight text-balance leading-tight text-3xl sm:text-4xl lg:text-5xl">
+                <h1 className="font-bold tracking-tight text-balance leading-tight text-3xl sm:text-4xl lg:text-5xl xl:text-6xl">
                   <span 
                     className="block text-white"
                     style={{ animation: 'fadeInUp 0.6s ease-out 0s both' }}
@@ -113,7 +113,7 @@ const Hero = () => {
               </div>
 
               <p 
-                className="mt-4 sm:mt-5 text-sm sm:text-base lg:text-lg text-dark-text/90 leading-relaxed max-w-prose mx-auto lg:mx-0"
+                className="mt-4 sm:mt-6 text-sm sm:text-base lg:text-lg xl:text-xl text-dark-text/90 leading-relaxed max-w-2xl mx-auto lg:mx-0"
                 style={{ animation: 'fadeInUp 0.6s ease-out 0.8s both' }}
               >
                 The Jac programming language and Jaseci runtime stack builds on Python, introducing
@@ -123,7 +123,7 @@ const Hero = () => {
               </p>
 
               <div 
-                className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start"
+                className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center lg:justify-start"
                 style={{ animation: 'fadeInUp 0.6s ease-out 1s both' }}
               >
                 <a
@@ -157,16 +157,16 @@ const Hero = () => {
 
             {/* Hero Image Section - Hidden on mobile/tablet, shown on desktop */}
             <div 
-              className="hidden lg:block order-first lg:order-last"
+              className="hidden lg:block lg:col-span-2 order-first lg:order-last"
               style={{ animation: 'fadeInUp 0.6s ease-out 0.4s both' }}
             >
               <div className="relative group">
                 {/* Professional background effects */}
-                <div className="absolute -inset-8 bg-gradient-to-r from-primary-orange/3 via-primary-yellow/2 to-primary-orange/3 rounded-full blur-3xl opacity-10 group-hover:opacity-20 transition-all duration-1000 scale-110 animate-breathe"></div>
-                <div className="absolute -inset-12 bg-gradient-to-br from-primary-orange/2 to-primary-yellow/2 rounded-full blur-2xl opacity-5 group-hover:opacity-10 transition-all duration-700 animate-slow-pulse"></div>
+                <div className="absolute -inset-6 bg-gradient-to-r from-primary-orange/3 via-primary-yellow/2 to-primary-orange/3 rounded-full blur-3xl opacity-10 group-hover:opacity-20 transition-all duration-1000 scale-110 animate-breathe"></div>
+                <div className="absolute -inset-8 bg-gradient-to-br from-primary-orange/2 to-primary-yellow/2 rounded-full blur-2xl opacity-5 group-hover:opacity-10 transition-all duration-700 animate-slow-pulse"></div>
                 
                 {/* Clean hero image section */}
-                <div className="relative flex items-center justify-center min-h-[500px]">
+                <div className="relative flex items-center justify-center min-h-[450px]">
                   {/* Enhanced floating particles with depth */}
                   <div className="absolute inset-0 pointer-events-none overflow-hidden">
                     <div className="hero-particle hero-particle-1"></div>
@@ -189,21 +189,21 @@ const Hero = () => {
                       alt="Jaseci Stack"
                       width={1200}
                       height={1000}
-                      className="w-full h-auto max-w-2xl lg:max-w-3xl mx-auto transition-all duration-1000 ease-out group-hover:scale-110 animate-professional-float drop-shadow-[0_25px_50px_rgba(0,0,0,0.3)] group-hover:drop-shadow-[0_50px_100px_rgba(255,149,0,0.06)] transform-gpu"
+                      className="w-full h-auto max-w-xl xl:max-w-2xl mx-auto transition-all duration-1000 ease-out group-hover:scale-110 animate-professional-float drop-shadow-[0_25px_50px_rgba(0,0,0,0.3)] group-hover:drop-shadow-[0_50px_100px_rgba(255,149,0,0.06)] transform-gpu"
                       priority
                     />
                     
                     {/* Professional accent elements with advanced animations */}
-                    <div className="absolute -top-6 -right-6 w-4 h-4 bg-gradient-to-r from-primary-orange to-primary-yellow rounded-full animate-orbit opacity-70 shadow-lg shadow-primary-orange/50"></div>
-                    <div className="absolute -bottom-8 -left-8 w-6 h-6 border-2 border-primary-yellow/50 rounded-full animate-reverse-orbit opacity-50 backdrop-blur-sm"></div>
-                    <div className="absolute top-1/4 -right-8 w-2 h-2 bg-primary-orange/60 rounded-full animate-float-up opacity-60"></div>
-                    <div className="absolute bottom-1/3 -left-6 w-3 h-3 border border-primary-yellow/40 rounded-full animate-float-down opacity-50"></div>
+                    <div className="absolute -top-4 -right-4 w-3 h-3 bg-gradient-to-r from-primary-orange to-primary-yellow rounded-full animate-orbit opacity-70 shadow-lg shadow-primary-orange/50"></div>
+                    <div className="absolute -bottom-6 -left-6 w-5 h-5 border-2 border-primary-yellow/50 rounded-full animate-reverse-orbit opacity-50 backdrop-blur-sm"></div>
+                    <div className="absolute top-1/4 -right-6 w-1.5 h-1.5 bg-primary-orange/60 rounded-full animate-float-up opacity-60"></div>
+                    <div className="absolute bottom-1/3 -left-4 w-2 h-2 border border-primary-yellow/40 rounded-full animate-float-down opacity-50"></div>
                     
                     {/* Magnetic field effect lines */}
                     <div className="absolute inset-0 pointer-events-none">
-                      <div className="absolute top-1/4 left-1/4 w-16 h-0.5 bg-gradient-to-r from-primary-orange/30 to-transparent animate-magnetic-line-1 rounded-full"></div>
-                      <div className="absolute bottom-1/3 right-1/4 w-20 h-0.5 bg-gradient-to-l from-primary-yellow/25 to-transparent animate-magnetic-line-2 rounded-full"></div>
-                      <div className="absolute top-2/3 left-1/3 w-12 h-0.5 bg-gradient-to-r from-primary-orange/20 to-transparent animate-magnetic-line-3 rounded-full"></div>
+                      <div className="absolute top-1/4 left-1/4 w-12 h-0.5 bg-gradient-to-r from-primary-orange/30 to-transparent animate-magnetic-line-1 rounded-full"></div>
+                      <div className="absolute bottom-1/3 right-1/4 w-16 h-0.5 bg-gradient-to-l from-primary-yellow/25 to-transparent animate-magnetic-line-2 rounded-full"></div>
+                      <div className="absolute top-2/3 left-1/3 w-10 h-0.5 bg-gradient-to-r from-primary-orange/20 to-transparent animate-magnetic-line-3 rounded-full"></div>
                     </div>
                   </div>
                 </div>
