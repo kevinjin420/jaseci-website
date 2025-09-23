@@ -52,7 +52,6 @@ const Hero = () => {
           <div className="absolute top-1/2 left-1/3 w-24 h-24 bg-gradient-to-br from-primary-orange/50 to-primary-yellow/50 rounded-full blur-xl animate-pulse delay-500"></div>
         </div>
 
-        {/* Cursor Following Animation */}
         <div 
           ref={cursorRef}
           className="absolute w-96 h-96 pointer-events-none opacity-0 transition-all duration-300 ease-out z-0"
@@ -65,7 +64,6 @@ const Hero = () => {
           }}
         />
 
-        {/* Additional cursor trail effects */}
         <div className="absolute inset-0 pointer-events-none">
           <div 
             className="absolute w-32 h-32 opacity-0 transition-all duration-700 ease-out"
@@ -155,19 +153,15 @@ const Hero = () => {
               </div>
             </div>
 
-            {/* Hero Image Section - Hidden on mobile/tablet, shown on desktop */}
             <div 
               className="hidden lg:block lg:col-span-2 order-first lg:order-last"
               style={{ animation: 'fadeInUp 0.6s ease-out 0.4s both' }}
             >
               <div className="relative group">
-                {/* Professional background effects */}
                 <div className="absolute -inset-6 bg-gradient-to-r from-primary-orange/3 via-primary-yellow/2 to-primary-orange/3 rounded-full blur-3xl opacity-10 group-hover:opacity-20 transition-all duration-1000 scale-110 animate-breathe"></div>
                 <div className="absolute -inset-8 bg-gradient-to-br from-primary-orange/2 to-primary-yellow/2 rounded-full blur-2xl opacity-5 group-hover:opacity-10 transition-all duration-700 animate-slow-pulse"></div>
                 
-                {/* Clean hero image section */}
                 <div className="relative flex items-center justify-center min-h-[450px]">
-                  {/* Enhanced floating particles with depth */}
                   <div className="absolute inset-0 pointer-events-none overflow-hidden">
                     <div className="hero-particle hero-particle-1"></div>
                     <div className="hero-particle hero-particle-2"></div>
@@ -178,9 +172,7 @@ const Hero = () => {
                     <div className="hero-particle hero-particle-7"></div>
                   </div>
                   
-                  {/* Main hero image with advanced animations */}
                   <div className="relative">
-                    {/* Layered glow effects */}
                     <div className="absolute inset-0 bg-gradient-to-r from-primary-orange/4 to-primary-yellow/4 rounded-2xl blur-2xl opacity-0 group-hover:opacity-15 transition-all duration-1000 scale-110 animate-glow-pulse"></div>
                     <div className="absolute inset-0 bg-gradient-to-br from-primary-orange/3 via-transparent to-primary-yellow/3 rounded-xl blur-xl opacity-8 group-hover:opacity-20 transition-all duration-800 animate-shimmer"></div>
                     
@@ -193,13 +185,11 @@ const Hero = () => {
                       priority
                     />
                     
-                    {/* Professional accent elements with advanced animations */}
                     <div className="absolute -top-4 -right-4 w-3 h-3 bg-gradient-to-r from-primary-orange to-primary-yellow rounded-full animate-orbit opacity-70 shadow-lg shadow-primary-orange/50"></div>
                     <div className="absolute -bottom-6 -left-6 w-5 h-5 border-2 border-primary-yellow/50 rounded-full animate-reverse-orbit opacity-50 backdrop-blur-sm"></div>
                     <div className="absolute top-1/4 -right-6 w-1.5 h-1.5 bg-primary-orange/60 rounded-full animate-float-up opacity-60"></div>
                     <div className="absolute bottom-1/3 -left-4 w-2 h-2 border border-primary-yellow/40 rounded-full animate-float-down opacity-50"></div>
                     
-                    {/* Magnetic field effect lines */}
                     <div className="absolute inset-0 pointer-events-none">
                       <div className="absolute top-1/4 left-1/4 w-12 h-0.5 bg-gradient-to-r from-primary-orange/30 to-transparent animate-magnetic-line-1 rounded-full"></div>
                       <div className="absolute bottom-1/3 right-1/4 w-16 h-0.5 bg-gradient-to-l from-primary-yellow/25 to-transparent animate-magnetic-line-2 rounded-full"></div>
@@ -522,7 +512,6 @@ const Hero = () => {
             animation: magneticLine3 7s ease-in-out infinite 4s;
           }
 
-          /* Responsive adjustments */
           @media (max-width: 768px) {
             .hero-particle {
               width: 1px !important;
@@ -585,7 +574,6 @@ const Hero = () => {
                     </p>
                   </div>
                   
-                  {/* Vertical separator line - only show between items, not after the last one */}
                   {index < 2 && (
                     <div className="hidden sm:block w-px h-20 bg-gradient-to-b from-transparent via-light-bg/30 to-transparent mx-4 lg:mx-6">
                       <div className="w-full h-full bg-gradient-to-b from-transparent via-primary-orange/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
