@@ -98,7 +98,7 @@ const Journey = () => {
           <div className="block md:hidden">
             <div className="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-primary-orange via-primary-yellow to-primary-orange/20 shadow-[0_0_10px_rgba(255,149,0,0.3)]"></div>
             
-            <div className="space-y-6">
+            <div className="space-y-4">
               {items.map((item, i) => (
                 <div
                   key={i}
@@ -107,8 +107,8 @@ const Journey = () => {
                     animation: `slideInLeft 0.8s ease-out ${i * 0.2}s both`
                   }}
                 >
-                  <div className="absolute left-3 w-6 h-6 bg-gradient-to-br from-primary-orange to-primary-yellow rounded-full flex items-center justify-center z-10 shadow-lg shadow-primary-orange/25">
-                    <span className="text-xs font-bold text-white drop-shadow-sm">
+                  <div className="absolute left-3 w-5 h-5 bg-gradient-to-br from-primary-orange to-primary-yellow rounded-full flex items-center justify-center z-10 shadow-lg shadow-primary-orange/25">
+                    <span className="text-[10px] font-bold text-white drop-shadow-sm">
                       {item.number}
                     </span>
                   </div>
@@ -154,7 +154,7 @@ const Journey = () => {
             <div className="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary-orange via-primary-yellow to-primary-orange/20 shadow-[0_0_10px_rgba(255,149,0,0.3)]"></div>
             <div className="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary-orange/50 via-transparent to-transparent animate-pulse"></div>
 
-            <div className="space-y-8 lg:space-y-10 xl:space-y-12">
+            <div className="space-y-5 lg:space-y-6 xl:space-y-8">
               {items.map((item, i) => (
                 <div
                   key={i}
@@ -166,9 +166,9 @@ const Journey = () => {
                   }}
                 >
                   <div className="absolute left-1/2 transform -translate-x-1/2 z-20">
-                    <div className="relative w-10 h-10 lg:w-12 lg:h-12 bg-gradient-to-br from-primary-orange to-primary-yellow rounded-full flex items-center justify-center hover:scale-110 transition-all duration-500 shadow-lg shadow-primary-orange/25">
+                    <div className="relative w-8 h-8 lg:w-10 lg:h-10 bg-gradient-to-br from-primary-orange to-primary-yellow rounded-full flex items-center justify-center hover:scale-110 transition-all duration-500 shadow-lg shadow-primary-orange/25">
                       <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary-orange to-primary-yellow opacity-30 blur-sm animate-pulse"></div>
-                      <span className="relative text-xs lg:text-sm font-bold text-white z-10 drop-shadow-sm">
+                      <span className="relative text-[10px] lg:text-xs font-bold text-white z-10 drop-shadow-sm">
                         {item.number}
                       </span>
                       
