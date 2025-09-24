@@ -23,65 +23,9 @@ with entry {
     print(details);
 }`,
     },
-//     {
-//         filename: "agent_system.jac",
-//         code: `
-// # A walker autonomously explores a graph, gathers information from
-// # different nodes, and then uses that information to make a decision or complete a task.
-
-// import from byllm.llm {Model}
-
-// glob llm = Model(model_name="gemini/gemini-2.5-flash");
-
-// node Equipment {}
-// node Weights(Equipment) {
-//     has available: bool = False;
-//     can check with FitnessAgent entry {
-//         visitor.gear["weights"] = self.available;
-//     }
-// }
-// node Cardio(Equipment) {
-//     has machine: str = "treadmill";
-//     can check with FitnessAgent entry {
-//         visitor.gear["cardio"] = self.machine;
-//     }
-// }
-// node Trainer {
-//     can plan with FitnessAgent entry {
-//         visitor.gear["workout"] = visitor.create_workout(visitor.gear);
-//     }
-// }
-// walker FitnessAgent {
-//     has gear: dict = {};
-//     can start with \`root entry {
-//         visit [-->(\`?Equipment)];
-//     }
-//     def create_workout(gear: dict) -> str by llm();
-// }
-// walker CoachWalker(FitnessAgent) {
-//     can get_plan with \`root entry {
-//         visit [-->(\`?Trainer)];
-//     }
-// }
-// with entry {
-//     root ++> Weights();
-//     root ++> Cardio();
-//     root ++> Trainer();
-//     agent = CoachWalker() spawn root;
-//     print("Your Workout Plan:");
-//     print(agent.gear['workout']);
-// }
-// `,
-//     },
     {
         filename: "oop_example.jac",
         code: `
-# Nodes represent entities or objects in the system, holding attributes and behaviors.  
-# Edges define relationships or connections between nodes, allowing traversal or interaction.  
-# Walkers are agents that navigate nodes via edges, performing actions and gathering or modifying data.
-
-import from random {randint}
-
 node Landmark {
     has name: str;
     can react with Tourist entry {
@@ -92,16 +36,10 @@ node Landmark {
 
 node Cafe {
     can react with Tourist entry {
-        if randint(0,1) == 0 {
-            print("☕ Tourist gets coffee and continues exploring.");
-            visit [-->];
-        } else {
-            print("😴 Tourist got too cozy at Cafe and ended the trip.");
-            disengage;
-        }
+        print("☕ Tourist gets coffee and continues exploring.");
+        visit [-->];
     }
 }
-
 
 node Local {
     can react with Tourist entry {
@@ -113,16 +51,14 @@ walker Tourist {
     has visited: list = [];
 
     can start_trip with \`root entry {
-        print("🚶 Tourist begins the journey at", here);
+        print("🚶 Begins the journey at", here);
         visit [-->];
     }
-
     can log_visit with Landmark exit {
         self.visited.append(here.name);
     }
-
     can end_trip with exit {
-        print("🏁 Tourist trip ended. Places seen:", self.visited);
+        print("🏁 Trip ended. Places seen:", self.visited);
     }
 }
 
@@ -137,7 +73,6 @@ with entry {
     a = (root spawn Tourist());
     print("Tourist entity ID:", a.visited);
 }
-
 `,
     },
     {
@@ -239,92 +174,34 @@ result = json.loads(
 print(result)
 `,
     },
-//     {
-//         filename: "agent_system.py",
-//         code: `
-// class Equipment:
-//     pass
-
-// class Weights(Equipment):
-//     def __init__(self):
-//         self.available = False
-
-// class Cardio(Equipment):
-//     def __init__(self):
-//         self.machine = "treadmill"
-
-// class Trainer:
-//     def plan(self, gear):
-//         return "Workout plan based on available equipment."
-
-// class FitnessAgent:
-//     def __init__(self):
-//         self.gear = {}
-
-//     def start(self, equipment_list):
-//         for eq in equipment_list:
-//             if isinstance(eq, Weights):
-//                 self.gear["weights"] = eq.available
-//             elif isinstance(eq, Cardio):
-//                 self.gear["cardio"] = eq.machine
-
-//     def create_workout(self, gear):
-//         # In a real scenario, this would call an LLM
-//         return "Personalized workout plan based on reasoning."
-
-// weights = Weights()
-// cardio = Cardio()
-// trainer = Trainer()
-// agent = FitnessAgent()
-// agent.start([weights, cardio])
-// agent.gear["workout"] = agent.create_workout(agent.gear)
-// print("Your Workout Plan:")
-// print(agent.gear["workout"])
-// `,
-    // },
     {
         filename: "oop_example.py",
         code: `
-import random
-
 class Landmark:
     def __init__(self, name):
         self.name = name
-
     def react(self, tourist):
         print("📸 Tourist visits", self.name)
         tourist.visited.append(self.name)
 
-
 class Cafe:
     def react(self, tourist):
-        if random.randint(0, 1) == 0:
-            print("☕ Tourist gets coffee and continues exploring.")
-        else:
-            print("😴 Tourist got too cozy at Cafe and ended the trip.")
-            tourist.active = False
-
+        print("☕ Tourist gets coffee and continues exploring.")
 
 class Local:
     def react(self, tourist):
         print("👋 Local greets the Tourist")
 
-
 class Tourist:
     def __init__(self):
         self.visited = []
-        self.active = True
-
     def start_trip(self, places):
-        print("🚶 Tourist begins the journey")
+        print("🚶 Begins the journey")
         for place in places:
-            if not self.active:
-                break
             place.react(self)
-        print("🏁 Tourist trip ended. Places seen:", self.visited)
+        print("🏁 Trip ended. Places seen:", self.visited)
 
-
-# --- Build the "world" ---
+# Build world
 places = [
     Local(),
     Landmark("Eiffel Tower"),
@@ -332,7 +209,7 @@ places = [
     Landmark("Colosseum")
 ]
 
-# --- Run simulation ---
+# Send Tourist walking
 tourist = Tourist()
 tourist.start_trip(places)
 `,
