@@ -69,10 +69,10 @@ with entry{
             <div className="bg-gradient-to-r from-primary-orange/10 to-primary-yellow/10 backdrop-blur-sm rounded-xl border border-primary-orange/20 p-2 sm:p-4 shadow-xl mx-2 sm:mx-0 mt-6">
               <div className="text-center">
                 <h3 className="text-primary-orange font-bold text-lg sm:text-xl mb-3">
-                  Everything Python + AI Superpowers
+                  Everything Python: OOP+ with Native AI & Infinite Scale
                 </h3>
                 <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
-                  Start with familiar Python syntax, then unlock AI capabilities. Use Jac as a library in Python or write full Jac programs.
+                  Start with familiar Python syntax, then unlock AI capabilities, scale native programming and object spatial programming. Use Jac as a library in Python or write full Jac programs.
                 </p>
               </div>
             </div>
