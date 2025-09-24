@@ -13,8 +13,8 @@ import app.logic
 # Use exported classes and fucntions from the logic.jac
 print(app.logic.some_function())`;
 const PythonInJacCode = `
-import math;
-import from random { uniform }
+import math; #import python libraries
+import from random { uniform } #import specific functions
 
 with entry{
   value =  math.pi * uniform(0, 10);

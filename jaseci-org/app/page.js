@@ -11,6 +11,7 @@ import {
 import Journey from "@layouts/components/landing/Journey";
 import About from "@layouts/components/landing/About";
 import VerticalTabs from "@layouts/components/landing/VerticalTabs";
+import WhyWeBuilt from '@layouts/components/landing/WhyWeBuilt';
 
 const LandingPage = () => {
   return (
@@ -35,6 +36,7 @@ const LandingPage = () => {
         <div className="bg-[#222222]">
           <Carousel slides={featuresSlides} title="Why Choose Jac?" />
         </div>
+        <WhyWeBuilt />
         <About />
         <Journey />
       </div>
