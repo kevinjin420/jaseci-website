@@ -13,36 +13,36 @@ const journeyMilestones = [
     description:
       "In 2022, the idea has evolved and the first intellectual step in the journey of Jaseci and Jac is described.",
     link: "https://arxiv.org/abs/2206.08434",
-    linkText: "Jaseci Philosophy Paper",
+    linkText: "The Philosophy of Jaseci and Jac",
   },
   {
     description:
       "Then in 2023, the idea survives peer-review at Computer Architecture Letters.",
     link: "https://arxiv.org/abs/2305.09864",
-    linkText: "Jaseci Runtime Stack Paper",
+    linkText: "The Jaseci Programming Paradigm and Runtime Stack",
   },
   {
     description:
       "In 2024, the idea that AI should be a conventional code construct in the language is conjured and elucidated.",
     link: "https://arxiv.org/abs/2405.08965v1",
-    linkText: "Meaning-Typed Code Paper",
+    linkText: "MTP: A Meaning-Typed Language Abstraction for AI",
   },
   {
     description: "Then in 2025, the idea survives peer-review. (pending)",
     link: "https://arxiv.org/abs/2405.08965v4",
-    linkText: "Model-Integrated Applications Paper",
+    linkText: "Meaning-Typed Programming: Language Abstraction and Runtime",
   },
   {
     description:
       'That same year (2025), "data-spatial programming" described in earlier works becomes "object-spatial programming" and is rigorously defined.',
     link: "https://arxiv.org/abs/2503.15812",
-    linkText: "Object-Spatial Programming Paper",
+    linkText: "Object-Spatial Programming",
   },
   {
     description:
       'In 2025, the notion of "scale-native programming" through language abstraction is rigorously defined though it was first described in the original 2022 paper.',
     link: "https://arxiv.org/abs/2504.03109",
-    linkText: "Scale Native Programming Paper",
+    linkText: "Scale Native Programming",
   },
 ];
 
