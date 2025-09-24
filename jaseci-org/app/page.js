@@ -33,11 +33,11 @@ const LandingPage = () => {
           title="Get Started with Jaseci Stack"
           sectionId="learn"
         />
-        <div className="bg-[#222222]">
+        {/* <div className="bg-[#222222]">
           <Carousel slides={featuresSlides} title="Why Choose Jac?" />
-        </div>
+        </div> */}
         <WhyWeBuilt />
-        <About />
+        {/* <About /> */}
         <Journey />
       </div>
     </>

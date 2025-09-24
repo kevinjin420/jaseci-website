@@ -180,6 +180,7 @@ print(result)
 class Landmark:
     def __init__(self, name):
         self.name = name
+    
     def react(self, tourist):
         print("📸 Tourist visits", self.name)
         tourist.visited.append(self.name)
@@ -249,17 +250,38 @@ export const tabsData = [
         summary:
             "Jac introduces programming abstractions designed for AI, making it easy to integrate LLMs and multimodal models directly into your code with minimal effort.",
         link: "https://www.jac-lang.org/learn/jac-byllm/with_llm/",
+        diagram: {
+            src: "/diagrams/image.png",
+            fallback: "/diagrams/ai-abstractions-static.png",
+            title: "AI Programming Abstractions Flow",
+            description: "Visual representation of how AI models integrate seamlessly into Jac code",
+            type: "animated"
+        }
     },
     {
         title: "Object-spatial programming",
         summary:
             "Object-spatial programming in Jac lets you model, traverse, and manipulate rich object graphs, making it ideal for knowledge graphs, games, and more.",
         link: "https://www.jac-lang.org/jac_book/chapter_8/",
+        diagram: {
+            src: "/diagrams/object-spatial-diagram.gif",
+            fallback: "/diagrams/object-spatial-static.png",
+            title: "Object-Spatial Programming Flow",
+            description: "Visual representation of nodes, walkers, and spatial relationships",
+            type: "animated"
+        }
     },
     {
         title: "Zero to Infinite Scale without Code Changes",
         summary:
             "Jac enables zero to infinite scale without code changes. Deploy your Jac apps from local to cloud with built-in scaling, persistence, and user management.",
         link: "https://www.jac-lang.org/learn/jac-cloud/introduction/",
+        diagram: {
+            src: "/diagrams/scaling-architecture.gif",
+            fallback: "/diagrams/scaling-architecture-static.png",
+            title: "Zero to Infinite Scale Architecture",
+            description: "How Jac applications seamlessly scale from local to distributed systems",
+            type: "animated"
+        }
     },
 ];

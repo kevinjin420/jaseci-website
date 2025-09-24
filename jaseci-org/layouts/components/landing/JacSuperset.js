@@ -41,7 +41,7 @@ with entry{
           </h2>
           <div className="h-1 bg-gradient-to-r from-transparent via-orange-400 to-transparent mx-auto w-24 mb-3"></div>
           <p className="text-base sm:text-lg text-gray-300 max-w-3xl mx-auto leading-normal">
-            Like TypeScript for JavaScript, Jac extends Python with it's own features
+            Like TypeScript for JavaScript, Jac extends Python with its own features
           </p>
         </div>
 

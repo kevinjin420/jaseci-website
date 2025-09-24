@@ -20,7 +20,7 @@ export const gettingStartedSlides = [
     title: "Byllm",
     description:
       "Integrates AI into the language, allowing you to generate code just by describing your logic.",
-    link: "http://jac-lang.org/learn/jac-byllm/with_llm/",
+    link: "https://www.byllm.ai/",
     linkText: "Learn Byllm",
   },
 ];

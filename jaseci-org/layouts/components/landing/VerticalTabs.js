@@ -39,7 +39,7 @@ const VerticalTabs = () => {
         >
           <div className="inline-block">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-3 bg-gradient-to-r from-white via-primary-orange to-primary-yellow bg-clip-text text-transparent">
-              Why is Jac?
+              Why should I use Jac?
             </h2>
             <div className="h-1 bg-gradient-to-r from-transparent via-primary-orange to-transparent mx-auto w-24 mb-3"></div>
           </div>
@@ -107,7 +107,7 @@ const VerticalTabs = () => {
               >
                 <h3 className="text-primary-orange font-bold text-sm sm:text-base lg:text-lg flex items-center gap-1 sm:gap-2">
                   <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 bg-gradient-to-r from-primary-orange to-primary-yellow rounded-full shadow-lg shadow-primary-orange/50"></div>
-                  Jac Code
+                  Jac Programming
                 </h3>
               </div>
               <div className="flex-1 bg-gradient-to-br from-[#0d1117] to-[#161b22] overflow-hidden">
@@ -115,7 +115,7 @@ const VerticalTabs = () => {
                   <div className="flex min-w-full">
                     {/* Line Numbers - Fixed positioning */}
                     <div className="bg-[#161b22]/80 border-r border-gray-700/50 flex-shrink-0 select-none sticky left-0 z-10">
-                      <div className="px-3 py-4 font-mono leading-[1.4] text-gray-500" style={{fontSize: '0.8rem'}}>
+                      <div className="px-3 py-4 font-mono leading-[1.4] text-gray-500" style={{ fontSize: '0.8rem' }}>
                         {currentJacCode.trim().split('\n').map((_, index) => (
                           <div key={index} className="text-right min-h-[1.4em] flex items-center justify-end">
                             {index + 1}
@@ -125,7 +125,7 @@ const VerticalTabs = () => {
                     </div>
                     {/* Code Content */}
                     <div className="flex-1 min-w-0">
-                      <div className="px-4 py-4 font-mono leading-[1.4] whitespace-pre" style={{fontSize: '0.8rem'}}>
+                      <div className="px-4 py-4 font-mono leading-[1.4] whitespace-pre" style={{ fontSize: '0.8rem' }}>
                         <CodeBlock code={currentJacCode.trim()} language="jac" />
                       </div>
                     </div>
@@ -142,7 +142,7 @@ const VerticalTabs = () => {
               >
                 <h3 className="text-blue-400 font-bold text-sm sm:text-base lg:text-lg flex items-center gap-1 sm:gap-2">
                   <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 bg-gradient-to-r from-blue-400 to-blue-300 rounded-full shadow-lg shadow-blue-400/50"></div>
-                  Python Equivalent
+                  Traditional Programming
                 </h3>
               </div>
               <div className="flex-1 bg-gradient-to-br from-[#0d1117] to-[#161b22] overflow-hidden">
@@ -150,7 +150,7 @@ const VerticalTabs = () => {
                   <div className="flex min-w-full">
                     {/* Line Numbers - Fixed positioning */}
                     <div className="bg-[#161b22]/80 border-r border-gray-700/50 flex-shrink-0 select-none sticky left-0 z-10">
-                      <div className="px-3 py-4 font-mono leading-[1.4] text-gray-500" style={{fontSize: '0.8rem'}}>
+                      <div className="px-3 py-4 font-mono leading-[1.4] text-gray-500" style={{ fontSize: '0.8rem' }}>
                         {currentPythonCode.trim().split('\n').map((_, index) => (
                           <div key={index} className="text-right min-h-[1.4em] flex items-center justify-end">
                             {index + 1}
@@ -160,7 +160,7 @@ const VerticalTabs = () => {
                     </div>
                     {/* Code Content */}
                     <div className="flex-1 min-w-0">
-                      <div className="px-4 py-4 font-mono leading-[1.4] whitespace-pre" style={{fontSize: '0.8rem'}}>
+                      <div className="px-4 py-4 font-mono leading-[1.4] whitespace-pre" style={{ fontSize: '0.8rem' }}>
                         <CodeBlock code={currentPythonCode.trim()} language="python" />
                       </div>
                     </div>
@@ -186,6 +186,8 @@ const VerticalTabs = () => {
           }
         }
         
+
+        
         /* Custom scrollbar styling */
         .custom-scrollbar {
           scrollbar-width: thin;
@@ -210,6 +212,8 @@ const VerticalTabs = () => {
         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
           background: linear-gradient(135deg, rgba(249, 115, 22, 0.8) 0%, rgba(251, 191, 36, 0.8) 100%);
         }
+
+
       `}</style>
     </section>
   );
