@@ -1,10 +1,6 @@
 {
   "main": [
     {
-      "name": "About Us",
-      "url": "/about-us"
-    },
-    {
       "name": "Docs",
       "url": "https://www.jac-lang.org/learn/introduction/",
       "target": "_blank",
@@ -13,6 +9,10 @@
     {
       "name": "Community",
       "url": "/community"
+    },
+    {
+      "name": "About Us",
+      "url": "/about-us"
     },
     {
       "name": "Research",

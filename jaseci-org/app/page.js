@@ -2,6 +2,7 @@
 
 import SeoMeta from "@layouts/partials/SeoMeta";
 import Hero from "@layouts/components/landing/Hero";
+import JacSuperset from "@layouts/components/landing/JacSuperset";
 import Carousel from "@layouts/components/landing/Carousel";
 import {
   featuresSlides,
@@ -10,6 +11,7 @@ import {
 import Journey from "@layouts/components/landing/Journey";
 import About from "@layouts/components/landing/About";
 import VerticalTabs from "@layouts/components/landing/VerticalTabs";
+import WhyWeBuilt from '@layouts/components/landing/WhyWeBuilt';
 
 const LandingPage = () => {
   return (
@@ -24,16 +26,18 @@ const LandingPage = () => {
         <main className="max-w-none mx-auto px-5">
           <Hero />
         </main>
+        <JacSuperset />
         <VerticalTabs />
         <Carousel
           slides={gettingStartedSlides}
-          title="Get Started with Jac"
+          title="Get Started with Jaseci Stack"
           sectionId="learn"
         />
-        <div className="bg-[#222222]">
+        {/* <div className="bg-[#222222]">
           <Carousel slides={featuresSlides} title="Why Choose Jac?" />
-        </div>
-        <About />
+        </div> */}
+        <WhyWeBuilt />
+        {/* <About /> */}
         <Journey />
       </div>
     </>

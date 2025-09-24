@@ -73,88 +73,57 @@ const Header = () => {
   return (
     <>
       {/* Top Bar */}
-        <div className="top-bar w-full bg-dark-bg text-white text-sm py-2 px-2 flex justify-center items-center fixed top-0 left-0 z-[101]">
-        <div className="top-bar-content flex flex-col sm:flex-row w-full max-w-5xl items-center justify-between gap-2 sm:gap-0">
-          <div className="logo flex items-center gap-2 py-1 text-center sm:text-left">
-            {/* <img src="/images/assets/logo.png" alt="Jaseci Logo" className="logo-img" style={{ width: 32, height: 32, borderRadius: 6 }} /> */}
-            <span className="font-semibold text-base sm:text-lg leading-tight">The Jac Programming Language and Jaseci Stack</span>
+      <div className="top-bar w-full bg-dark-bg text-white text-xs sm:text-sm py-2 px-4 flex justify-center items-center fixed top-0 left-0 z-[101]">
+        <div className="top-bar-content flex flex-col sm:flex-row w-full max-w-6xl items-center justify-between gap-2 sm:gap-4">
+          <div className="flex items-center gap-2 text-center sm:text-left">
+            <span className="font-medium leading-tight">The Jac Programming Language and Jaseci Stack</span>
           </div>
-          <div className="header-right flex items-center gap-2 sm:gap-3 mt-1 sm:mt-0">
-            <a href="https://github.com/jaseci-labs/jaseci" className="github-link flex items-center gap-1 hover:underline" target="_blank" rel="noopener noreferrer">
+          <div className="flex items-center gap-3">
+            <a 
+              href="https://github.com/jaseci-labs/jaseci" 
+              className="flex items-center gap-2 hover:text-primary-orange transition-colors" 
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
               <span>GitHub</span>
-              <span className="ml-1 text-xs opacity-80">
-                ⭐ <span id="github-stars">{stats.stars}</span> 🍴 <span id="github-forks">{stats.forks}</span>
+              <span className="text-xs opacity-80">
+                ⭐ {stats.stars} 🍴 {stats.forks}
               </span>
             </a>
           </div>
         </div>
       </div>
 
-  <header className="w-full z-50 p-2 md:p-4 md:fixed md:top-[40px] transition-all duration-300">
-        <nav className="container max-w-full sm:max-w-[40rem] lg:max-w-[45rem] mx-auto px-1 sm:px-3 py-1 sm:py-2 md:rounded-full transition-all duration-300 bg-transparent md:bg-medium-bg/80 md:backdrop-blur-md md:shadow-lg md:border md:border-light-bg/50">
-          <div className="flex flex-wrap items-center gap-2 md:grid md:grid-cols-3 md:gap-0">
-            {/* Left section - Logo */}
-            <div className="order-0 mr-2 sm:mr-4 flex-shrink-0 md:flex md:justify-start">
+      {/* Main Header */}
+      <header className="w-full z-50 px-4 py-2 md:px-6 md:py-4 fixed top-[32px] sm:top-[36px] transition-all duration-300">
+        <nav className="container max-w-6xl mx-auto px-4 py-3 rounded-2xl transition-all duration-300 bg-medium-bg/90 backdrop-blur-lg shadow-xl border border-light-bg/30">
+          <div className="flex items-center justify-between">
+            {/* Left section - Logo and Brand */}
+            <div className="flex items-center gap-3">
               <Logo />
+              <span className="hidden sm:block text-lg font-semibold text-white">
+                Jac & Jaseci
+              </span>
             </div>
 
-            {/* Hidden checkbox drives mobile open/close state for labels and menu via CSS */}
-            <input id="nav-toggle" type="checkbox" className="hidden peer" aria-label="Toggle navigation menu" />
-
-            {/* Mobile Menu Toggler (right side on mobile) */}
-            <label
-              id="show-button"
-              htmlFor="nav-toggle"
-              className="order-3 ml-auto flex cursor-pointer items-center md:hidden"
-              aria-label="Open menu"
-            >
-              <svg className="h-7 w-7 fill-current text-white" viewBox="0 0 20 20">
-                <title>Menu Open</title>
-                <path d="M0 3h20v2H0V3z m0 6h20v2H0V9z m0 6h20v2H0V0z" />
-              </svg>
-            </label>
-            <label
-              id="hide-button"
-              htmlFor="nav-toggle"
-              className="order-3 ml-auto hidden cursor-pointer items-center md:hidden"
-              aria-label="Close menu"
-            >
-              <svg className="h-7 w-7 fill-current text-white" viewBox="0 0 20 20">
-                <title>Menu Close</title>
-                <polygon
-                  points="11 9 22 9 22 11 11 11 11 22 9 22 9 11 -2 11 -2 9 9 9 9 -2 11 -2"
-                  transform="rotate(45 10 10)"
-                />
-              </svg>
-            </label>
-
-            {/* Center section - Menu Items */}
-            <ul
-              id="nav-menu"
-              className="navbar-nav order-[100] w-full mt-2 md:order-1 md:mt-0 md:flex md:w-auto md:space-x-1 md:items-center md:justify-center bg-medium-bg/95 md:bg-transparent rounded-xl md:rounded-none p-2 md:p-0 border border-light-bg/50 md:border-0 hidden peer-checked:block text-center space-y-2 md:space-y-0"
-            >
+            {/* Center section - Desktop Menu */}
+            <ul className="hidden md:flex items-center space-x-1">
               {main.map((menuItem, i) => (
                 <React.Fragment key={`menu-${i}`}>
                   {menuItem.hasChildren ? (
-                    <li className="nav-item nav-dropdown group relative">
-                      <span className="inline-flex items-center cursor-pointer text-dark-text hover:text-white transition-colors duration-200 px-4 py-2 rounded-md md:rounded-full whitespace-nowrap">
+                    <li className="relative group">
+                      <button className="flex items-center gap-1 px-4 py-2 text-dark-text hover:text-white transition-colors duration-200 rounded-full whitespace-nowrap">
                         {menuItem.name}
-                        <svg
-                          className="h-4 w-4 fill-current ml-1"
-                          viewBox="0 0 20 20"
-                        >
+                        <svg className="h-4 w-4 fill-current transition-transform group-hover:rotate-180" viewBox="0 0 20 20">
                           <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
                         </svg>
-                      </span>
-                      <ul className="nav-dropdown-list hidden group-hover:block md:invisible md:absolute md:block md:opacity-0 md:group-hover:visible md:group-hover:opacity-100 bg-medium-bg/80 backdrop-blur-md rounded-lg mt-2 p-2 border border-light-bg/50">
-                        {menuItem.children.map((child, j) => (
-                          <li
-                            className="nav-dropdown-item"
-                            key={`children-${j}`}
-                          >
+                      </button>
+                      <ul className="absolute top-full left-0 mt-2 py-2 bg-medium-bg/95 backdrop-blur-md rounded-xl border border-light-bg/50 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 min-w-[200px]">
+                        {menuItem.children?.map((child, j) => (
+                          <li key={`children-${j}`}>
                             <Link
                               href={child.url}
-                              className="nav-dropdown-link block text-dark-text hover:text-white px-3 py-2 rounded-md md:rounded-full transition-colors duration-200 whitespace-nowrap"
+                              className="block px-4 py-2 text-dark-text hover:text-white hover:bg-white/10 transition-colors duration-200 rounded-lg mx-2"
                             >
                               {child.name}
                             </Link>
@@ -163,34 +132,30 @@ const Header = () => {
                       </ul>
                     </li>
                   ) : (
-                    <li className="nav-item">
+                    <li>
                       {menuItem.target ? (
                         <a
                           href={menuItem.url}
                           target={menuItem.target}
                           rel={menuItem.rel}
-                          className={`block transition-all rounded-md md:rounded-full px-4 py-2 whitespace-nowrap relative ${pathname === menuItem.url
-                            ? "bg-white/20 text-white"
-                            : "text-dark-text hover:bg-white/10 hover:text-white"
-                            }`}
-                          style={{ zIndex: 1, position: 'relative' }}
+                          className={`block px-4 py-2 transition-all duration-200 rounded-full whitespace-nowrap ${
+                            pathname === menuItem.url
+                              ? "bg-primary-orange text-white"
+                              : "text-dark-text hover:text-white hover:bg-white/10"
+                          }`}
                         >
-                          <span className="relative z-10 block w-full h-full">
-                            {menuItem.name}
-                          </span>
+                          {menuItem.name}
                         </a>
                       ) : (
                         <Link
                           href={menuItem.url}
-                          className={`block transition-all rounded-md md:rounded-full px-4 py-2 whitespace-nowrap relative ${pathname === menuItem.url
-                            ? "bg-white/20 text-white"
-                            : "text-dark-text hover:bg-white/10 hover:text-white"
-                            }`}
-                          style={{ zIndex: 1, position: 'relative' }}
+                          className={`block px-4 py-2 transition-all duration-200 rounded-full whitespace-nowrap ${
+                            pathname === menuItem.url
+                              ? "bg-primary-orange text-white"
+                              : "text-dark-text hover:text-white hover:bg-white/10"
+                          }`}
                         >
-                          <span className="relative z-10 block w-full h-full">
-                            {menuItem.name}
-                          </span>
+                          {menuItem.name}
                         </Link>
                       )}
                     </li>
@@ -199,16 +164,65 @@ const Header = () => {
               ))}
             </ul>
 
-            {/* Right section - Search Icon */}
-            <div className="order-2 md:flex md:justify-end">
-              <div
-                className="cursor-pointer p-2 text-lg text-dark-text hover:text-white hover:bg-white/10 rounded-full flex items-center justify-center transition-all"
+            {/* Right section - Search and Mobile Menu */}
+            <div className="flex items-center gap-2">
+              {/* Search Icon */}
+              <button
                 onClick={() => setSearchModal(true)}
-                tabIndex={0}
+                className="p-2 text-dark-text hover:text-white hover:bg-white/10 rounded-full transition-all duration-200"
                 aria-label="Open search"
-                role="button"
               >
-                <IoSearch />
+                <IoSearch className="h-5 w-5" />
+              </button>
+
+              {/* Mobile Menu Toggle */}
+              <div className="md:hidden">
+                <input id="nav-toggle" type="checkbox" className="hidden peer" />
+                <label
+                  htmlFor="nav-toggle"
+                  className="flex flex-col cursor-pointer p-2 peer-checked:hidden"
+                  aria-label="Open menu"
+                >
+                  <span className="w-6 h-0.5 bg-white mb-1 transition-all"></span>
+                  <span className="w-6 h-0.5 bg-white mb-1 transition-all"></span>
+                  <span className="w-6 h-0.5 bg-white transition-all"></span>
+                </label>
+                <label
+                  htmlFor="nav-toggle"
+                  className="hidden peer-checked:flex cursor-pointer p-2"
+                  aria-label="Close menu"
+                >
+                  <svg className="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </label>
+
+                {/* Mobile Menu */}
+                <div className="absolute top-full right-0 mt-2 w-64 py-4 bg-medium-bg/95 backdrop-blur-md rounded-xl border border-light-bg/50 shadow-xl opacity-0 invisible peer-checked:opacity-100 peer-checked:visible transition-all duration-200">
+                  <ul className="space-y-1 px-2">
+                    {main.map((menuItem, i) => (
+                      <li key={`mobile-menu-${i}`}>
+                        {menuItem.target ? (
+                          <a
+                            href={menuItem.url}
+                            target={menuItem.target}
+                            rel={menuItem.rel}
+                            className="block px-4 py-3 text-dark-text hover:text-white hover:bg-white/10 rounded-lg transition-colors"
+                          >
+                            {menuItem.name}
+                          </a>
+                        ) : (
+                          <Link
+                            href={menuItem.url}
+                            className="block px-4 py-3 text-dark-text hover:text-white hover:bg-white/10 rounded-lg transition-colors"
+                          >
+                            {menuItem.name}
+                          </Link>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </div>
           </div>

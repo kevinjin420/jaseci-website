@@ -10,20 +10,27 @@ import { highlightJacCode } from '../../lib/syntax/syntaxHighlighting';
 export const CodeBlock = ({
   code,
   language = 'bash',
-  className = ''
+  className = '',
+  showLineNumbers = false
 }) => {
   const [copied, setCopied] = useState(false);
   const [highlightedJac, setHighlightedJac] = useState('');
+  const [lineCount, setLineCount] = useState(0);
 
   useEffect(() => {
     if (language === 'jac') {
       let isMounted = true;
       (async () => {
         const result = code ? await highlightJacCode(code.trim()) : '';
-        if (isMounted) setHighlightedJac(result);
+        if (isMounted) {
+          setHighlightedJac(result);
+          // Count actual lines in the original code
+          setLineCount(code ? code.trim().split('\n').length : 0);
+        }
       })();
       return () => { isMounted = false; };
     } else {
+      setLineCount(code ? code.trim().split('\n').length : 0);
       Prism.highlightAll();
     }
   }, [code, language]);
@@ -34,13 +41,24 @@ export const CodeBlock = ({
     setTimeout(() => setCopied(false), 2000);
   };
 
+  // Generate line numbers array
+  const lineNumbers = Array.from({ length: lineCount }, (_, i) => i + 1);
+
   if (language === 'jac') {
-    // Use custom Jac syntax highlighting with line numbers
+    // Use custom Jac syntax highlighting
     return (
-      <div className={`relative group rounded-lg overflow-hidden ${className}`}>
-        <pre className="jac-code line-numbers p-4 overflow-x-auto">
+      <div className={`relative group ${className}`}>
+        <pre className="jac-code overflow-x-auto" style={{ margin: 0, padding: 0, background: 'transparent' }}>
           <code
-            className="jac-code-block font-mono text-sm leading-relaxed"
+            className="jac-code-block font-mono"
+            style={{
+              fontSize: '0.8rem',
+              lineHeight: '1.4',
+              display: 'block',
+              padding: 0,
+              margin: 0,
+              background: 'transparent'
+            }}
             dangerouslySetInnerHTML={{ __html: highlightedJac }}
           />
         </pre>
@@ -50,9 +68,32 @@ export const CodeBlock = ({
 
   // Use PrismJS for Python and other languages
   return (
-    <div className={`relative group bg-[hsl(var(--code-bg))] rounded-lg overflow-hidden ${className}`}>
-      <pre className={`line-numbers p-4 overflow-x-auto`}>
-        <code className={`language-${language} text-[hsl(var(--code-text))] font-mono text-sm leading-relaxed`}>
+    <div className={`relative group ${className}`}>
+      <pre 
+        className="font-mono" 
+        style={{ 
+          margin: 0, 
+          padding: 0, 
+          background: 'transparent',
+          fontSize: '0.8rem',
+          lineHeight: '1.4',
+          overflow: 'visible',
+          whiteSpace: 'pre'
+        }}
+      >
+        <code 
+          className={`language-${language} font-mono`}
+          style={{
+            fontSize: '0.8rem',
+            lineHeight: '1.4',
+            display: 'block',
+            padding: 0,
+            margin: 0,
+            background: 'transparent',
+            overflow: 'visible',
+            whiteSpace: 'pre'
+          }}
+        >
           {code.trim()}
         </code>
       </pre>

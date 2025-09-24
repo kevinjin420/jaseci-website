@@ -9,18 +9,23 @@ pre.language-python {
 code.language-python {
   background: none !important;
 }
-/* Reduce padding for Python code blocks to match Jac */
+/* Remove padding and margins for Python code blocks to match Jac */
 pre.language-python,
 .language-python {
-  padding: 1rem !important;
+  padding: 0 !important;
   text-indent: 0 !important;
+  margin: 0 !important;
   margin-left: 0 !important;
   margin-right: 0 !important;
+  overflow: visible !important;
 }
 code.language-python {
+  padding: 0 !important;
   padding-left: 0 !important;
+  margin: 0 !important;
   margin-left: 0 !important;
   text-indent: 0 !important;
+  overflow: visible !important;
 }
 
 
@@ -32,19 +37,45 @@ code.language-python.line-numbers .line-numbers-rows {
 }
 
 code[class*="language-"], .jac-code-block {
-  font-size: 0.875rem;
-  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
-  line-height: 1.5;
+  font-size: 0.8rem !important;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace !important;
+  line-height: 1.4 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+  overflow: visible !important;
+  white-space: pre !important;
+}
+
+/* Override PrismJS theme defaults */
+pre[class*="language-"] {
+  padding: 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+  overflow: visible !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
 }
 
 .jac-code {
   color: #d4d4d4;
   font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
-  font-size: 0.875rem;
-  line-height: 1.5;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  overflow-x: auto;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  overflow-x: visible;
+  background: transparent;
+}
+
+.jac-code-block {
+  font-size: 0.8rem !important;
+  line-height: 1.4 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+  display: block !important;
 }
 
 .jac-keyword {
