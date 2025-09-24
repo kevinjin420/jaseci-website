@@ -32,6 +32,9 @@ import wikisearchCode from '../assets/wikisearch.jac?raw';
 
 const Index = () => {
   const [activeTab, setActiveTab] = useState('areyouai');
+  const [isNoteExpanded, setIsNoteExpanded] = useState(false);
+  const [isApiNoteExpanded, setIsApiNoteExpanded] = useState(false);
+  const [isLiteLLMNoteExpanded, setIsLiteLLMNoteExpanded] = useState(false);
 
   const examples = [
     {
@@ -238,12 +241,20 @@ const Index = () => {
             <div className="max-w-4xl mx-auto">
               <CodeBlock code="pip install byllm" language="bash" />
               <div className="bg-gradient-to-r from-primary/5 to-primary/10 border border-primary/20 rounded-lg p-4 mt-2 mb-8">
-                <div className="flex items-center gap-2 mb-1">
+                <div 
+                  className="flex items-center gap-2 mb-1 cursor-pointer"
+                  onClick={() => setIsApiNoteExpanded(!isApiNoteExpanded)}
+                >
                   <Info className="h-4 w-4 text-primary" />
                   <span className="font-medium text-sm text-primary">Note</span>
+                  <ChevronDown className={`h-4 w-4 text-primary transition-transform duration-200 ${isApiNoteExpanded ? 'rotate-180' : ''}`} />
                 </div>
-                <p className="text-sm text-muted-foreground ml-6">You'll need access to a language model, either via an API provider or a locally hosted model. Make sure to save your API key as a secret in your environment variables. For example:</p>
-                <CodeBlock code="export OPENAI_API_KEY='your-api-key'" language="bash" />
+                {isApiNoteExpanded && (
+                  <>
+                    <p className="text-sm text-muted-foreground ml-6">You'll need access to a language model, either via an API provider or a locally hosted model. Make sure to save your API key as a secret in your environment variables. For example:</p>
+                    <CodeBlock code="export OPENAI_API_KEY='your-api-key'" language="bash" />
+                  </>
+                )}
               </div>
 
               <div className="text-center mb-16">
@@ -265,6 +276,23 @@ const Index = () => {
                 </Tabs>
               </div>
 
+              <div className="bg-gradient-to-r from-primary/5 to-primary/10 border border-primary/20 rounded-lg p-4 mt-2 mb-8">
+                <div 
+                  className="flex items-center gap-2 mb-1 cursor-pointer"
+                  onClick={() => setIsNoteExpanded(!isNoteExpanded)}
+                >
+                  <Info className="h-4 w-4 text-primary" />
+                  <span className="font-medium text-sm text-primary">Note</span>
+                  <ChevronDown className={`h-4 w-4 text-primary transition-transform duration-200 ${isNoteExpanded ? 'rotate-180' : ''}`} />
+                </div>
+                {isNoteExpanded && (
+                  <>
+                    <p className="text-sm text-muted-foreground ml-6">To run your jac program </p>
+                    <CodeBlock code="jac run file.jac" language="bash" />
+                  </>
+                )}
+              </div>
+
               <div className="text-center mb-16">
                 <p className="text-base font-semibold italic text-primary mb-4">IT IS THAT SIMPLE!</p>
               </div>
@@ -273,13 +301,7 @@ const Index = () => {
                 <h3 className="text-section mb-4">Let's look at some simple examples to understand how byLLM is used.</h3>
               </div>
 
-              <div className="bg-gradient-to-r from-primary/5 to-primary/10 border border-primary/20 rounded-lg p-4 mt-2 mb-8">
-                <div className="flex items-center gap-2 mb-1">
-                  <Info className="h-4 w-4 text-primary" />
-                  <span className="font-medium text-sm text-primary">Note</span>
-                </div>
-                <p className="text-sm text-muted-foreground ml-6">The Model class in byLLM serves as an interface to <a href="https://docs.litellm.ai/docs/providers" target="_blank" rel="noopener noreferrer" className="text-primary underline hover:text-primary/80">LiteLLM</a>. This means any model supported by LiteLLM can be used with byLLM. When configuring a model, refer to the LiteLLM documentation to see which variables are required, and pass those same variables to Model in byLLM.</p>
-              </div>
+              
 
               <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
                 <TabsList className="grid w-full grid-cols-3 md:grid-cols-3 mb-8">
@@ -301,6 +323,20 @@ const Index = () => {
                   </TabsContent>
                 ))}
               </Tabs>
+
+              <div className="bg-gradient-to-r from-primary/5 to-primary/10 border border-primary/20 rounded-lg p-4 mt-2 mb-8">
+                <div 
+                  className="flex items-center gap-2 mb-1 cursor-pointer"
+                  onClick={() => setIsLiteLLMNoteExpanded(!isLiteLLMNoteExpanded)}
+                >
+                  <Info className="h-4 w-4 text-primary" />
+                  <span className="font-medium text-sm text-primary">Note</span>
+                  <ChevronDown className={`h-4 w-4 text-primary transition-transform duration-200 ${isLiteLLMNoteExpanded ? 'rotate-180' : ''}`} />
+                </div>
+                {isLiteLLMNoteExpanded && (
+                  <p className="text-sm text-muted-foreground ml-6">The Model class in byLLM serves as an interface to <a href="https://docs.litellm.ai/docs/providers" target="_blank" rel="noopener noreferrer" className="text-primary underline hover:text-primary/80">LiteLLM</a>. This means any model supported by LiteLLM can be used with byLLM. When configuring a model, refer to the LiteLLM documentation to see which variables are required, and pass those same variables to Model in byLLM.</p>
+                )}
+              </div>
             </div>
           </div>
         </section>
@@ -603,9 +639,6 @@ const Index = () => {
           <div className="container">
             <div className="text-center mb-16">
               <h2 className="text-section mb-4">References</h2>
-              <p className="text-body-large text-muted-foreground max-w-2xl mx-auto">
-                Research and academic foundations
-              </p>
             </div>
 
             <div className="max-w-4xl mx-auto">
@@ -619,7 +652,7 @@ const Index = () => {
                       <p className="text-body italic text-muted-foreground">
                         "MTP: A Meaning-Typed Language Abstraction for AI-Integrated Programming." : Proc. ACM Program. Lang. 9, OOPSLA2, Article 314 (October 2025), 29 pages.{" "}
                         <a
-                          href="https://doi.org/10.1145/3763092"
+                          href="https://doi.org/10.48550/arXiv.2405.08965"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-primary underline hover:text-primary/80"
