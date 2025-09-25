@@ -78,7 +78,7 @@ export async function highlightJacCode(code: string): Promise<string> {
   // Tokenize the code to handle proper highlighting without overlaps
   const tokens = tokenizeJacCode(code);
   
-  return tokens.map(token => {
+  return addLineNumbers(tokens.map(token => {
     switch (token.type) {
       case 'comment':
         return `<span class="jac-comment">${escapeHtml(token.value)}</span>`;
@@ -107,7 +107,41 @@ export async function highlightJacCode(code: string): Promise<string> {
       default:
         return escapeHtml(token.value);
     }
-  }).join('');
+  }).join(''));
+}
+
+export async function highlightPythonCode(code: string): Promise<string> {
+  // Tokenize the code to handle proper highlighting without overlaps
+  const tokens = tokenizePythonCode(code);
+  
+  return addLineNumbers(tokens.map(token => {
+    switch (token.type) {
+      case 'comment':
+        return `<span class="python-comment">${escapeHtml(token.value)}</span>`;
+      case 'string':
+        return `<span class="python-string">${escapeHtml(token.value)}</span>`;
+      case 'number':
+        return `<span class="python-number">${escapeHtml(token.value)}</span>`;
+      case 'keyword':
+        return `<span class="python-keyword">${escapeHtml(token.value)}</span>`;
+      case 'builtin':
+        return `<span class="python-builtin">${escapeHtml(token.value)}</span>`;
+      case 'type':
+        return `<span class="python-type">${escapeHtml(token.value)}</span>`;
+      case 'class-name':
+        return `<span class="python-class-name">${escapeHtml(token.value)}</span>`;
+      case 'function':
+        return `<span class="python-function">${escapeHtml(token.value)}</span>`;
+      case 'decorator':
+        return `<span class="python-decorator">${escapeHtml(token.value)}</span>`;
+      case 'operator':
+        return `<span class="python-operator">${escapeHtml(token.value)}</span>`;
+      case 'bracket':
+        return `<span class="python-bracket-level-${token.level % 4}">${escapeHtml(token.value)}</span>`;
+      default:
+        return escapeHtml(token.value);
+    }
+  }).join(''));
 }
 
 function tokenizeJacCode(code: string): Array<{type: string, value: string, level?: number}> {
@@ -312,6 +346,259 @@ function tokenizeJacCode(code: string): Array<{type: string, value: string, leve
   }
 
   return tokens;
+}
+
+function tokenizePythonCode(code: string): Array<{type: string, value: string, level?: number}> {
+  const tokens: Array<{type: string, value: string, level?: number}> = [];
+  const keywords = new Set([
+    'and', 'as', 'assert', 'break', 'class', 'continue', 'def', 'del', 'elif', 'else',
+    'except', 'exec', 'finally', 'for', 'from', 'global', 'if', 'import', 'in',
+    'is', 'lambda', 'not', 'or', 'pass', 'print', 'raise', 'return', 'try', 'while',
+    'with', 'yield', 'async', 'await', 'nonlocal'
+  ]);
+  
+  const builtins = new Set([
+    'True', 'False', 'None', 'self', 'super', '__init__', '__name__', '__main__',
+    'len', 'str', 'int', 'float', 'bool', 'list', 'dict', 'tuple', 'set', 'range',
+    'print', 'input', 'open', 'type', 'isinstance', 'hasattr', 'getattr', 'setattr',
+    'abs', 'min', 'max', 'sum', 'sorted', 'reversed', 'enumerate', 'zip', 'map',
+    'filter', 'all', 'any', 'iter', 'next', 'round', 'pow', 'divmod'
+  ]);
+  
+  const types = new Set([
+    'str', 'int', 'float', 'bool', 'list', 'dict', 'tuple', 'set', 'frozenset',
+    'bytes', 'bytearray', 'complex', 'object', 'type', 'Exception', 'BaseException'
+  ]);
+  
+  const operators = new Set([
+    '=', '+', '-', '*', '/', '//', '%', '**', '==', '!=', '<', '>', '<=', '>=',
+    '+=', '-=', '*=', '/=', '//=', '%=', '**=', '&=', '|=', '^=', '>>=', '<<=',
+    'and', 'or', 'not', 'in', 'is', '&', '|', '^', '~', '<<', '>>'
+  ]);
+
+  let i = 0;
+  let bracketStack: string[] = [];
+  let prevToken: {type: string, value: string, level?: number} | null = null;
+
+  while (i < code.length) {
+    // Skip whitespace
+    if (/\s/.test(code[i])) {
+      let whitespace = '';
+      while (i < code.length && /\s/.test(code[i])) {
+        whitespace += code[i];
+        i++;
+      }
+      tokens.push({ type: 'whitespace', value: whitespace });
+      continue;
+    }
+
+    // Handle comments
+    if (code[i] === '#') {
+      let comment = '';
+      while (i < code.length && code[i] !== '\n') {
+        comment += code[i];
+        i++;
+      }
+      tokens.push({ type: 'comment', value: comment });
+      continue;
+    }
+
+    // Handle triple-quoted strings (docstrings and multiline strings)
+    if ((code.substr(i, 3) === '"""' || code.substr(i, 3) === "'''")) {
+      const quote = code.substr(i, 3);
+      let string = quote;
+      i += 3;
+      while (i < code.length - 2 && code.substr(i, 3) !== quote) {
+        string += code[i];
+        i++;
+      }
+      if (i <= code.length - 3) {
+        string += code.substr(i, 3);
+        i += 3;
+      }
+      tokens.push({ type: 'string', value: string });
+      continue;
+    }
+
+    // Handle strings
+    if (code[i] === '"' || code[i] === "'") {
+      const quote = code[i];
+      let string = quote;
+      i++;
+      while (i < code.length && code[i] !== quote) {
+        if (code[i] === '\\' && i + 1 < code.length) {
+          string += code[i] + code[i + 1];
+          i += 2;
+        } else {
+          string += code[i];
+          i++;
+        }
+      }
+      if (i < code.length) {
+        string += code[i]; // Add closing quote
+        i++;
+      }
+      tokens.push({ type: 'string', value: string });
+      continue;
+    }
+
+    // Handle decorators
+    if (code[i] === '@') {
+      let decorator = '@';
+      i++;
+      while (i < code.length && /[a-zA-Z0-9_.]/.test(code[i])) {
+        decorator += code[i];
+        i++;
+      }
+      tokens.push({ type: 'decorator', value: decorator });
+      continue;
+    }
+
+    // Handle numbers
+    if (/\d/.test(code[i])) {
+      let number = '';
+      while (i < code.length && /[\d._oxbOXB]/.test(code[i])) {
+        number += code[i];
+        i++;
+      }
+      // Handle scientific notation
+      if (i < code.length && (code[i] === 'e' || code[i] === 'E')) {
+        number += code[i];
+        i++;
+        if (i < code.length && (code[i] === '+' || code[i] === '-')) {
+          number += code[i];
+          i++;
+        }
+        while (i < code.length && /\d/.test(code[i])) {
+          number += code[i];
+          i++;
+        }
+      }
+      tokens.push({ type: 'number', value: number });
+      continue;
+    }
+
+    // Handle brackets with nesting
+    if (code[i] === '{') {
+      bracketStack.push('{');
+      tokens.push({ type: 'bracket', value: code[i], level: bracketStack.length - 1 });
+      prevToken = tokens[tokens.length - 1];
+      i++;
+      continue;
+    }
+    
+    if (code[i] === '}') {
+      if (bracketStack.length > 0 && bracketStack[bracketStack.length - 1] === '{') {
+        bracketStack.pop();
+      }
+      tokens.push({ type: 'bracket', value: code[i], level: bracketStack.length });
+      prevToken = tokens[tokens.length - 1];
+      i++;
+      continue;
+    }
+
+    // Handle other brackets (parentheses and square brackets)
+    if (code[i] === '(' || code[i] === '[') {
+      bracketStack.push(code[i]);
+      tokens.push({ type: 'bracket', value: code[i], level: bracketStack.length - 1 });
+      prevToken = tokens[tokens.length - 1];
+      i++;
+      continue;
+    }
+    
+    if (code[i] === ')' || code[i] === ']') {
+      const expectedOpen = code[i] === ')' ? '(' : '[';
+      if (bracketStack.length > 0 && bracketStack[bracketStack.length - 1] === expectedOpen) {
+        bracketStack.pop();
+      }
+      tokens.push({ type: 'bracket', value: code[i], level: bracketStack.length });
+      prevToken = tokens[tokens.length - 1];
+      i++;
+      continue;
+    }
+
+    // Handle operators
+    let operator = '';
+    let j = i;
+    while (j < code.length && /[=+\-*/%<>!&|^~]/.test(code[j])) {
+      operator += code[j];
+      j++;
+    }
+    if (operator && operators.has(operator)) {
+      tokens.push({ type: 'operator', value: operator });
+      prevToken = tokens[tokens.length - 1];
+      i = j;
+      continue;
+    }
+
+    // Handle identifiers (keywords, functions, variables, etc.)
+    if (/[a-zA-Z_]/.test(code[i])) {
+      let identifier = '';
+      while (i < code.length && /[a-zA-Z0-9_]/.test(code[i])) {
+        identifier += code[i];
+        i++;
+      }
+
+      // Get previous non-whitespace token
+      let prevNonWhitespaceToken = prevToken;
+      for (let k = tokens.length - 1; k >= 0; k--) {
+        if (tokens[k].type !== 'whitespace') {
+          prevNonWhitespaceToken = tokens[k];
+          break;
+        }
+      }
+
+      // Context-based classification
+      const isAfterClass = prevNonWhitespaceToken && prevNonWhitespaceToken.value === 'class';
+      const isAfterDef = prevNonWhitespaceToken && prevNonWhitespaceToken.value === 'def';
+      const isAfterImport = prevNonWhitespaceToken && 
+        (prevNonWhitespaceToken.value === 'import' || prevNonWhitespaceToken.value === 'from');
+      
+      if (keywords.has(identifier)) {
+        tokens.push({ type: 'keyword', value: identifier });
+      } else if (builtins.has(identifier)) {
+        tokens.push({ type: 'builtin', value: identifier });
+      } else if (types.has(identifier)) {
+        tokens.push({ type: 'type', value: identifier });
+      } else if (isAfterClass || /^[A-Z]/.test(identifier)) {
+        // Capitalized identifiers or identifiers after 'class' are class names
+        tokens.push({ type: 'class-name', value: identifier });
+      } else if (isAfterDef) {
+        // Function names after 'def' keyword
+        tokens.push({ type: 'function', value: identifier });
+      } else {
+        // Check if it's followed by '(' to determine if it's a function call
+        let k = i;
+        while (k < code.length && /\s/.test(code[k])) k++;
+        if (k < code.length && code[k] === '(') {
+          tokens.push({ type: 'function', value: identifier });
+        } else {
+          tokens.push({ type: 'identifier', value: identifier });
+        }
+      }
+      
+      prevToken = tokens[tokens.length - 1];
+      continue;
+    }
+
+    // Handle single characters (punctuation, etc.)
+    tokens.push({ type: 'punctuation', value: code[i] });
+    prevToken = tokens[tokens.length - 1];
+    i++;
+  }
+
+  return tokens;
+}
+
+function addLineNumbers(highlightedCode: string): string {
+  const lines = highlightedCode.split('\n');
+  const lineCount = lines.length;
+  const maxDigits = lineCount.toString().length;
+  
+  return lines.map((line, index) => {
+    const lineNumber = (index + 1).toString().padStart(maxDigits, ' ');
+    return `<span class="line-number">${lineNumber}</span>${line}`;
+  }).join('\n');
 }
 
 function escapeHtml(text: string): string {
