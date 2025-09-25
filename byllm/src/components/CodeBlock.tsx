@@ -7,7 +7,7 @@ import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
 import 'prismjs/plugins/line-numbers/prism-line-numbers';
 import 'prismjs/components/prism-python';
 import '../lib/syntax/jacSyntax.css';
-import { highlightJacCode } from '../lib/syntax/syntaxHighlighting';
+import { highlightJacCode, highlightPythonCode } from '../lib/syntax/syntaxHighlighting';
 
 interface CodeBlockProps {
   code: string;
@@ -22,6 +22,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
 }) => {
   const [copied, setCopied] = useState(false);
   const [highlightedJac, setHighlightedJac] = useState('');
+  const [highlightedPython, setHighlightedPython] = useState('');
 
   useEffect(() => {
     if (language === 'jac') {
@@ -29,6 +30,13 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
       (async () => {
         const result = code ? await highlightJacCode(code.trim()) : '';
         if (isMounted) setHighlightedJac(result);
+      })();
+      return () => { isMounted = false; };
+    } else if (language === 'python') {
+      let isMounted = true;
+      (async () => {
+        const result = code ? await highlightPythonCode(code.trim()) : '';
+        if (isMounted) setHighlightedPython(result);
       })();
       return () => { isMounted = false; };
     } else {
@@ -66,9 +74,16 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
             dangerouslySetInnerHTML={{ __html: highlightedJac }}
           />
         </pre>
+      ) : language === 'python' ? (
+        <pre className="python-code line-numbers p-4 overflow-x-auto">
+          <code
+            className="python-code-block font-mono text-sm leading-relaxed"
+            dangerouslySetInnerHTML={{ __html: highlightedPython }}
+          />
+        </pre>
       ) : (
         <pre className="line-numbers p-4 overflow-x-auto">
-          <code className={`language-${language} text-[hsl(var(--code-text))] font-mono text-sm leading-relaxed`}>
+          <code className={`language-${language} line-numbers text-[hsl(var(--code-text))] font-mono text-sm leading-relaxed`}>
             {code.trim()}
           </code>
         </pre>
