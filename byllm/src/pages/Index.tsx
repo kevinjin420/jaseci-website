@@ -305,8 +305,8 @@ const Index = () => {
 
               <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
                 <TabsList className="grid w-full grid-cols-3 md:grid-cols-3 mb-8">
-                  <TabsTrigger value="areyouai">AreYouAI</TabsTrigger>
                   <TabsTrigger value="personalityfinder">PersonalityFinder</TabsTrigger>
+                  <TabsTrigger value="areyouai">AreYouAI</TabsTrigger>
                   <TabsTrigger value="wikisearch">WikiSearch</TabsTrigger>
                 </TabsList>
 
