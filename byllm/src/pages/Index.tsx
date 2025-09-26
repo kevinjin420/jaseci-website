@@ -38,7 +38,8 @@ import personalityfinderCode from '../assets/personalityfinder.jac?raw';
 import wikisearchCode from '../assets/wikisearch.jac?raw';
 
 const Index = () => {
-  const [activeTab, setActiveTab] = useState('areyouai');
+  // Default to the left-most example tab so the page opens with PersonalityFinder selected
+  const [activeTab, setActiveTab] = useState('personalityfinder');
   const [isNoteExpanded, setIsNoteExpanded] = useState(false);
   const [isApiNoteExpanded, setIsApiNoteExpanded] = useState(false);
   const [isLiteLLMNoteExpanded, setIsLiteLLMNoteExpanded] = useState(false);
