@@ -95,7 +95,7 @@ with entry{
                   <div className="flex flex-col sm:flex-row items-start gap-3">
                     <div className="w-2.5 h-2.5 bg-gradient-to-r from-orange-400 to-orange-300 rounded-full mt-2 flex-shrink-0"></div>
                     <div className="w-full min-w-0">
-                      <h3 className="text-primary-orange font-bold text-lg mb-2">Use Jac in Python as a library</h3>
+                      <h3 className="text-primary-orange font-bold text-lg mb-2">Import Jac into Python</h3>
                       <div className="overflow-x-auto overflow-y-auto max-h-64 rounded-lg border border-gray-700/50">
                         <div className="min-w-max p-4">
                           <CodeBlock 
