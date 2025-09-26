@@ -1,5 +1,5 @@
 import React from 'react';
-import { Moon, Sun, Github, FileText, Users } from 'lucide-react';
+import { Moon, Sun, Github } from 'lucide-react';
 import { useTheme } from './ThemeProvider';
 import { Button } from './ui/button';
 
@@ -21,13 +21,21 @@ export const Header: React.FC = () => {
 
           <nav className="hidden md:flex items-center space-x-6">
             <a href="#install" className="text-muted-foreground hover:text-foreground transition-colors">
-              Install
-            </a>
-            <a href="#documentation" className="text-muted-foreground hover:text-foreground transition-colors">
-              Learn
+              Getting Started
             </a>
             <a href="#projects" className="text-muted-foreground hover:text-foreground transition-colors">
               Projects
+            </a>
+            <a href="#tutorials" className="text-muted-foreground hover:text-foreground transition-colors">
+              Tutorials
+            </a>
+            <a
+              href="https://www.jac-lang.org/learn/jac-byllm/with_llm/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Documentation
             </a>
             <a href="#community" className="text-muted-foreground hover:text-foreground transition-colors">
               Community
