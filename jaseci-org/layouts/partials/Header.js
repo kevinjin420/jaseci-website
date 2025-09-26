@@ -124,9 +124,9 @@ const Header = () => {
             {/* Left section - Logo and Brand */}
             <div className="flex items-center gap-3">
               <Logo />
-              <span className="hidden sm:block text-lg font-semibold text-white">
+              <Link href="/" className="hidden sm:block text-lg font-semibold text-white hover:opacity-80 transition-opacity duration-200">
                 Jac & Jaseci
-              </span>
+              </Link>
             </div>
 
             {/* Center section - Desktop Menu */}

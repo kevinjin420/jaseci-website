@@ -3,7 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import SeoMeta from "@layouts/partials/SeoMeta";
-import { FaLinkedin, FaTwitter, FaExternalLinkAlt } from "react-icons/fa";
+import { FaLinkedin, FaExternalLinkAlt } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
 // Data for team members and testimonials
 const teamMembers = [
@@ -252,7 +253,7 @@ const TeamMemberCard = ({ member, isReversed }) => (
               <SocialIcon href={member.social.linkedin} icon={<FaLinkedin />} />
             )}
             {member.social.twitter && (
-              <SocialIcon href={member.social.twitter} icon={<FaTwitter />} />
+              <SocialIcon href={member.social.twitter} icon={<FaXTwitter />} />
             )}
           </span>
         </h3>

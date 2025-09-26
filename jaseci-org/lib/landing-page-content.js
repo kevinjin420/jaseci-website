@@ -17,11 +17,11 @@ export const gettingStartedSlides = [
   },
   {
     icon: "🤖",
-    title: "Byllm",
+    title: "byLLM",
     description:
       "Integrates AI into the language, allowing you to generate code just by describing your logic.",
     link: "https://www.byllm.ai/",
-    linkText: "Learn Byllm",
+    linkText: "Learn byLLM",
   },
 ];
 

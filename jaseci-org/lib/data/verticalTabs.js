@@ -6,19 +6,17 @@ import from byllm { Model, Image }
 
 glob llm = Model(model_name="gpt-4o");
 
+# One tiny object replaces a giant schem
 obj MemoryDetails {
     has who: list[str];
     has what: str;
     has where: str;
 }
-sem MemoryDetails = "Extract people, event, place, and time from a photo";
-sem MemoryDetails.who = "Names of people in the photo";  
-sem MemoryDetails.what = "What is happening in the scene";
-sem MemoryDetails.where = "Location or setting of the photo";
+sem MemoryDetails = "Extract people, event, place from the photo";
 
 def extract_memory_details(
     image: Image, city: str
-) -> MemoryDetails by llm();
+) -> MemoryDetails by llm(); # Magic happens
 
 with entry {
     img = Image("image.png");
@@ -29,6 +27,8 @@ with entry {
     {
         filename: "oop_example.jac",
         code: `
+# --- Build a living, interconnected world with nodes and walkers ---
+
 node Landmark {
     has name: str;
     can react with Tourist entry {
@@ -40,7 +40,7 @@ node Landmark {
 node Cafe {
     can react with Tourist entry {
         print("☕ Tourist gets coffee and continues exploring.");
-        visit [-->];
+        visit [-->]; # flows to connected nodes
     }
 }
 
@@ -81,19 +81,42 @@ with entry {
     {
         filename: "cloud_scaling.jac",
         code: `
-# walker automatically becomes an endpoint
-walker memories {
-    has current_user: str = "";
+# nodes + walkers + jac-cloud --> auto-endpoint magic
+# Auth & database handled behind the scenes
 
-    can get_memories with \`root entry {
+node Memory {
+    has memories: list[str] = [];
+
+    can add_memory with add_memory entry {
+        # Simple append, no DB worries
+        self.memories.append(visitor.memory);
         report {
-            "message": 
-                  f"Hello {self.current_user}, here are your memories!"
+            "message": f"Memory added: {visitor.memory}"
         };
     }
+    can list_memories with get_memories entry {
+        report { "memories": self.memories };
+    }
 }
-# Auth & database handled by Jac-cloud behind the scenes
-# No boilerplate here
+
+# Endpoint ready!, thanks to the walker abstraction
+walker add_memory {
+    has memory: str;
+
+    can add_memory with \`root entry {
+        visit [--> (\`?Memory)] else {
+            visit root ++> Memory();
+        }
+    }
+}
+
+walker get_memories {
+    can list_memories with \`root entry {
+        visit [--> (\`?Memory)] else {
+            report { "memories": [] };
+        }
+    }
+}
 `,
     },
 ];
@@ -103,48 +126,89 @@ export const pythonTabsData = [
         filename: "ai_sentiment_analysis.py",
         code: `
 import json, base64
+from datetime import datetime
 from openai import OpenAI
 
 client = OpenAI()
 
+# --- Lots of boilerplate just to define a schema ---
 tools = [{
     "type": "function",
     "function": {
         "name": "process_memory",
+        "description": 
+            "Extract structured memory details from the photo",
         "parameters": {
             "type": "object",
             "properties": {
-                "who": {"type": "array", "items": {"type": "string"}},
-                "what": {"type": "string"},
-                "where": {"type": "string"}
+                "who": {
+                    "type": "array",
+                    "items": {"type": "string"},
+                    "description": "Names of people in the photo"
+                },
+                "what": {
+                    "type": "string",
+                    "description": "What is happening in the scene"
+                },
+                "where": {
+                    "type": "string",
+                    "description": 
+                        "Location or setting of the photo"
+                }
             },
             "required": ["who", "what", "where"]
         }
     }
 }]
 
+# --- The prompt has to sit here like a Novel ---
 SYS_PROMPT = """
-# Goal
-Extract structured memory details from the photo.
+# Role and Objective
+Your goal is to extract structured memory details from
+referenced images and user context. Engage in a way that feels 
+natural, as if you were helping someone document their 
+experiences, but always return structured output.
 
-# Fields
-- who: list of people or animals involved
-- what: short description of the activity or event
-- where: location or place mentioned
+# Instructions
+- Extract details only based on the image and user input.
+- Avoid hallucinations or assumptions if information is missing.
+- Always call the \`process_memory\` tool to return results.
+- Keep results short, factual, and consistent.
 
-# Rules
-- Only use details from the photo and user input
-- Do not hallucinate or invent missing information
-- Always return using the \`process_memory\` tool
+# Sub-categories for more detailed instructions
+## First Turn
+- React to the image or context briefly.
+- Encourage clarification if information is incomplete.
 
-# Guidance
-- If some fields are missing, leave them empty
-- Keep responses factual and concise
+## Field Writing (for process_memory)
+- **who**: list of people, animals, or notable entities.
+- **what**: concise description of the activity or event 
+  (3-5 words).
+- **where**: specific place, city, or landmark provided 
+   or visible.
+
+### Reasoning Steps
+- If the user corrects existing information, update the fields.
+- If new information is provided, add it without discarding 
+  existing relevant details.
+- If a field is not mentioned or visible, leave it empty.
+
+## Response Writing
+- Keep responses factual and grounded in what's visible or given.
+- Never ask the user irrelevant questions.
+- Use the photo context to refine details when applicable.
+
+# Output Format
+Always return JSON via the \`process_memory\` tool with:
+- \`who\`: list of strings
+- \`what\`: string (short activity/event description)
+- \`where\`: string (location or place)
 """
 
 with open("image.png", "rb") as f:
     image_b64 = base64.b64encode(f.read()).decode("utf-8")
 
+# --- Verbose message construction ---
 messages = [
     {"role": "system", "content": SYS_PROMPT},
     {
@@ -171,6 +235,7 @@ response = client.chat.completions.create(
 result = json.loads(
     response.choices[0].message.tool_calls[0].function.arguments
 )
+
 print(result)
 `,
     },
@@ -235,12 +300,15 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
 client = pymongo.MongoClient("mongodb://localhost:27017/")
 db = client["mydb"]
 users_collection = db["users"]
+memories_collection = db["memories"]
 
 # --- Models ---
 class User(BaseModel):
     username: str
     password: str
 
+class MemoryItem(BaseModel):
+    memory: str
 
 # --- Auth Helpers ---
 def create_token(username: str):
@@ -254,13 +322,18 @@ def create_token(username: str):
 def verify_token(token: str = Depends(oauth2_scheme)):
     """Decode and validate JWT token."""
     try:
-        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        payload = jwt.decode(
+            token, SECRET_KEY, algorithms=[ALGORITHM]
+        )
         return payload["sub"]
     except jwt.ExpiredSignatureError:
-        raise HTTPException(status_code=401, detail="Token expired")
+        raise HTTPException(
+            status_code=401, detail="Token expired"
+        )
     except jwt.InvalidTokenError:
-        raise HTTPException(status_code=401, detail="Invalid token")
-
+        raise HTTPException(
+            status_code=401, detail="Invalid token"
+        )
 
 # --- Routes ---
 @app.post("/signup")
@@ -269,14 +342,15 @@ def signup(user: User):
     hashed_pw = hashlib.sha256(user.password.encode()).hexdigest()
 
     if users_collection.find_one({"username": user.username}):
-        raise HTTPException(status_code=400, detail="User already exists")
+        raise HTTPException(
+            status_code=400, detail="User already exists"
+        )
 
     users_collection.insert_one({
         "username": user.username, 
         "password": hashed_pw
     })
     return {"message": "User created successfully"}
-
 
 @app.post("/login")
 def login(user: User):
@@ -296,15 +370,30 @@ def login(user: User):
     return {"access_token": access_token, "token_type": "bearer"}
 
 
+# --- the long road to a simple task --- 
+@app.post("/add_memory")
+def add_memory(
+    item: MemoryItem,
+    current_user: str = Depends(verify_token)
+):
+    """Add a memory for the current user."""
+    memories_collection.insert_one({
+        "username": current_user,
+        "memory": item.memory,
+        "timestamp": datetime.utcnow()
+    })
+    return {"message": f"Memory added: {item.memory}"}
 
-@app.get("/memories/")
-def get_memories(current_user: str = Depends(verify_token)):
-    """Protected route: requires valid JWT token."""
-    return {
-        "message": f"Hello {current_user}, here are your memories!"
-    }
-`,
-    },
+
+@app.get("/get_memories")
+def get_user_memories(current_user: str = Depends(verify_token)):
+    """Retrieve all memories for the current user."""
+    user_memories = list(memories_collection.find(
+        {"username": current_user},
+        {"_id": 0, "memory": 1, "timestamp": 1}
+    ))
+    return {"memories": user_memories}
+`},
 ];
 
 export const tabsData = [
