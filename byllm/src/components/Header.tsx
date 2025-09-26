@@ -37,7 +37,7 @@ export const Header: React.FC = () => {
             >
               Documentation
             </a>
-            <a href="#community" className="text-muted-foreground hover:text-foreground transition-colors">
+            <a href="https://discord.gg/6j3QNdtcN6" className="text-muted-foreground hover:text-foreground transition-colors">
               Community
             </a>
           </nav>

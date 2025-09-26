@@ -123,11 +123,11 @@ const Index = () => {
 
                   {/* Text on the right */}
                   <div className="flex flex-col">
-                    <h1 className="text-6xl font-bold leading-tight bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
+                    <h1 className="text-7xl font-bold leading-tight bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
                       <strong>byLLM</strong>
                     </h1>
                     <p className="text-lg text-muted-foreground mt-1">
-                      Coding, Less Prompting
+                      Prompt Less, Smile More
                     </p>
                   </div>
                 </div>
@@ -138,7 +138,7 @@ const Index = () => {
 
               <div className="bg-card border rounded-xl p-8 mb-12 text-left max-w-3xl mx-auto">
                 <p className="text-body leading-relaxed text-card-foreground">
-                  <strong>byLLM</strong> is a lightweight framework that simplifies building AI-powered applications by eliminating much of the manual prompt engineering process. Using its Meaning-Typed Programming paradigm, developers can express intent directly in code, while byLLM automatically generates optimized prompts. This approach reduces development time, cuts down lines of code, and improves the accuracy of AI-driven tasks. byLLM integrates seamlessly with the <a href="https://jaseci.org" target="_blank" rel="noopener noreferrer" className="text-primary underline hover:text-primary/80">Jaseci ecosystem</a>, but can also be used as a standalone Python library.
+                  <strong>byLLM</strong> automagically generates optimized prompts by inferring your, the coder’s, intent. It also allows you to use the best LLM for the job, multiple different ones in fact, if that’s what you think will get you the promotion. Unlocking the power of AI  has never been easier! Build your app byLLM: <strong>Prompt less, Smile more</strong>, create your unicorn in less time it takes to spell Jaseci. byLLM is a langauge construct in <a href="https://jaseci.org" target="_blank" rel="noopener noreferrer" className="text-primary underline hover:text-primary/80">Jac-lang/Jaseci</a>, but can also be used as a standalone Python library.
 
                 </p>
               </div>
@@ -177,7 +177,7 @@ const Index = () => {
             <div className="text-center mb-16">
               <h2 className="text-section mb-4">Why byLLM?</h2>
               <p className="text-body-large text-muted-foreground max-w-2xl mx-auto">
-                Built for developers who want to focus on building, not configuring
+                Built for developers who want to focus on building, not prompting
               </p>
             </div>
 
@@ -282,8 +282,8 @@ const Index = () => {
               <div className="max-w-4xl mx-auto mb-8">
                 <Tabs defaultValue="jac" className="w-full">
                   <TabsList className="grid w-full grid-cols-2 mb-4">
-                    <TabsTrigger value="jac">Jac</TabsTrigger>
-                    <TabsTrigger value="python">Python</TabsTrigger>
+                    <TabsTrigger value="jac">byLLM Jac</TabsTrigger>
+                    <TabsTrigger value="python">byLLM Python</TabsTrigger>
                   </TabsList>
                   <TabsContent value="jac">
                     <CodeBlock code={firstexampleCode} language="jac" />
@@ -360,43 +360,7 @@ const Index = () => {
         </section>
 
 
-        {/* Projects Section */}
-        <section id="projects" className="py-12 bg-muted/30">
-          <div className="container">
-            <div className="text-center mb-16">
-              <h2 className="text-section mb-4">Projects</h2>
-              <p className="text-body-large text-muted-foreground max-w-2xl mx-auto">
-                Explore real-world applications and get inspired by what's possible
-              </p>
-            </div>
-
-            <div className="grid gap-6 md:grid-cols-1 lg:grid-cols-2 max-w-3xl mx-auto">
-              {examples.map((example, index) => (
-                <Card
-                  key={index}
-                  className="card-interactive group cursor-pointer overflow-hidden"
-                  onClick={() => window.open(example.link, '_blank')}
-                >
-                  <div className="aspect-video overflow-hidden">
-                    <img
-                      src={example.image}
-                      alt={example.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                  <CardHeader>
-                    <div className="flex items-center justify-between">
-                      <CardTitle className="text-lg">{example.title}</CardTitle>
-                      <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
-                    </div>
-                    <CardDescription dangerouslySetInnerHTML={{ __html: example.description }} />
-                    {/* <CardDescription>{example.description}</CardDescription> */}
-                  </CardHeader>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
+        
 
         {/* Evaluation Metrics */}
         {/* <section className="py-12">
@@ -633,9 +597,6 @@ const Index = () => {
         <section id="documentation" className="py-12">
           <div className="container text-center">
             <h2 className="text-section mb-4">Ready to dive deeper?</h2>
-            <p className="text-body-large text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Explore our comprehensive documentation to unlock the full potential of byLLM
-            </p>
             <a
               href="https://www.jac-lang.org/learn/jac-byllm/with_llm/"
               target="_blank"
@@ -657,7 +618,7 @@ const Index = () => {
           <div className="container">
             <div className="text-center mb-8">
               <h2 className="text-section mb-4">Tutorials</h2>
-              <p className="text-body-large text-muted-foreground max-w-2xl mx-auto">Watch video walkthroughs and grab the example repo for each tutorial.</p>
+              <p className="text-body-large text-muted-foreground max-w-2xl mx-auto">Watch video walkthroughs and grab the documentation for each tutorial</p>
             </div>
 
             <div className="max-w-4xl mx-auto relative">
@@ -696,6 +657,44 @@ const Index = () => {
                 <CarouselPrevious />
                 <CarouselNext />
               </Carousel>
+            </div>
+          </div>
+        </section>
+
+        {/* Projects Section */}
+        <section id="projects" className="py-12 bg-muted/30">
+          <div className="container">
+            <div className="text-center mb-16">
+              <h2 className="text-section mb-4">Projects</h2>
+              <p className="text-body-large text-muted-foreground max-w-2xl mx-auto">
+                Explore real-world applications and get inspired by what's possible
+              </p>
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-1 lg:grid-cols-2 max-w-3xl mx-auto">
+              {examples.map((example, index) => (
+                <Card
+                  key={index}
+                  className="card-interactive group cursor-pointer overflow-hidden"
+                  onClick={() => window.open(example.link, '_blank')}
+                >
+                  <div className="aspect-video overflow-hidden">
+                    <img
+                      src={example.image}
+                      alt={example.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <CardHeader>
+                    <div className="flex items-center justify-between">
+                      <CardTitle className="text-lg">{example.title}</CardTitle>
+                      <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                    </div>
+                    <CardDescription dangerouslySetInnerHTML={{ __html: example.description }} />
+                    {/* <CardDescription>{example.description}</CardDescription> */}
+                  </CardHeader>
+                </Card>
+              ))}
             </div>
           </div>
         </section>
