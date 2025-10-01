@@ -67,12 +67,11 @@ with entry {
 }
 
 impl Library.search_shelves {
-    shelves = [self --> Shelf];
-    visit shelves; # No loops, just visit
+    visit [-->(\`?Shelf)]; # No loops, just visit
 }
 
 impl Shelf.check_books {
-    found_book = [self --> (\`?Book)](
+    found_book = [self -->(\`?Book)](
         ?title == visitor.book_needed, available == True
     );
 
@@ -86,8 +85,7 @@ impl Shelf.check_books {
 }
 
 impl borrower.find_book {
-    libraries = [here --> Library];
-    visit libraries;
+    visit [-->(\`?Library)];
 }`,
     },
     {
