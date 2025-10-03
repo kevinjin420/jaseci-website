@@ -5,6 +5,7 @@ import Link from "next/link";
 import SeoMeta from "@layouts/partials/SeoMeta";
 import { FaLinkedin, FaExternalLinkAlt } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import Journey from "@layouts/components/landing/Journey";
 
 // Data for team members and testimonials
 const teamMembers = [
@@ -162,6 +163,7 @@ const AboutUsPage = () => {
       />
 
       <HeroSection />
+      <Journey />
       <TeamSection />
       <TestimonialsSection />
     </div>
@@ -238,8 +240,8 @@ const TeamMemberCard = ({ member, isReversed }) => (
         <Image
           src={member.image}
           alt={member.name}
-          width={320}
-          height={320}
+          width={200}
+          height={200}
           className="object-cover"
         />
       </div>
@@ -257,23 +259,23 @@ const TeamMemberCard = ({ member, isReversed }) => (
             )}
           </span>
         </h3>
-        <p className="text-base font-semibold text-about-primary uppercase tracking-wider">
-          {member.title}
-        </p>
+        <div className="flex items-center gap-3 flex-wrap">
+          <p className="text-base font-semibold text-about-primary uppercase tracking-wider">
+            {member.title}
+          </p>
+          <Link
+            href={member.website}
+            target="_blank"
+            className="inline-flex items-center gap-1 text-about-primary text-sm border border-about-primary px-3 py-1 rounded-md font-semibold transition-all duration-300 hover:bg-about-primary hover:text-white"
+          >
+            <FaExternalLinkAlt size={12} />
+            More Info
+          </Link>
+        </div>
       </div>
       <p className="text-about-muted-foreground leading-relaxed">
         {member.description}
       </p>
-      <div className="mt-2">
-        <Link
-          href={member.website}
-          target="_blank"
-          className="inline-flex items-center gap-2 text-about-primary border border-about-primary px-6 py-2.5 rounded-lg font-semibold transition-all duration-300 hover:bg-about-primary hover:text-white"
-        >
-          <FaExternalLinkAlt />
-          Learn More About Me
-        </Link>
-      </div>
     </div>
   </div>
 );

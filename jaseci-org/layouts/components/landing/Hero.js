@@ -45,7 +45,7 @@ const Hero = () => {
 
   return (
     <>
-      <section ref={heroRef} className="min-h-[70vh] lg:min-h-[80vh] flex items-center py-12 sm:py-16 lg:py-20 bg-dark-bg relative overflow-hidden mt-0">
+  <section ref={heroRef} className="min-h-[70vh] lg:min-h-[80vh] flex items-center py-8 sm:py-12 lg:py-16 bg-dark-bg relative overflow-hidden mt-0 pt-[108px]">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-10 right-20 w-40 h-40 bg-gradient-to-br from-primary-orange to-primary-yellow rounded-full blur-xl animate-pulse"></div>
           <div className="absolute bottom-20 left-10 w-32 h-32 bg-gradient-to-br from-primary-yellow to-primary-orange rounded-full blur-lg animate-pulse delay-1000"></div>
@@ -157,11 +157,11 @@ const Hero = () => {
               className="hidden lg:block lg:col-span-2 order-first lg:order-last"
               style={{ animation: 'fadeInUp 0.6s ease-out 0.4s both' }}
             >
-              <div className="relative group">
-                <div className="absolute -inset-6 bg-gradient-to-r from-primary-orange/3 via-primary-yellow/2 to-primary-orange/3 rounded-full blur-3xl opacity-10 group-hover:opacity-20 transition-all duration-1000 scale-110 animate-breathe"></div>
-                <div className="absolute -inset-8 bg-gradient-to-br from-primary-orange/2 to-primary-yellow/2 rounded-full blur-2xl opacity-5 group-hover:opacity-10 transition-all duration-700 animate-slow-pulse"></div>
+              <div className="relative">
+                <div className="absolute -inset-6 bg-gradient-to-r from-primary-orange/3 via-primary-yellow/2 to-primary-orange/3 rounded-full blur-3xl opacity-10 scale-110 animate-breathe"></div>
+                <div className="absolute -inset-8 bg-gradient-to-br from-primary-orange/2 to-primary-yellow/2 rounded-full blur-2xl opacity-5 animate-slow-pulse"></div>
                 
-                <div className="relative flex items-center justify-center min-h-[450px]">
+                <div className="relative flex items-center justify-center min-h-[500px]">
                   <div className="absolute inset-0 pointer-events-none overflow-hidden">
                     <div className="hero-particle hero-particle-1"></div>
                     <div className="hero-particle hero-particle-2"></div>
@@ -173,15 +173,15 @@ const Hero = () => {
                   </div>
                   
                   <div className="relative">
-                    <div className="absolute inset-0 bg-gradient-to-r from-primary-orange/4 to-primary-yellow/4 rounded-2xl blur-2xl opacity-0 group-hover:opacity-15 transition-all duration-1000 scale-110 animate-glow-pulse"></div>
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary-orange/3 via-transparent to-primary-yellow/3 rounded-xl blur-xl opacity-8 group-hover:opacity-20 transition-all duration-800 animate-shimmer"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary-orange/4 to-primary-yellow/4 rounded-2xl blur-2xl opacity-15 scale-110 animate-glow-pulse"></div>
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary-orange/3 via-transparent to-primary-yellow/3 rounded-xl blur-xl opacity-20 animate-shimmer"></div>
                     
                     <Image
                       src="/images/assets/hero.png"
                       alt="Jaseci Stack"
-                      width={1400}
-                      height={1200}
-                      className="w-full h-auto max-w-lg lg:max-w-2xl xl:max-w-3xl mx-auto transition-all duration-1000 ease-out group-hover:scale-110 animate-professional-float drop-shadow-[0_25px_50px_rgba(0,0,0,0.3)] group-hover:drop-shadow-[0_50px_100px_rgba(255,149,0,0.06)] transform-gpu"
+                      width={1800}
+                      height={1600}
+                      className="w-full h-auto max-w-2xl lg:max-w-5xl xl:max-w-6xl mx-auto animate-professional-float drop-shadow-[0_25px_50px_rgba(0,0,0,0.3)] transform-gpu"
                       priority
                     />
                     
