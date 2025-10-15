@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowRight, ExternalLink, Github, Download, BookOpen, Users, MessageCircle, ChevronDown, FileText, Info } from 'lucide-react';
+import { ArrowRight, ExternalLink, Github, Download, BookOpen, Users, MessageCircle, ChevronDown, FileText, Info, Calendar } from 'lucide-react';
 import { ThemeProvider } from '../components/ThemeProvider';
 import { Header } from '../components/Header';
 import { CodeBlock } from '../components/CodeBlock';
@@ -92,6 +92,38 @@ const Index = () => {
       code: wikisearchCode,
     }
   };
+
+  const blogPosts = [
+    {
+      title: 'Prompt Less Smile More: Let the LLM Know your Intentions without Prompt Soup',
+      description: 'Discover how byLLM revolutionizes LLM integration by eliminating complex prompt engineering and letting you focus on building.',
+      link: 'https://medium.com/@jayanaka15/prompt-less-smile-more-let-the-llm-know-your-intentions-without-prompt-soup-01414cc48942',
+      // You can add the actual Medium image URL here by:
+      // 1. Opening the article on Medium
+      // 2. Right-clicking the featured image
+      // 3. Selecting "Copy Image Address"
+      // Example: image: 'https://miro.medium.com/v2/resize:fit:1400/...'
+      image: null,
+      author: '@jayanaka15',
+      readTime: '5 min read'
+    },
+    {
+      title: "The Developer's Dream: How Jaseci is Revolutionising Backend Development and AI Integration",
+      description: 'Explore how Jaseci is changing the game for developers building AI-powered applications with unprecedented ease.',
+      link: 'https://medium.com/@kashmithnisakya/the-developers-dream-how-jaseci-is-revolutionising-backend-development-and-ai-integration-c73be8fe2a6b',
+      image: null,
+      author: '@kashmithnisakya',
+      readTime: '7 min read'
+    },
+    {
+      title: 'From Prompt Hell to AI Heaven: A Complete Tutorial on Building Intelligent Agents Effectively',
+      description: 'A comprehensive guide to building intelligent AI agents without getting lost in the complexity of prompt engineering.',
+      link: 'https://medium.com/@udithishanka.s/c8b44d322df1',
+      image: null,
+      author: '@udithishanka.s',
+      readTime: '10 min read'
+    }
+  ];
 
   const tutorials = [
     {
@@ -611,7 +643,82 @@ const Index = () => {
           </div>
         </section>
 
+        {/* Blog Posts Section */}
+        <section className="py-12 bg-background">
+          <div className="container">
+            <div className="text-center mb-8">
+              <h2 className="text-section mb-4">Latest from Our Blogs</h2>
+              <p className="text-body-large text-muted-foreground max-w-2xl mx-auto">
+                Read our latest articles on the future of AI-Integrated Programming
+              </p>
+            </div>
 
+            <div className="max-w-6xl mx-auto relative">
+              <Carousel>
+                <CarouselContent className="gap-4">
+                  {blogPosts.map((post, idx) => (
+                    <CarouselItem key={idx} className="md:basis-1/2 lg:basis-1/3">
+                      <a 
+                        href={post.link} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="block h-full"
+                      >
+                        <Card className="card-interactive h-full flex flex-col overflow-hidden group hover:shadow-xl transition-all duration-300 cursor-pointer">
+                          <div className="overflow-hidden aspect-video relative">
+                            {post.image ? (
+                              <img 
+                                src={post.image}
+                                alt={post.title}
+                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                onError={(e) => {
+                                  e.currentTarget.style.display = 'none';
+                                }}
+                              />
+                            ) : (
+                              <div className="w-full h-full bg-gradient-to-br from-primary/30 via-primary/15 to-background flex items-center justify-center relative overflow-hidden">
+                                <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
+                                <div className="relative z-10 text-center p-6">
+                                  <div className="w-16 h-16 mx-auto mb-3 rounded-full bg-card/50 backdrop-blur-sm flex items-center justify-center border border-primary/20">
+                                    <BookOpen className="w-8 h-8 text-primary" />
+                                  </div>
+                                  <div className="inline-block px-4 py-1.5 rounded-full bg-card/50 backdrop-blur-sm border border-primary/20">
+                                    <span className="text-xs font-medium text-muted-foreground">Medium Article</span>
+                                  </div>
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                          <CardHeader className="flex-1 pb-2">
+                            <CardTitle className="text-lg line-clamp-2 group-hover:text-primary transition-colors leading-snug mb-2">
+                              {post.title}
+                            </CardTitle>
+                            <CardDescription className="line-clamp-2 text-sm">
+                              {post.description}
+                            </CardDescription>
+                            <div className="flex items-center gap-2 text-xs text-muted-foreground pt-3">
+                              <span>{post.author}</span>
+                              <span>•</span>
+                              <span>{post.readTime}</span>
+                            </div>
+                          </CardHeader>
+                          <CardContent className="p-4 pt-0">
+                            <div className="flex items-center justify-between w-full px-4 py-2 rounded-md bg-primary/10 group-hover:bg-primary group-hover:text-primary-foreground transition-colors text-sm font-medium">
+                              <span>Read on Medium</span>
+                              <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                            </div>
+                          </CardContent>
+                        </Card>
+                      </a>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious className="hidden md:flex" />
+                <CarouselNext className="hidden md:flex" />
+              </Carousel>
+            </div>
+          </div>
+        </section>
 
         {/* Tutorials */}
         <section id="tutorials" className="py-12 bg-muted/30">
