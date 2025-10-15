@@ -66,6 +66,3 @@ npm run build
 ```
 
 For any issues or contributions, please visit the [main Jac & Jaseci GitHub repository](https://github.com/Jaseci-Labs/jaseci).
-
-
-test
