@@ -20,6 +20,11 @@ import example2 from '../assets/example-2.jpg';
 import example3 from '../assets/example-3.jpg';
 import example4 from '../assets/example-4.png';
 
+// Import blog post thumbnails
+import promptLessImage from '/prompt_less_smile_more.webp';
+import devDreamImage from '/dev_dream.webp';
+import tutorialCompleteImage from '/tutorial_complete.webp';
+
 //Import evaluation metrices images
 import fig17 from '../assets/fig17.png';
 import fig22 from '../assets/fig22.png';
@@ -98,12 +103,7 @@ const Index = () => {
       title: 'Prompt Less Smile More: Let the LLM Know your Intentions without Prompt Soup',
       description: 'Discover how byLLM revolutionizes LLM integration by eliminating complex prompt engineering and letting you focus on building.',
       link: 'https://medium.com/@jayanaka15/prompt-less-smile-more-let-the-llm-know-your-intentions-without-prompt-soup-01414cc48942',
-      // You can add the actual Medium image URL here by:
-      // 1. Opening the article on Medium
-      // 2. Right-clicking the featured image
-      // 3. Selecting "Copy Image Address"
-      // Example: image: 'https://miro.medium.com/v2/resize:fit:1400/...'
-      image: null,
+      image: promptLessImage,
       author: '@jayanaka15',
       readTime: '5 min read'
     },
@@ -111,7 +111,7 @@ const Index = () => {
       title: "The Developer's Dream: How Jaseci is Revolutionising Backend Development and AI Integration",
       description: 'Explore how Jaseci is changing the game for developers building AI-powered applications with unprecedented ease.',
       link: 'https://medium.com/@kashmithnisakya/the-developers-dream-how-jaseci-is-revolutionising-backend-development-and-ai-integration-c73be8fe2a6b',
-      image: null,
+      image: devDreamImage,
       author: '@kashmithnisakya',
       readTime: '7 min read'
     },
@@ -119,7 +119,7 @@ const Index = () => {
       title: 'From Prompt Hell to AI Heaven: A Complete Tutorial on Building Intelligent Agents Effectively',
       description: 'A comprehensive guide to building intelligent AI agents without getting lost in the complexity of prompt engineering.',
       link: 'https://medium.com/@udithishanka.s/c8b44d322df1',
-      image: null,
+      image: tutorialCompleteImage,
       author: '@udithishanka.s',
       readTime: '10 min read'
     }
@@ -668,7 +668,7 @@ const Index = () => {
                           <div className="overflow-hidden aspect-video relative">
                             {post.image ? (
                               <img 
-                                src={post.image}
+                                src={post.image }
                                 alt={post.title}
                                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                                 onError={(e) => {
