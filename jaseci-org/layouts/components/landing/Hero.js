@@ -125,7 +125,7 @@ const Hero = () => {
                 style={{ animation: 'fadeInUp 0.6s ease-out 1s both' }}
               >
                 <a
-                  href="https://www.jac-lang.org/learn/installation/"
+                  href="https://docs.jaseci.org/learn/installation/"
                   onClick={() =>
                     import("@lib/gtag").then(({ event }) =>
                       event({
@@ -145,7 +145,7 @@ const Hero = () => {
                   </svg>
                 </a>
                 <a
-                  href="https://www.jac-lang.org/learn/tour/"
+                  href="https://docs.jaseci.org/learn/tour/"
                   className="inline-flex items-center justify-center rounded-lg px-6 py-3 text-sm font-semibold border border-primary-orange/30 text-primary-orange bg-primary-orange/10 backdrop-blur-sm transition-all duration-300 hover:bg-primary-orange hover:text-white hover:border-primary-orange hover:shadow-lg hover:shadow-primary-orange/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-orange/60 transform hover:scale-105"
                 >
                   Learn More

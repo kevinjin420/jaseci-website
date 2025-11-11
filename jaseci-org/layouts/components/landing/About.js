@@ -39,8 +39,7 @@ const About = () => {
               with contributors of{" "}
               <strong>
                 <a
-                  href="https://www.jac-lang.org/communityhub/top_contributors/"
-                  target="_blank"
+                  href="https://docs.jaseci.org/communityhub/top_contributors/"
                   className="fancy-link"
                 >
                   Jac Hackers Everywhere
