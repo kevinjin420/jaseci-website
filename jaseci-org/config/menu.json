@@ -2,9 +2,7 @@
   "main": [
     {
       "name": "Docs",
-      "url": "https://www.jac-lang.org/learn/tour/",
-      "target": "_blank",
-      "rel": "noopener noreferrer"
+      "url": "https://docs.jaseci.org/learn/tour/"
     },
     {
       "name": "Community",

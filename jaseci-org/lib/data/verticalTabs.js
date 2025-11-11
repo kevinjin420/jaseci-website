@@ -443,7 +443,7 @@ export const tabsData = [
         title: "Programming Abstractions for Al",
         summary:
             "Jac introduces programming abstractions designed for AI, making it easy to integrate LLMs and multimodal models directly into your code with minimal effort.",
-        link: "https://www.jac-lang.org/learn/jac-byllm/with_llm/",
+        link: "https://docs.jaseci.org/learn/jac-byllm/with_llm/",
         diagram: {
             src: "/diagrams/image.png",
             fallback: "/diagrams/ai-abstractions-static.png",
@@ -456,7 +456,7 @@ export const tabsData = [
         title: "Object-spatial programming",
         summary:
             "Object-spatial programming in Jac lets you model, traverse, and manipulate rich object graphs, making it ideal for knowledge graphs, games, and more.",
-        link: "https://www.jac-lang.org/jac_book/chapter_8/",
+        link: "https://docs.jaseci.org/jac_book/chapter_8/",
         diagram: {
             src: "/diagrams/object-spatial-diagram.gif",
             fallback: "/diagrams/object-spatial-static.png",
@@ -469,7 +469,7 @@ export const tabsData = [
         title: "Zero to Infinite Scale without Code Changes",
         summary:
             "Jac enables zero to infinite scale without code changes. Deploy your Jac apps from local to cloud with built-in scaling, persistence, and user management.",
-        link: "https://www.jac-lang.org/learn/jac-cloud/introduction/",
+        link: "https://docs.jaseci.org/learn/jac-cloud/introduction/",
         diagram: {
             src: "/diagrams/scaling-architecture.gif",
             fallback: "/diagrams/scaling-architecture-static.png",

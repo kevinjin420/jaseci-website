@@ -4,7 +4,7 @@ export const gettingStartedSlides = [
     title: "Jac Lang",
     description:
       "Lets you build complex AI systems by modeling your data as a traversable graph.",
-    link: "http://jac-lang.org/jac_book/",
+    link: "https://docs.jaseci.org/jac_book/",
     linkText: "Read Handbook",
   },
   {
@@ -12,7 +12,7 @@ export const gettingStartedSlides = [
     title: "Jac Cloud",
     description:
       "A serverless platform that automatically handles the scaling and persistence of your Jac applications.",
-    link: "http://jac-lang.org/learn/jac-cloud/introduction/",
+    link: "https://docs.jaseci.org/learn/jac-cloud/introduction/",
     linkText: "Explore Cloud",
   },
   {

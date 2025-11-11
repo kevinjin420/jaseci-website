@@ -18,8 +18,7 @@ const Footer = () => {
             Community
           </a>
           <a
-            href="https://www.jac-lang.org/learn/getting_started/"
-            target="_blank"
+            href="https://docs.jaseci.org/learn/getting_started/"
             className="text-dark-text no-underline transition-colors duration-300 hover:text-primary-orange"
           >
             Documentation
