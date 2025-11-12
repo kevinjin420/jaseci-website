@@ -30,9 +30,7 @@ export const Header: React.FC = () => {
               Tutorials
             </a>
             <a
-              href="https://www.jac-lang.org/learn/jac-byllm/with_llm/"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="https://docs.jaseci.org/learn/jac-byllm/with_llm/"
               className="text-muted-foreground hover:text-foreground transition-colors"
             >
               Documentation
