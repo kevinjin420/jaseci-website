@@ -880,7 +880,7 @@ const Index = () => {
                 <h4 className="font-semibold mb-4">Resources</h4>
                 <ul className="space-y-2 text-sm">
                   <li>
-                    <a href="https://www.jac-lang.org/learn/jac-byllm/with_llm/" target="_blank" className="text-muted-foreground hover:text-primary transition-colors">
+                    <a href="https://docs.jaseci.org/learn/jac-byllm/with_llm/" className="text-muted-foreground hover:text-primary transition-colors">
                       Documentation
                     </a>
                   </li>
@@ -916,7 +916,7 @@ const Index = () => {
                     </a>
                   </li> */}
                   <li>
-                    <a href="https://www.jac-lang.org/internals/contrib/" target="_blank" className="text-muted-foreground hover:text-primary transition-colors">
+                    <a href="https://docs.jaseci.org/internals/contrib/" className="text-muted-foreground hover:text-primary transition-colors">
                       Contributing
                     </a>
                   </li>
