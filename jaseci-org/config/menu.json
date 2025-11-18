@@ -17,6 +17,10 @@
       "url": "https://jaseci.engin.umich.edu/",
       "target": "_blank",
       "rel": "noopener noreferrer"
+    },
+    {
+      "name": "Blogs",
+      "url": "https://blogs.jaseci.org/"
     }
   ],
   "footer": [
