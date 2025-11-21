@@ -9,14 +9,14 @@ import "../styles/style.scss";
 export default function RootLayout({ children }) {
   const pf = theme.fonts.font_family.primary;
   const sf = theme.fonts.font_family.secondary;
-  const GA_ID = "G-V1KRXTNCWJ";
+  const GA_ID = "G-B7JPCXKQ36";
   return (
     <html suppressHydrationWarning={true} lang="en">
       <head>
         {/* Google tag (gtag.js) */}
         <script
           async
-          src={`https://www.googletagmanager.com/gtag/js?id=G-V1KRXTNCWJ`}
+          src={`https://www.googletagmanager.com/gtag/js?id=G-B7JPCXKQ36`}
         ></script>
         <script
           dangerouslySetInnerHTML={{
@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
                   window.dataLayer = window.dataLayer || [];
                   function gtag(){dataLayer.push(arguments);} 
                   gtag('js', new Date());
-                  gtag('config', 'G-V1KRXTNCWJ', { send_page_view: false });
+                  gtag('config', 'G-B7JPCXKQ36', { send_page_view: false });
                 `,
           }}
         />
