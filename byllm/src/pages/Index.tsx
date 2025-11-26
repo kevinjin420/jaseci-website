@@ -733,14 +733,7 @@ const Index = () => {
                     <CarouselItem key={idx}>
                       <Card className="card-interactive">
                         <div className="aspect-video overflow-hidden rounded-t-lg">
-                          <iframe
-                            src={`https://www.youtube.com/embed/${t.youtubeId}`}
-                            title={t.title}
-                            className="w-full h-full"
-                            frameBorder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen
-                          />
+                          <iframe width="560" height="315" src="https://www.youtube.com/embed/FSIZmwfQD1s?si=gUprB2GXo-6X8MgP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                         </div>
                         <CardHeader>
                           <div className="flex items-center justify-between">
