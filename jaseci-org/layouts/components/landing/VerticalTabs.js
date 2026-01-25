@@ -14,8 +14,7 @@ const LearnMoreIcon = () => (
 
 const VerticalTabs = () => {
   const [activeVerticalTab, setActiveVerticalTab] = useState(0);
-  const [activeLanguage, setActiveLanguage] = useState("jac"); 
-  const [isVisible, setIsVisible] = useState(false); 
+  const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null); 
 
   // Effect to set up the Intersection Observer
@@ -48,7 +47,6 @@ const VerticalTabs = () => {
 
   const handleVerticalTabClick = (index) => {
     setActiveVerticalTab(index);
-    setActiveLanguage("jac"); 
   };
   
   const currentJacCode = jacTabsData[activeVerticalTab].code;
@@ -119,12 +117,12 @@ const VerticalTabs = () => {
         >
           <div className="inline-block">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-3 bg-gradient-to-r from-white via-primary-orange to-primary-yellow bg-clip-text text-transparent">
-              Why should I use Jac?
+              AI Native Programming Language
             </h2>
             <div className="h-1 bg-gradient-to-r from-transparent via-primary-orange to-transparent mx-auto w-24 mb-3"></div>
           </div>
           <p className="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto leading-normal">
-            Discover the power of Jac through interactive examples
+            Meaning Typed Programming with byLLM and agentic Object-Spatial Programming
           </p>
         </div>
 

@@ -3,6 +3,8 @@
 import SeoMeta from "@layouts/partials/SeoMeta";
 import Hero from "@layouts/components/landing/Hero";
 import JacSuperset from "@layouts/components/landing/JacSuperset";
+import JacClient from "@layouts/components/landing/JacClient";
+import JacScale from "@layouts/components/landing/JacScale";
 import Carousel from "@layouts/components/landing/Carousel";
 import {
   gettingStartedSlides,
@@ -14,9 +16,9 @@ const LandingPage = () => {
   return (
     <>
       <SeoMeta
-        title="Jac & Jaseci: The AI-First Programming Language"
-        meta_title="Jac & Jaseci: The AI-First Programming Language and Stack"
-        description="The Jac programming language and Jaseci runtime stack supersets Python with AI-first constructs, making it easy to build and scale sophisticated AI products."
+        title="Jac & Jaseci: One Language for AI-Native Full-Stack Development"
+        meta_title="Jac & Jaseci: One Language for AI-Native Full-Stack Development"
+        description="Build complete applications with backend, frontend, and AI in one unified language. Access PyPI and npm ecosystems, deploy from laptop to cloud with zero code changes."
         image="/images/logo.png"
       />
       <div className="bg-dark-bg pt-16 md:pt-20">
@@ -24,10 +26,12 @@ const LandingPage = () => {
           <Hero />
         </main>
         <JacSuperset />
+        <JacClient />
+        <JacScale />
         <VerticalTabs />
         <Carousel
           slides={gettingStartedSlides}
-          title="Get Started with Jaseci Stack"
+          title="The Jaseci Stack"
           sectionId="learn"
         />
         <WhyWeBuilt />

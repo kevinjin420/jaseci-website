@@ -88,47 +88,48 @@ impl borrower.find_book {
     visit [-->(\`?Library)];
 }`,
     },
-    {
-        filename: "cloud_scaling.jac",
-        code: `
-# nodes + walkers + jac-cloud --> auto-endpoint magic
-# Auth & database handled behind the scenes
-
-node Memory {
-    has memories: list[str] = [];
-
-    can add_memory with add_memory entry {
-        # Simple append, no DB worries
-        self.memories.append(visitor.memory);
-        report {
-            "message": f"Memory added: {visitor.memory}"
-        };
-    }
-    can list_memories with get_memories entry {
-        report { "memories": self.memories };
-    }
-}
-
-# Endpoint ready!, thanks to the walker abstraction
-walker add_memory {
-    has memory: str;
-
-    can add_memory with \`root entry {
-        visit [--> (\`?Memory)] else {
-            visit root ++> Memory();
-        }
-    }
-}
-
-walker get_memories {
-    can list_memories with \`root entry {
-        visit [--> (\`?Memory)] else {
-            report { "memories": [] };
-        }
-    }
-}
-`,
-    },
+    // Commented out - jac-scale has its own dedicated section
+    // {
+    //     filename: "cloud_scaling.jac",
+    //     code: `
+    // # nodes + walkers + jac-scale --> auto-endpoint magic
+    // # Auth & database handled behind the scenes
+    //
+    // node Memory {
+    //     has memories: list[str] = [];
+    //
+    //     can add_memory with add_memory entry {
+    //         # Simple append, no DB worries
+    //         self.memories.append(visitor.memory);
+    //         report {
+    //             "message": f"Memory added: {visitor.memory}"
+    //         };
+    //     }
+    //     can list_memories with get_memories entry {
+    //         report { "memories": self.memories };
+    //     }
+    // }
+    //
+    // # Endpoint ready!, thanks to the walker abstraction
+    // walker add_memory {
+    //     has memory: str;
+    //
+    //     can add_memory with \`root entry {
+    //         visit [--> (\`?Memory)] else {
+    //             visit root ++> Memory();
+    //         }
+    //     }
+    // }
+    //
+    // walker get_memories {
+    //     can list_memories with \`root entry {
+    //         visit [--> (\`?Memory)] else {
+    //             report { "memories": [] };
+    //         }
+    //     }
+    // }
+    // `,
+    // },
 ];
 
 export const pythonTabsData = [
@@ -323,126 +324,127 @@ else:
     print("Book not available")
 `,
     },
-    {
-        filename: "cloud_scaling.py",
-        code: `
-from fastapi import FastAPI, Depends, HTTPException
-from fastapi.security import OAuth2PasswordBearer
-from pydantic import BaseModel
-from datetime import datetime, timedelta
-import jwt, pymongo, hashlib
-
-# --- App & Security Setup ---
-app = FastAPI()
-SECRET_KEY = "secret123"
-ALGORITHM = "HS256"
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
-
-# --- MongoDB Setup ---
-client = pymongo.MongoClient("mongodb://localhost:27017/")
-db = client["mydb"]
-users_collection = db["users"]
-memories_collection = db["memories"]
-
-# --- Models ---
-class User(BaseModel):
-    username: str
-    password: str
-
-class MemoryItem(BaseModel):
-    memory: str
-
-# --- Auth Helpers ---
-def create_token(username: str):
-    """Generate JWT token for a user."""
-    payload = {
-        "sub": username,
-        "exp": datetime.utcnow() + timedelta(hours=1)
-    }
-    return jwt.encode(payload, SECRET_KEY, algorithm=ALGORITHM)
-
-def verify_token(token: str = Depends(oauth2_scheme)):
-    """Decode and validate JWT token."""
-    try:
-        payload = jwt.decode(
-            token, SECRET_KEY, algorithms=[ALGORITHM]
-        )
-        return payload["sub"]
-    except jwt.ExpiredSignatureError:
-        raise HTTPException(
-            status_code=401, detail="Token expired"
-        )
-    except jwt.InvalidTokenError:
-        raise HTTPException(
-            status_code=401, detail="Invalid token"
-        )
-
-# --- Routes ---
-@app.post("/signup")
-def signup(user: User):
-    """Register a new user with hashed password."""
-    hashed_pw = hashlib.sha256(user.password.encode()).hexdigest()
-
-    if users_collection.find_one({"username": user.username}):
-        raise HTTPException(
-            status_code=400, detail="User already exists"
-        )
-
-    users_collection.insert_one({
-        "username": user.username, 
-        "password": hashed_pw
-    })
-    return {"message": "User created successfully"}
-
-@app.post("/login")
-def login(user: User):
-    """Authenticate user and return JWT token."""
-    hashed_pw = hashlib.sha256(user.password.encode()).hexdigest()
-    db_user = users_collection.find_one({
-        "username": user.username, 
-        "password": hashed_pw
-    })
-
-    if not db_user:
-        raise HTTPException(
-            status_code=400, 
-            detail="Invalid username or password"
-        )
-    access_token = create_token(user.username)
-    return {"access_token": access_token, "token_type": "bearer"}
-
-
-# --- the long road to a simple task --- 
-@app.post("/add_memory")
-def add_memory(
-    item: MemoryItem,
-    current_user: str = Depends(verify_token)
-):
-    """Add a memory for the current user."""
-    memories_collection.insert_one({
-        "username": current_user,
-        "memory": item.memory,
-        "timestamp": datetime.utcnow()
-    })
-    return {"message": f"Memory added: {item.memory}"}
-
-
-@app.get("/get_memories")
-def get_user_memories(current_user: str = Depends(verify_token)):
-    """Retrieve all memories for the current user."""
-    user_memories = list(memories_collection.find(
-        {"username": current_user},
-        {"_id": 0, "memory": 1, "timestamp": 1}
-    ))
-    return {"memories": user_memories}
-`},
+    // Commented out - jac-scale has its own dedicated section
+    // {
+    //     filename: "cloud_scaling.py",
+    //     code: `
+    // from fastapi import FastAPI, Depends, HTTPException
+    // from fastapi.security import OAuth2PasswordBearer
+    // from pydantic import BaseModel
+    // from datetime import datetime, timedelta
+    // import jwt, pymongo, hashlib
+    //
+    // # --- App & Security Setup ---
+    // app = FastAPI()
+    // SECRET_KEY = "secret123"
+    // ALGORITHM = "HS256"
+    // oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
+    //
+    // # --- MongoDB Setup ---
+    // client = pymongo.MongoClient("mongodb://localhost:27017/")
+    // db = client["mydb"]
+    // users_collection = db["users"]
+    // memories_collection = db["memories"]
+    //
+    // # --- Models ---
+    // class User(BaseModel):
+    //     username: str
+    //     password: str
+    //
+    // class MemoryItem(BaseModel):
+    //     memory: str
+    //
+    // # --- Auth Helpers ---
+    // def create_token(username: str):
+    //     """Generate JWT token for a user."""
+    //     payload = {
+    //         "sub": username,
+    //         "exp": datetime.utcnow() + timedelta(hours=1)
+    //     }
+    //     return jwt.encode(payload, SECRET_KEY, algorithm=ALGORITHM)
+    //
+    // def verify_token(token: str = Depends(oauth2_scheme)):
+    //     """Decode and validate JWT token."""
+    //     try:
+    //         payload = jwt.decode(
+    //             token, SECRET_KEY, algorithms=[ALGORITHM]
+    //         )
+    //         return payload["sub"]
+    //     except jwt.ExpiredSignatureError:
+    //         raise HTTPException(
+    //             status_code=401, detail="Token expired"
+    //         )
+    //     except jwt.InvalidTokenError:
+    //         raise HTTPException(
+    //             status_code=401, detail="Invalid token"
+    //         )
+    //
+    // # --- Routes ---
+    // @app.post("/signup")
+    // def signup(user: User):
+    //     """Register a new user with hashed password."""
+    //     hashed_pw = hashlib.sha256(user.password.encode()).hexdigest()
+    //
+    //     if users_collection.find_one({"username": user.username}):
+    //         raise HTTPException(
+    //             status_code=400, detail="User already exists"
+    //         )
+    //
+    //     users_collection.insert_one({
+    //         "username": user.username,
+    //         "password": hashed_pw
+    //     })
+    //     return {"message": "User created successfully"}
+    //
+    // @app.post("/login")
+    // def login(user: User):
+    //     """Authenticate user and return JWT token."""
+    //     hashed_pw = hashlib.sha256(user.password.encode()).hexdigest()
+    //     db_user = users_collection.find_one({
+    //         "username": user.username,
+    //         "password": hashed_pw
+    //     })
+    //
+    //     if not db_user:
+    //         raise HTTPException(
+    //             status_code=400,
+    //             detail="Invalid username or password"
+    //         )
+    //     access_token = create_token(user.username)
+    //     return {"access_token": access_token, "token_type": "bearer"}
+    //
+    //
+    // # --- the long road to a simple task ---
+    // @app.post("/add_memory")
+    // def add_memory(
+    //     item: MemoryItem,
+    //     current_user: str = Depends(verify_token)
+    // ):
+    //     """Add a memory for the current user."""
+    //     memories_collection.insert_one({
+    //         "username": current_user,
+    //         "memory": item.memory,
+    //         "timestamp": datetime.utcnow()
+    //     })
+    //     return {"message": f"Memory added: {item.memory}"}
+    //
+    //
+    // @app.get("/get_memories")
+    // def get_user_memories(current_user: str = Depends(verify_token)):
+    //     """Retrieve all memories for the current user."""
+    //     user_memories = list(memories_collection.find(
+    //         {"username": current_user},
+    //         {"_id": 0, "memory": 1, "timestamp": 1}
+    //     ))
+    //     return {"memories": user_memories}
+    // `},
 ];
 
 export const tabsData = [
     {
-        title: "Programming Abstractions for Al",
+        title: "AI Without Prompt Engineering",
         summary:
-            "Jac introduces programming abstractions designed for AI, making it easy to integrate LLMs and multimodal models directly into your code with minimal effort.",
+            "Jac introduces Meaning Typed Programming - replace function bodies with AI. The function signature IS the specification. No complex prompts needed, just declare what you want.",
         link: "https://docs.jaseci.org/learn/jac-byllm/with_llm/",
         diagram: {
             src: "/diagrams/image.png",
@@ -453,28 +455,15 @@ export const tabsData = [
         }
     },
     {
-        title: "Object-spatial programming",
+        title: "Agentic Object-Spatial Programming",
         summary:
-            "Object-spatial programming in Jac lets you model, traverse, and manipulate rich object graphs, making it ideal for knowledge graphs, games, and more.",
+            "Build AI agents that traverse knowledge graphs naturally. Nodes hold data, walkers carry intelligence. Perfect for RAG systems, autonomous agents, and complex AI workflows.",
         link: "https://docs.jaseci.org/jac_book/chapter_8/",
         diagram: {
             src: "/diagrams/object-spatial-diagram.gif",
             fallback: "/diagrams/object-spatial-static.png",
             title: "Object-Spatial Programming Flow",
             description: "Visual representation of nodes, walkers, and spatial relationships",
-            type: "animated"
-        }
-    },
-    {
-        title: "Zero to Infinite Scale without Code Changes",
-        summary:
-            "Jac enables zero to infinite scale without code changes. Deploy your Jac apps from local to cloud with built-in scaling, persistence, and user management.",
-        link: "https://docs.jaseci.org/learn/jac-cloud/introduction/",
-        diagram: {
-            src: "/diagrams/scaling-architecture.gif",
-            fallback: "/diagrams/scaling-architecture-static.png",
-            title: "Zero to Infinite Scale Architecture",
-            description: "How Jac applications seamlessly scale from local to distributed systems",
             type: "animated"
         }
     },

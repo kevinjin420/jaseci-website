@@ -88,36 +88,36 @@ const Hero = () => {
             <div className="lg:col-span-5 text-center lg:text-left">
               <div className="mb-6">
                 <h1 className="font-display font-medium tracking-tight text-balance leading-tight text-3xl sm:text-4xl lg:text-5xl xl:text-6xl">
-                  <span 
+                  <span
                     className="block text-white"
                     style={{ animation: 'fadeInUp 0.6s ease-out 0s both' }}
                   >
-                    Enable fast, low-complexity
+                    One Language for
                   </span>
-                  <span 
+                  <span
                     className="block bg-gradient-to-r from-primary-orange via-primary-yellow to-primary-orange bg-clip-text text-transparent drop-shadow-sm"
                     style={{ animation: 'fadeInUp 0.6s ease-out 0.2s both' }}
                   >
-                    development of AI-powered,
+                    AI-Native Full-Stack
                   </span>
-                  <span 
+                  <span
                     className="block text-white"
                     style={{ animation: 'fadeInUp 0.6s ease-out 0.4s both' }}
                   >
-                    scalable applications
+                    Development
                   </span>
                 </h1>
                 <div className="h-1 bg-gradient-to-r from-transparent via-primary-orange to-transparent mx-auto lg:mx-0 w-64 mt-4" style={{ animation: 'fadeInUp 0.6s ease-out 0.6s both' }}></div>
               </div>
 
-              <p 
+              <p
                 className="mt-4 sm:mt-6 text-sm sm:text-base lg:text-lg xl:text-xl text-dark-text/90 leading-relaxed max-w-2xl mx-auto lg:mx-0"
                 style={{ animation: 'fadeInUp 0.6s ease-out 0.8s both' }}
               >
-                The Jac programming language and Jaseci runtime stack builds on Python, introducing
-                <span className="text-primary-orange font-medium hover:text-primary-yellow transition-colors duration-300"> AI-first constructs</span>,
-                <span className="text-primary-orange font-medium hover:text-primary-yellow transition-colors duration-300"> object-spatial programming</span>, and
-                <span className="text-primary-orange font-medium hover:text-primary-yellow transition-colors duration-300"> scale-native constructs</span>.
+                Build complete applications with
+                <span className="text-primary-orange font-medium hover:text-primary-yellow transition-colors duration-300"> backend + frontend + AI</span> in a single unified language.
+                Access both <span className="text-primary-orange font-medium hover:text-primary-yellow transition-colors duration-300">PyPI and npm</span> ecosystems,
+                deploy from laptop to cloud with <span className="text-primary-orange font-medium hover:text-primary-yellow transition-colors duration-300">zero code changes</span>.
               </p>
 
               <div 
@@ -137,18 +137,22 @@ const Hero = () => {
                       })
                     )
                   }
-                  className="group inline-flex items-center justify-center rounded-lg px-6 py-3 text-sm font-semibold text-white bg-gradient-to-r from-primary-orange to-primary-yellow shadow-[0_8px_24px_rgba(255,107,53,0.35)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_32px_rgba(255,107,53,0.5)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-yellow/70 transform hover:scale-105"
+                  className="group relative inline-flex items-center justify-center rounded-xl px-8 py-4 text-base font-semibold text-white bg-gradient-to-r from-primary-orange to-primary-yellow shadow-lg shadow-primary-orange/30 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-primary-orange/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-yellow/70 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-bg overflow-hidden"
                 >
-                  <span>Get Started</span>
-                  <svg className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="currentColor" viewBox="0 0 20 20">
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary-yellow to-primary-orange opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <span className="relative">Get Started</span>
+                  <svg className="relative w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
                   </svg>
                 </a>
                 <a
                   href="https://docs.jaseci.org/learn/tour/"
-                  className="inline-flex items-center justify-center rounded-lg px-6 py-3 text-sm font-semibold border border-primary-orange/30 text-primary-orange bg-primary-orange/10 backdrop-blur-sm transition-all duration-300 hover:bg-primary-orange hover:text-white hover:border-primary-orange hover:shadow-lg hover:shadow-primary-orange/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-orange/60 transform hover:scale-105"
+                  className="group inline-flex items-center justify-center rounded-xl px-8 py-4 text-base font-semibold border-2 border-light-bg/60 text-light-text bg-light-bg/20 backdrop-blur-md transition-all duration-300 hover:bg-light-bg/40 hover:border-primary-orange/50 hover:text-white hover:shadow-lg hover:shadow-primary-orange/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-orange/60 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-bg"
                 >
-                  Learn More
+                  <span>Learn More</span>
+                  <svg className="w-5 h-5 ml-2 opacity-70 group-hover:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
                 </a>
               </div>
             </div>
@@ -526,17 +530,17 @@ const Hero = () => {
         `}</style>
       </section>
 
-      <section className="pt-0 pb-8 bg-dark-bg/30 relative">
+      <section className="pt-0 pb-12 bg-gradient-to-b from-medium-bg/50 to-dark-bg relative">
         <div className="container mx-auto max-w-6xl px-4">
-          <div 
-            className="text-center py-6 sm:py-8 px-6 sm:px-8 transition-all duration-500"
+          <div
+            className="text-center py-8 sm:py-10 px-6 sm:px-8 transition-all duration-500"
             style={{ animation: 'fadeInUp 0.6s ease-out 1.8s both' }}
           >
-            <div className="mb-6">
-              <h3 className="text-sm sm:text-base lg:text-lg font-bold text-white mb-2">
-                Our journey is strengthened by our sponsors and partners
+            <div className="mb-8">
+              <h3 className="text-sm sm:text-base lg:text-lg font-semibold text-light-text/90 mb-3 tracking-wide uppercase">
+                Backed by Industry Leaders
               </h3>
-              <div className="h-0.5 bg-gradient-to-r from-transparent via-primary-orange to-transparent mx-auto w-24"></div>
+              <div className="h-px bg-gradient-to-r from-transparent via-primary-orange/60 to-transparent mx-auto w-32"></div>
             </div>
 
             <div className="flex flex-col sm:flex-row items-center justify-center max-w-5xl mx-auto">

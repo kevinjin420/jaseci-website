@@ -3,23 +3,31 @@ export const gettingStartedSlides = [
     icon: "📘",
     title: "Jac Lang",
     description:
-      "Lets you build complex AI systems by modeling your data as a traversable graph.",
+      "The core language that supersets Python and JavaScript. Build AI systems with graph-based Object-Spatial Programming.",
     link: "https://docs.jaseci.org/jac_book/",
     linkText: "Read Handbook",
   },
   {
-    icon: "☁️",
-    title: "Jac Cloud",
+    icon: "🖥️",
+    title: "jac-client",
     description:
-      "A serverless platform that automatically handles the scaling and persistence of your Jac applications.",
-    link: "https://docs.jaseci.org/learn/jac-cloud/introduction/",
-    linkText: "Explore Cloud",
+      "Build full-stack web applications entirely in Jac. React components, state management, and backend APIs in one file.",
+    link: "https://docs.jaseci.org/learn/jac-client/",
+    linkText: "Explore Client",
+  },
+  {
+    icon: "🚀",
+    title: "jac-scale",
+    description:
+      "Zero to infinite scale without code changes. Deploy to Kubernetes with auto-provisioned databases and authentication.",
+    link: "https://docs.jaseci.org/learn/jac-scale/",
+    linkText: "Learn Scale",
   },
   {
     icon: "🤖",
     title: "byLLM",
     description:
-      "Integrates AI into the language, allowing you to generate code just by describing your logic.",
+      "AI integration without prompt engineering. Replace function bodies with LLMs.",
     link: "https://www.byllm.ai/",
     linkText: "Learn byLLM",
   },
@@ -28,38 +36,38 @@ export const gettingStartedSlides = [
 export const featuresSlides = [
   {
     icon: "🐍",
-    title: "Jac supersets Python",
+    title: "Supersets Python & JavaScript",
     description:
-      "Jac is a drop-in replacement for Python and supersets Python, much like Typescript supersets Javascript or C++ supersets C.",
+      "Jac is a true superset of both Python and JavaScript. Use any PyPI package for backend logic and any npm package for frontend components.",
   },
   {
     icon: "🧠",
-    title: "Novel Code Export Construct for AI",
+    title: "AI Without Prompt Engineering",
     description:
-      "Jac introduces a new way programmers can integrate LLMs into their code. Simply replace a function body with an llm call, need for prompt engineering.",
+      "Replace function bodies with LLMs using Meaning Typed Programming. The function signature IS the specification - no complex prompts needed.",
   },
   {
     icon: "🌐",
     title: "Object-Spatial Programming",
     description:
-      "Jac introduces super OOP export constructs for a new paradigm called object-spatial OOP, enhancing the handling and visualization of data.",
+      "Model data as traversable graphs with nodes and walkers. Perfect for knowledge graphs, AI agents, and complex data relationships.",
   },
   {
-    icon: "☁️",
-    title: "Cloud Native Abstractions",
+    icon: "🖥️",
+    title: "Full-Stack in One Language",
     description:
-      "Jac makes persistence and user concepts part of the language, enabling simple programs to run unchanged in terminals or across clouds.",
+      "Write React components, backend APIs, and AI integrations in a single .jac file. No more context switching between languages.",
+  },
+  {
+    icon: "🚀",
+    title: "Zero to Infinite Scale",
+    description:
+      "Deploy locally with jac start, scale to Kubernetes production with --scale flag. Same code, auto-provisioned infrastructure.",
   },
   {
     icon: "⚡",
-    title: "Zero DevOps Setup",
+    title: "One Command Deployment",
     description:
-      "Deploy applications without complex infrastructure setup. Jac handles scaling, persistence, and user management automatically.",
-  },
-  {
-    icon: "🔄",
-    title: "Seamless Interoperability",
-    description:
-      "Use any Python library or framework. Jac maintains full compatibility with the entire Python ecosystem while adding powerful new capabilities.",
+      "No Dockerfile, no Kubernetes manifests, no infrastructure setup. Just jac start app.jac --scale and you're in production.",
   },
 ];
