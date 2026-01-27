@@ -229,7 +229,7 @@ cl {
         <div className="mt-12 text-center" style={getChildAnimationStyle(0.6)}>
           <div className="inline-flex flex-col sm:flex-row gap-5">
             <a
-              href="https://docs.jaseci.org/learn/jac-client/"
+              href="https://docs.jaseci.org/tutorials/fullstack/setup/"
               className="group relative inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-500 text-white font-semibold rounded-xl shadow-lg shadow-green-500/30 hover:shadow-xl hover:shadow-green-500/40 transition-all duration-300 hover:-translate-y-0.5 overflow-hidden"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-emerald-500 to-green-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -239,7 +239,7 @@ cl {
               </svg>
             </a>
             <a
-              href="https://github.com/Jaseci-Labs/jaseci/tree/main/jac-client"
+              href="https://github.com/jaseci-labs/jaseci/tree/main/jac-client/jac_client/examples"
               className="group inline-flex items-center justify-center px-8 py-4 border-2 border-green-500/40 text-green-400 font-semibold rounded-xl hover:bg-green-500/10 hover:border-green-500/60 transition-all duration-300 hover:shadow-lg hover:shadow-green-500/10"
             >
               <span>View Examples</span>

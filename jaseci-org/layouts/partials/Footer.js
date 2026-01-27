@@ -25,7 +25,7 @@ const Footer = () => {
             <ul className="space-y-3">
               <li>
                 <a
-                  href="https://docs.jaseci.org/learn/getting_started/"
+                  href="https://docs.jaseci.org/quick-guide/"
                   className="text-gray-400 text-sm hover:text-primary-orange transition-colors duration-300 inline-flex items-center gap-2 group"
                 >
                   <span>Quick Guide</span>
@@ -36,7 +36,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="https://docs.jaseci.org/learn/tour/"
+                  href="https://docs.jaseci.org/tutorials/"
                   className="text-gray-400 text-sm hover:text-primary-orange transition-colors duration-300 inline-flex items-center gap-2 group"
                 >
                   <span>Tutorials</span>
@@ -47,7 +47,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="https://docs.jaseci.org/"
+                  href="https://docs.jaseci.org/reference/language/"
                   className="text-gray-400 text-sm hover:text-primary-orange transition-colors duration-300 inline-flex items-center gap-2 group"
                 >
                   <span>Language Reference</span>

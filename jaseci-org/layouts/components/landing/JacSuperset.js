@@ -18,18 +18,20 @@ with entry{
 `;
 
   const NpmInJacCode = `
-cl import from react { useState, useEffect }
 cl import from '@mui/material' { Button, TextField }
 
 cl {
-  def App() -> any {
+  def app() -> any {
     has count: int = 0;  # Auto becomes useState!
-    return <div>
-      <TextField label="Count" value={count} />
-      <Button onClick={lambda: None { count += 1; }}>
-        Increment
-      </Button>
-    </div>;
+
+    return (
+      <div>
+        <TextField label="Count" value={count} />
+        <Button onClick={lambda -> None { count += 1; }}>
+          Increment
+        </Button>
+      </div>
+    );
   }
 }
 `;
