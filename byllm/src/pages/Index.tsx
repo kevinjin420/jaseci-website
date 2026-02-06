@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowRight, ExternalLink, Github, Download, BookOpen, Users, MessageCircle, ChevronDown, FileText, Info, Calendar } from 'lucide-react';
+import { ArrowRight, ExternalLink, Github, Download, BookOpen, Users, ChevronDown, FileText, Info, Calendar } from 'lucide-react';
 import { ThemeProvider } from '../components/ThemeProvider';
 import { Header } from '../components/Header';
 import { CodeBlock } from '../components/CodeBlock';
@@ -861,9 +861,16 @@ const Index = () => {
                 <h4 className="font-semibold mb-4">Community</h4>
                 <ul className="space-y-2 text-sm">
                   <li>
-                    <a href="https://discord.gg/6j3QNdtcN6" target="_blank" className="text-muted-foreground hover:text-primary transition-colors flex items-center">
-                      <MessageCircle className="h-4 w-4 mr-2" />
-                      Discord Server
+                    <a
+                      href="https://discord.gg/6j3QNdtcN6"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#5865F2] text-white font-medium text-sm shadow-lg shadow-[#5865F2]/30 hover:shadow-[#5865F2]/50 hover:scale-105 hover:bg-[#4752C4] transition-all duration-200"
+                    >
+                      <svg width="16" height="12" viewBox="0 0 71 55" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M60.1 4.9A58.5 58.5 0 0 0 45.4.2a.2.2 0 0 0-.2.1 40.8 40.8 0 0 0-1.8 3.7 54 54 0 0 0-16.2 0A37.4 37.4 0 0 0 25.4.3a.2.2 0 0 0-.2-.1A58.4 58.4 0 0 0 10.5 5a.2.2 0 0 0-.1 0C1.5 18 -.9 30.6.3 43a.3.3 0 0 0 .1.2 58.7 58.7 0 0 0 17.7 9 .2.2 0 0 0 .3-.1 42 42 0 0 0 3.6-5.9.2.2 0 0 0-.1-.3 38.7 38.7 0 0 1-5.5-2.6.2.2 0 0 1 0-.4l1.1-.9a.2.2 0 0 1 .2 0 41.9 41.9 0 0 0 35.6 0 .2.2 0 0 1 .2 0l1.1.9a.2.2 0 0 1 0 .4 36.3 36.3 0 0 1-5.5 2.6.2.2 0 0 0-.1.3 47.2 47.2 0 0 0 3.6 5.9.2.2 0 0 0 .3.1 58.5 58.5 0 0 0 17.7-9 .2.2 0 0 0 .1-.2c1.4-14.8-2.4-27.6-10.1-39a.2.2 0 0 0-.1 0ZM23.7 35.3c-3.4 0-6.1-3.1-6.1-6.9s2.7-6.9 6.1-6.9 6.2 3.1 6.1 6.9c0 3.8-2.7 6.9-6.1 6.9Zm22.6 0c-3.4 0-6.1-3.1-6.1-6.9s2.7-6.9 6.1-6.9 6.2 3.1 6.1 6.9c0 3.8-2.7 6.9-6.1 6.9Z"/>
+                      </svg>
+                      Discord
                     </a>
                   </li>
                 </ul>
