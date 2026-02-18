@@ -1,0 +1,138 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply text-base;
+  }
+
+  body {
+    @apply bg-body font-primary font-normal leading-relaxed text-white;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-primary font-bold leading-tight;
+  }
+
+  h1, .h1 { @apply text-h1-sm md:text-h1; }
+  h2, .h2 { @apply text-h2-sm md:text-h2; }
+  h3, .h3 { @apply text-h3-sm md:text-h3; }
+  h4, .h4 { @apply text-h4; }
+  h5, .h5 { @apply text-h5; }
+  h6, .h6 { @apply text-h6; }
+
+  b, strong { @apply font-semibold; }
+}
+
+@layer components {
+  .section {
+    @apply pt-8 md:pt-32 pb-8 md:pb-16;
+  }
+
+  .container {
+    @apply max-w-[1000px];
+  }
+
+  .btn {
+    @apply inline-block rounded-lg border px-5 py-2 font-semibold transition;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-white;
+  }
+
+  .btn-outline-primary {
+    @apply border-primary bg-transparent hover:bg-primary hover:text-white;
+  }
+
+  .social-icons {
+    @apply space-x-4;
+    li {
+      @apply inline-block;
+      a {
+        @apply block h-12 w-12 rounded-lg border border-light bg-transparent text-center text-white transition hover:border-primary hover:bg-primary;
+        svg { @apply m-auto h-12 text-lg; }
+      }
+    }
+  }
+
+  .social-share {
+    @apply space-x-2;
+    li {
+      @apply inline-block;
+      a { @apply block p-3 transition hover:text-primary; }
+    }
+  }
+
+  .form-input,
+  .form-textarea {
+    @apply rounded-lg border-border text-text focus:border-primary focus:ring-transparent;
+  }
+
+  .content {
+    @apply prose-blockquote:bg-theme-light prose max-w-none prose-headings:font-bold prose-h1:mb-4 prose-h1:text-h1-sm prose-h2:mb-4 prose-h2:mt-4 prose-h2:text-h2-sm prose-h3:mt-4 prose-h3:text-h3-sm prose-h4:mt-4 prose-h5:mb-4 prose-h6:mb-6 prose-blockquote:border-primary prose-blockquote:p-4 md:prose-h1:text-h1 md:prose-h2:text-h2 md:prose-h3:text-h3;
+
+    p, li, td, a, th { color: var(--text-color, #cccccc); }
+    img { width: 100%; }
+    h1, h2, h3, h4 { color: var(--text-dark, #ffffff); }
+  }
+
+  .search-modal {
+    @apply fixed inset-0 z-[60] flex items-center justify-center bg-black/60 opacity-0 invisible transition-opacity duration-200 ease-out p-4;
+
+    .search-box {
+      @apply relative w-full max-w-md md:max-w-2xl bg-medium-bg border border-light-bg/50 rounded-xl shadow-2xl p-3 md:p-5 backdrop-blur;
+    }
+
+    .form-input {
+      @apply w-full h-12 md:h-14 rounded-lg bg-[#1f1f1f] text-white placeholder-gray-400 px-4 border border-light-bg/40 focus:outline-none focus:ring-2 focus:ring-primary;
+    }
+
+    .search-close {
+      @apply absolute top-2 right-2 md:top-3 md:right-3 p-1.5 md:p-2 text-2xl text-white/80 hover:text-white;
+    }
+
+    &.open {
+      @apply opacity-100 visible;
+    }
+  }
+}
+
+@layer utilities {
+  .shadow {
+    box-shadow: 0 10px 30px rgb(22 28 45 / 10%);
+  }
+}
+
+.hljs {
+  background: transparent !important;
+  color: #abb2bf !important;
+}
+.hljs-comment { color: #5c6370 !important; }
+.hljs-keyword { color: #c678dd !important; }
+.hljs-function .hljs-title,
+.hljs-title.function_ { color: #61afef !important; }
+.hljs-params { color: #d19a66 !important; }
+.hljs-type, .hljs-built_in { color: #56b6c2 !important; }
+.hljs-punctuation, .hljs-operator { color: #abb2bf !important; }
+.hljs-variable { color: #d19a66 !important; }
+.hljs-string { color: #98c379 !important; }
+.hljs-number { color: #d19a66 !important; }
+
+.jac-keyword { color: #569cd6; font-weight: 500; }
+.jac-string { color: #ce9178; }
+.jac-comment { color: #6a9955; font-style: italic; }
+.jac-number { color: #b5cea8; }
+.jac-type { color: #3ac9b0; }
+.jac-class-name { color: #4ec9b0; }
+.jac-operator { color: #d4d4d4; }
+.jac-function { color: #dcdcaa; }
+.jac-variable { color: #9cdcfe; }
+.jac-special-keyword { color: #c678dd; }
+.jac-visit-keyword { color: #c678dd; }
+.jac-module { color: #4ec9b0; }
+.jac-bracket-level-0 { color: #ffd700; font-weight: bold; }
+.jac-bracket-level-1 { color: #c678dd; font-weight: bold; }
+.jac-bracket-level-2 { color: #61afef; font-weight: bold; }
+.jac-bracket-level-3 { color: #98c379; font-weight: bold; }

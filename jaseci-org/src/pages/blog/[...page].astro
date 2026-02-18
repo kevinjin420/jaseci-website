@@ -1,0 +1,32 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Posts from "@components/Posts.astro";
+import Pagination from "@components/Pagination.astro";
+import { getCollection } from "astro:content";
+import { siteConfig } from "@data/config";
+import type { GetStaticPaths } from "astro";
+
+export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
+  const allPosts = await getCollection("posts", ({ data }) => !data.draft);
+  const sorted = allPosts.sort(
+    (a, b) => b.data.date.getTime() - a.data.date.getTime()
+  );
+  return paginate(sorted, { pageSize: siteConfig.pagination });
+};
+
+const { page } = Astro.props;
+---
+
+<BaseLayout title="Blog" description="Latest posts from Jaseci Labs">
+  <div class="pt-32 pb-16">
+    <div class="container max-w-7xl mx-auto px-4">
+      <h1 class="text-3xl md:text-4xl font-bold text-white mb-12">Blog</h1>
+      <Posts posts={page.data} />
+      <Pagination
+        currentPage={page.currentPage}
+        totalPages={page.lastPage}
+        basePath="/blog"
+      />
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,64 @@
+---
+import { dateFormat } from "@lib/date-format";
+import { slugify } from "@lib/text-converter";
+import { siteConfig } from "@data/config";
+
+interface Props {
+  posts: Array<{
+    slug: string;
+    data: {
+      title: string;
+      description?: string;
+      date: Date;
+      image?: string;
+      categories: string[];
+      authors: string[];
+    };
+  }>;
+}
+
+const { posts } = Astro.props;
+---
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+  {posts.map((post, index) => (
+    <article
+      class:list={[
+        "group rounded-2xl bg-medium-bg/50 border border-light-bg/30 overflow-hidden hover:border-primary-orange/40 transition-all duration-300",
+        index === 0 && posts.length > 2 ? "md:col-span-2 lg:col-span-2" : "",
+      ]}
+    >
+      {post.data.image && (
+        <a href={`/posts/${post.slug}`} class="block overflow-hidden">
+          <img
+            src={post.data.image}
+            alt={post.data.title}
+            class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </a>
+      )}
+      <div class="p-5">
+        <div class="flex items-center gap-3 mb-3">
+          {post.data.categories.slice(0, 2).map((cat) => (
+            <a
+              href={`/categories/${slugify(cat)}`}
+              class="text-xs px-2 py-1 rounded-full bg-primary-orange/10 text-primary-orange hover:bg-primary-orange/20 transition-colors"
+            >
+              {cat}
+            </a>
+          ))}
+          <span class="text-xs text-dark-text">{dateFormat(post.data.date)}</span>
+        </div>
+        <h3 class="text-lg font-semibold text-white mb-2 line-clamp-2">
+          <a href={`/posts/${post.slug}`} class="hover:text-primary-orange transition-colors">
+            {post.data.title}
+          </a>
+        </h3>
+        {post.data.description && (
+          <p class="text-sm text-dark-text line-clamp-2">{post.data.description.slice(0, siteConfig.summary_length)}</p>
+        )}
+      </div>
+    </article>
+  ))}
+</div>

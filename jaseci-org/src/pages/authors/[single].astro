@@ -1,0 +1,67 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Posts from "@components/Posts.astro";
+import { getCollection } from "astro:content";
+import type { GetStaticPaths } from "astro";
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const authors = await getCollection("authors");
+  const allPosts = await getCollection("posts", ({ data }) => !data.draft);
+
+  return authors.map((author) => ({
+    params: { single: author.slug },
+    props: {
+      author,
+      posts: allPosts
+        .filter((p) => p.data.authors.includes(author.data.title))
+        .sort((a, b) => b.data.date.getTime() - a.data.date.getTime()),
+    },
+  }));
+};
+
+const { author, posts } = Astro.props;
+const { Content } = await author.render();
+---
+
+<BaseLayout title={author.data.title}>
+  <div class="pt-32 pb-16">
+    <div class="container max-w-4xl mx-auto px-4">
+      <div class="flex items-center gap-6 mb-12">
+        {author.data.image && (
+          <img
+            src={author.data.image}
+            alt={author.data.title}
+            class="w-24 h-24 rounded-full object-cover border-2 border-light-bg/30"
+          />
+        )}
+        <div>
+          <h1 class="text-3xl font-bold text-white">{author.data.title}</h1>
+          {author.data.description && (
+            <p class="text-dark-text mt-2">{author.data.description}</p>
+          )}
+          {author.data.social && (
+            <div class="flex gap-3 mt-3">
+              {author.data.social.twitter && (
+                <a href={author.data.social.twitter} target="_blank" rel="noopener noreferrer" class="text-dark-text hover:text-primary-orange transition-colors text-sm">
+                  Twitter
+                </a>
+              )}
+              {author.data.social.facebook && (
+                <a href={author.data.social.facebook} target="_blank" rel="noopener noreferrer" class="text-dark-text hover:text-primary-orange transition-colors text-sm">
+                  Facebook
+                </a>
+              )}
+            </div>
+          )}
+        </div>
+      </div>
+
+      {posts.length > 0 && (
+        <div>
+          <h2 class="text-2xl font-bold text-white mb-8">Posts by {author.data.title}</h2>
+          <Posts posts={posts} />
+        </div>
+      )}
+    </div>
+  </div>
+</BaseLayout>

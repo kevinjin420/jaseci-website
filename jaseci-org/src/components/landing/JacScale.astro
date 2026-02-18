@@ -1,0 +1,123 @@
+---
+const modes = [
+  {
+    id: "dev",
+    label: "Development",
+    command: "jac start app.jac",
+    features: ["Local SQLite", "Hot reload", "Debug mode"],
+  },
+  {
+    id: "prod",
+    label: "Production",
+    command: "jac start app.jac --scale",
+    features: ["Auto Kubernetes", "PostgreSQL", "Auth & sessions"],
+  },
+  {
+    id: "build",
+    label: "Build & Test",
+    command: "jac build app.jac",
+    features: ["Type checking", "Optimization", "Bundle analysis"],
+  },
+];
+
+const infraFeatures = [
+  { title: "Auto Database", description: "SQLite in dev, PostgreSQL in prod. No config needed." },
+  { title: "Auth Built-in", description: "User authentication and sessions out of the box." },
+  { title: "API Generation", description: "Walkers become REST endpoints automatically." },
+  { title: "Zero DevOps", description: "No Dockerfile, no K8s manifests, no infrastructure setup." },
+];
+---
+
+<section class="section relative">
+  <div class="container max-w-7xl mx-auto px-4">
+    <div class="text-center mb-16 reveal-on-scroll">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+        Scale with <span class="text-primary-orange">jac-scale</span>
+      </h2>
+      <p class="text-dark-text max-w-2xl mx-auto">
+        Same code runs locally and at production scale. No infrastructure changes, no DevOps complexity.
+      </p>
+    </div>
+
+    <div class="flex flex-wrap justify-center gap-3 mb-10 reveal-on-scroll">
+      {modes.map((mode, index) => (
+        <button
+          class:list={[
+            "mode-tab px-6 py-3 rounded-xl text-sm font-medium transition-all duration-200 border",
+            index === 0
+              ? "bg-primary-orange/20 border-primary-orange/50 text-white"
+              : "bg-medium-bg/50 border-light-bg/30 text-dark-text hover:text-white hover:border-light-bg/60",
+          ]}
+          data-mode={mode.id}
+        >
+          {mode.label}
+        </button>
+      ))}
+    </div>
+
+    <div class="max-w-2xl mx-auto mb-16 reveal-on-scroll">
+      {modes.map((mode, index) => (
+        <div
+          class:list={["mode-panel", index === 0 ? "block" : "hidden"]}
+          data-panel={mode.id}
+        >
+          <div class="rounded-2xl bg-medium-bg/60 border border-light-bg/30 p-6 text-center">
+            <code class="text-lg text-primary-orange font-mono">{mode.command}</code>
+            <div class="flex flex-wrap justify-center gap-3 mt-4">
+              {mode.features.map((feature) => (
+                <span class="px-3 py-1 rounded-full bg-dark-bg text-xs text-dark-text border border-light-bg/20">
+                  {feature}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 reveal-on-scroll">
+      {infraFeatures.map((feature, index) => (
+        <div
+          class="p-5 rounded-xl bg-medium-bg/40 border border-light-bg/20 hover:border-primary-orange/30 transition-all duration-300"
+          style={`transition-delay: ${index * 75}ms`}
+        >
+          <h4 class="text-white font-semibold mb-2 text-sm">{feature.title}</h4>
+          <p class="text-xs text-dark-text leading-relaxed">{feature.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  function initModeTabs() {
+    const tabs = document.querySelectorAll(".mode-tab");
+    const panels = document.querySelectorAll(".mode-panel");
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const mode = (tab as HTMLElement).dataset.mode;
+
+        tabs.forEach((t) => {
+          t.classList.remove("bg-primary-orange/20", "border-primary-orange/50", "text-white");
+          t.classList.add("bg-medium-bg/50", "border-light-bg/30", "text-dark-text");
+        });
+        tab.classList.remove("bg-medium-bg/50", "border-light-bg/30", "text-dark-text");
+        tab.classList.add("bg-primary-orange/20", "border-primary-orange/50", "text-white");
+
+        panels.forEach((p) => {
+          if ((p as HTMLElement).dataset.panel === mode) {
+            p.classList.remove("hidden");
+            p.classList.add("block");
+          } else {
+            p.classList.remove("block");
+            p.classList.add("hidden");
+          }
+        });
+      });
+    });
+  }
+
+  initModeTabs();
+  document.addEventListener("astro:after-swap", initModeTabs);
+</script>

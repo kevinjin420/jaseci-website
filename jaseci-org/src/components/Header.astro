@@ -1,0 +1,203 @@
+---
+import { mainMenu } from "@data/menu";
+import { siteConfig } from "@data/config";
+import { fetchGitHubStats } from "@lib/github-stats";
+
+const stats = await fetchGitHubStats();
+const currentPath = Astro.url.pathname;
+---
+
+<!-- Top Bar -->
+<div class="top-bar w-full bg-dark-bg text-white text-xs sm:text-sm py-2 px-4 flex justify-center items-center fixed top-0 left-0 z-[101]">
+  <div class="top-bar-content flex flex-col sm:flex-row w-full max-w-7xl items-center justify-between gap-2 sm:gap-4">
+    <div class="flex items-center gap-2 text-center sm:text-left">
+      <span class="font-medium leading-tight">The Jac Programming Language and Jaseci Stack</span>
+    </div>
+    <div class="flex items-center gap-3">
+      <a
+        href="https://github.com/jaseci-labs/jaseci"
+        class="flex items-center gap-2 hover:text-primary-orange transition-colors"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span>GitHub</span>
+        <span class="text-xs opacity-80">
+          {stats.stars} stars | {stats.forks} forks
+        </span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Main Header -->
+<header class="w-full z-50 fixed transition-all duration-300" id="main-header">
+  <nav class="container max-w-7xl mx-auto px-3 py-3 rounded-2xl transition-all duration-300 bg-medium-bg/45 backdrop-blur-md shadow-xl border border-light-bg/30">
+    <div class="flex items-center justify-between">
+      <!-- Logo -->
+      <div class="flex items-center gap-3">
+        <a href="/" class="navbar-brand block">
+          <img
+            src={siteConfig.logo}
+            alt={siteConfig.title}
+            width={siteConfig.logo_width}
+            height={siteConfig.logo_height}
+          />
+        </a>
+        <a href="/" class="hidden sm:block text-lg font-semibold text-white hover:opacity-80 transition-opacity duration-200">
+          {siteConfig.logo_text}
+        </a>
+      </div>
+
+      <!-- Desktop Menu -->
+      <ul class="hidden md:flex items-center space-x-1">
+        {mainMenu.map((item) => (
+          <li>
+            {item.target ? (
+              <a
+                href={item.url}
+                target={item.target}
+                rel={item.rel}
+                class:list={[
+                  "block px-4 py-2 transition-all duration-200 rounded-full whitespace-nowrap",
+                  currentPath === item.url
+                    ? "bg-primary-orange text-white"
+                    : "text-dark-text hover:text-white hover:bg-white/10",
+                ]}
+              >
+                {item.name}
+              </a>
+            ) : (
+              <a
+                href={item.url}
+                class:list={[
+                  "block px-4 py-2 transition-all duration-200 rounded-full whitespace-nowrap",
+                  currentPath === item.url
+                    ? "bg-primary-orange text-white"
+                    : "text-dark-text hover:text-white hover:bg-white/10",
+                ]}
+              >
+                {item.name}
+              </a>
+            )}
+          </li>
+        ))}
+      </ul>
+
+      <!-- Right section -->
+      <div class="flex items-center gap-2">
+        <!-- Search Icon -->
+        <button
+          id="search-open-btn"
+          class="p-2 text-dark-text hover:text-white hover:bg-white/10 rounded-full transition-all duration-200"
+          aria-label="Open search"
+        >
+          <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </button>
+
+        <!-- Mobile Menu Toggle -->
+        <div class="md:hidden">
+          <input id="nav-toggle" type="checkbox" class="hidden peer" />
+          <label
+            for="nav-toggle"
+            class="flex flex-col cursor-pointer p-2 peer-checked:hidden"
+            aria-label="Open menu"
+          >
+            <span class="w-6 h-0.5 bg-white mb-1 transition-all"></span>
+            <span class="w-6 h-0.5 bg-white mb-1 transition-all"></span>
+            <span class="w-6 h-0.5 bg-white transition-all"></span>
+          </label>
+          <label
+            for="nav-toggle"
+            class="hidden peer-checked:flex cursor-pointer p-2"
+            aria-label="Close menu"
+          >
+            <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </label>
+
+          <!-- Mobile Menu -->
+          <div class="absolute top-full right-0 mt-2 w-64 py-4 bg-medium-bg/95 backdrop-blur-md rounded-xl border border-light-bg/50 shadow-xl opacity-0 invisible peer-checked:opacity-100 peer-checked:visible transition-all duration-200">
+            <ul class="space-y-1 px-2">
+              {mainMenu.map((item) => (
+                <li>
+                  <a
+                    href={item.url}
+                    target={item.target}
+                    rel={item.rel}
+                    class="block px-4 py-3 text-dark-text hover:text-white hover:bg-white/10 rounded-lg transition-colors"
+                  >
+                    {item.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- Search Modal -->
+<div id="search-modal" class="search-modal" role="dialog" aria-modal="true" aria-label="Search">
+  <div class="search-box">
+    <button id="search-close-btn" class="search-close" aria-label="Close search">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+    <input
+      type="text"
+      class="form-input"
+      id="search-input"
+      placeholder="Search posts, tags, authors..."
+      autocomplete="off"
+    />
+  </div>
+</div>
+
+<script>
+  function initHeader() {
+    const topBar = document.querySelector('.top-bar') as HTMLElement | null;
+    const header = document.getElementById('main-header');
+    if (topBar && header) {
+      const updateTop = () => { header.style.top = `${topBar.offsetHeight}px`; };
+      updateTop();
+      window.addEventListener('resize', updateTop);
+    }
+
+    const openBtn = document.getElementById('search-open-btn');
+    const closeBtn = document.getElementById('search-close-btn');
+    const modal = document.getElementById('search-modal');
+    const input = document.getElementById('search-input') as HTMLInputElement | null;
+
+    openBtn?.addEventListener('click', () => {
+      modal?.classList.add('open');
+      input?.focus();
+      document.body.style.overflow = 'hidden';
+    });
+
+    const closeModal = () => {
+      modal?.classList.remove('open');
+      document.body.style.overflow = '';
+    };
+
+    closeBtn?.addEventListener('click', closeModal);
+    modal?.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal?.classList.contains('open')) closeModal();
+      if (e.key === 'Enter' && modal?.classList.contains('open') && input?.value) {
+        window.location.href = `/search?key=${encodeURIComponent(input.value)}`;
+      }
+    });
+  }
+
+  initHeader();
+  document.addEventListener('astro:after-swap', initHeader);
+</script>

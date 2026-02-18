@@ -1,0 +1,117 @@
+---
+const orgLogos = [
+  { src: "/images/assets/org1_logo.png", alt: "Nvidia" },
+  { src: "/images/assets/org2_logo.png", alt: "University of Michigan" },
+  { src: "/images/assets/org3_logo.png", alt: "NSF" },
+];
+---
+
+<section class="relative min-h-screen flex items-center overflow-hidden pt-32 pb-16">
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="hero-glow hero-glow-1"></div>
+    <div class="hero-glow hero-glow-2"></div>
+    <div class="hero-glow hero-glow-3"></div>
+  </div>
+
+  <div class="container max-w-7xl mx-auto px-4 relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div class="text-center lg:text-left">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-orange/10 border border-primary-orange/30 mb-6">
+          <span class="w-2 h-2 rounded-full bg-primary-orange animate-pulse"></span>
+          <span class="text-sm text-primary-orange font-medium">AI-First Programming Language</span>
+        </div>
+
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+          Build Intelligent<br />
+          Software with<br />
+          <span class="text-primary-orange">Jac</span>
+        </h1>
+
+        <p class="text-lg text-dark-text mb-8 max-w-lg mx-auto lg:mx-0">
+          Jac supersets Python with AI-first constructs, object spatial programming, and scale-native abstractions. One language from prototype to production.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+          <a
+            href="https://docs.jaseci.org/learn/tour/"
+            class="inline-flex items-center justify-center gap-2 px-8 py-3 bg-primary-orange text-white rounded-lg font-semibold hover:bg-primary-orange/90 transition-all duration-200 shadow-lg shadow-primary-orange/25"
+          >
+            Get Started
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </a>
+          <a
+            href="https://github.com/jaseci-labs/jaseci"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center gap-2 px-8 py-3 border border-light-bg/50 text-white rounded-lg font-semibold hover:bg-white/5 transition-all duration-200"
+          >
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            </svg>
+            View on GitHub
+          </a>
+        </div>
+
+        <div class="mt-12">
+          <p class="text-xs text-dark-text uppercase tracking-wider mb-4">Backed by</p>
+          <div class="flex items-center gap-6 justify-center lg:justify-start opacity-60">
+            {orgLogos.map((logo) => (
+              <img src={logo.src} alt={logo.alt} class="h-8 w-auto grayscale hover:grayscale-0 transition-all duration-300" />
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div class="relative hidden lg:block">
+        <div class="relative">
+          <div class="absolute inset-0 bg-gradient-to-br from-primary-orange/20 to-transparent rounded-2xl blur-3xl"></div>
+          <img
+            src="/images/assets/hero2.png"
+            alt="Jac Programming Language"
+            class="relative z-10 w-full max-w-lg mx-auto hero-float"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.15;
+  }
+  .hero-glow-1 {
+    top: 10%;
+    left: 10%;
+    width: 400px;
+    height: 400px;
+    background: #F97316;
+  }
+  .hero-glow-2 {
+    bottom: 20%;
+    right: 10%;
+    width: 300px;
+    height: 300px;
+    background: #3b82f6;
+  }
+  .hero-glow-3 {
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    height: 200px;
+    background: #8b5cf6;
+    transform: translate(-50%, -50%);
+  }
+  .hero-float {
+    animation: heroFloat 6s ease-in-out infinite;
+  }
+  @keyframes heroFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+</style>

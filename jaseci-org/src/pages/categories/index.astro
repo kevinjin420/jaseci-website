@@ -1,0 +1,32 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import { slugify } from "@lib/text-converter";
+
+const allPosts = await getCollection("posts", ({ data }) => !data.draft);
+const categoryMap = new Map<string, number>();
+allPosts.forEach((post) => {
+  post.data.categories.forEach((cat) => {
+    categoryMap.set(cat, (categoryMap.get(cat) || 0) + 1);
+  });
+});
+const categories = Array.from(categoryMap.entries()).sort((a, b) => b[1] - a[1]);
+---
+
+<BaseLayout title="Categories">
+  <div class="pt-32 pb-16">
+    <div class="container max-w-4xl mx-auto px-4">
+      <h1 class="text-3xl md:text-4xl font-bold text-white mb-12">Categories</h1>
+      <div class="flex flex-wrap gap-3">
+        {categories.map(([name, count]) => (
+          <a
+            href={`/categories/${slugify(name)}`}
+            class="px-4 py-2 rounded-xl bg-medium-bg/50 border border-light-bg/30 text-dark-text hover:text-white hover:border-primary-orange/40 transition-all"
+          >
+            {name} <span class="text-xs opacity-60">({count})</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</BaseLayout>

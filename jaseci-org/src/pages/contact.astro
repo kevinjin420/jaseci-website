@@ -1,0 +1,42 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { social } from "@data/menu";
+---
+
+<BaseLayout title="Contact Us">
+  <div class="pt-32 pb-16">
+    <div class="container max-w-2xl mx-auto px-4 text-center">
+      <h1 class="text-3xl md:text-4xl font-bold text-white mb-4">Contact Us</h1>
+      <p class="text-dark-text mb-8">
+        We'd love to hear from you. Reach out through any of the channels below.
+      </p>
+      <div class="space-y-4">
+        <a
+          href={`mailto:${social.email}`}
+          class="block p-5 rounded-xl bg-medium-bg/50 border border-light-bg/30 hover:border-primary-orange/40 transition-all text-white"
+        >
+          <span class="font-semibold">Email</span>
+          <span class="block text-sm text-dark-text mt-1">{social.email}</span>
+        </a>
+        <a
+          href={social.discord}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="block p-5 rounded-xl bg-medium-bg/50 border border-light-bg/30 hover:border-primary-orange/40 transition-all text-white"
+        >
+          <span class="font-semibold">Discord</span>
+          <span class="block text-sm text-dark-text mt-1">Join our community server</span>
+        </a>
+        <a
+          href={social.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="block p-5 rounded-xl bg-medium-bg/50 border border-light-bg/30 hover:border-primary-orange/40 transition-all text-white"
+        >
+          <span class="font-semibold">GitHub</span>
+          <span class="block text-sm text-dark-text mt-1">Open an issue or start a discussion</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

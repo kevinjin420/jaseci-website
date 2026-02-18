@@ -1,0 +1,36 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Posts from "@components/Posts.astro";
+import { getCollection } from "astro:content";
+import { slugify, humanize } from "@lib/text-converter";
+import type { GetStaticPaths } from "astro";
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const allPosts = await getCollection("posts", ({ data }) => !data.draft);
+  const categories = new Set<string>();
+  allPosts.forEach((post) => post.data.categories.forEach((c) => categories.add(c)));
+
+  return Array.from(categories).map((category) => ({
+    params: { category: slugify(category) },
+    props: {
+      categoryName: category,
+      posts: allPosts
+        .filter((p) => p.data.categories.includes(category))
+        .sort((a, b) => b.data.date.getTime() - a.data.date.getTime()),
+    },
+  }));
+};
+
+const { categoryName, posts } = Astro.props;
+---
+
+<BaseLayout title={`Category: ${categoryName}`}>
+  <div class="pt-32 pb-16">
+    <div class="container max-w-7xl mx-auto px-4">
+      <h1 class="text-3xl md:text-4xl font-bold text-white mb-12">
+        Category: <span class="text-primary-orange">{categoryName}</span>
+      </h1>
+      <Posts posts={posts} />
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,101 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import Share from "@components/Share.astro";
+import { dateFormat } from "@lib/date-format";
+import { slugify } from "@lib/text-converter";
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  post: CollectionEntry<"posts">;
+}
+
+const { post } = Astro.props;
+const { title, description, date, image, categories, authors, tags } = post.data;
+
+const allAuthors = await getCollection("authors");
+const postAuthors = allAuthors.filter((a) => authors.includes(a.data.title));
+
+const allPosts = await getCollection("posts", ({ data }) => !data.draft);
+const similarPosts = allPosts
+  .filter((p) => p.slug !== post.slug && p.data.categories.some((c) => categories.includes(c)))
+  .slice(0, 3);
+---
+
+<BaseLayout title={title} description={description} image={image}>
+  <article class="pt-32 pb-16">
+    <div class="container max-w-4xl mx-auto px-4">
+      <div class="mb-8">
+        <div class="flex flex-wrap items-center gap-3 mb-4">
+          {categories.map((cat) => (
+            <a
+              href={`/categories/${slugify(cat)}`}
+              class="text-xs px-3 py-1 rounded-full bg-primary-orange/10 text-primary-orange hover:bg-primary-orange/20 transition-colors"
+            >
+              {cat}
+            </a>
+          ))}
+        </div>
+
+        <h1 class="text-3xl md:text-4xl font-bold text-white mb-4">{title}</h1>
+
+        <div class="flex flex-wrap items-center gap-4 text-sm text-dark-text mb-6">
+          {postAuthors.map((author) => (
+            <a href={`/authors/${author.slug}`} class="flex items-center gap-2 hover:text-white transition-colors">
+              {author.data.image && (
+                <img src={author.data.image} alt={author.data.title} class="w-8 h-8 rounded-full object-cover" />
+              )}
+              <span>{author.data.title}</span>
+            </a>
+          ))}
+          <span>{dateFormat(date)}</span>
+        </div>
+      </div>
+
+      {image && (
+        <img src={image} alt={title} class="w-full rounded-2xl mb-8 border border-light-bg/20" />
+      )}
+
+      <div class="content prose prose-invert max-w-none">
+        <slot />
+      </div>
+
+      <div class="border-t border-light-bg/20 mt-12 pt-6">
+        <div class="flex flex-wrap items-center justify-between gap-4">
+          <div class="flex flex-wrap gap-2">
+            {tags.map((tag) => (
+              <a
+                href={`/tags/${slugify(tag)}`}
+                class="text-xs px-3 py-1 rounded-full bg-medium-bg border border-light-bg/30 text-dark-text hover:text-white transition-colors"
+              >
+                #{tag}
+              </a>
+            ))}
+          </div>
+          <Share title={title} slug={post.slug} />
+        </div>
+      </div>
+
+      {similarPosts.length > 0 && (
+        <div class="mt-16">
+          <h2 class="text-2xl font-bold text-white mb-8">Related Posts</h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {similarPosts.map((related) => (
+              <a href={`/posts/${related.slug}`} class="group rounded-xl bg-medium-bg/50 border border-light-bg/30 overflow-hidden hover:border-primary-orange/40 transition-all">
+                {related.data.image && (
+                  <img src={related.data.image} alt={related.data.title} class="w-full h-32 object-cover" loading="lazy" />
+                )}
+                <div class="p-4">
+                  <h3 class="text-sm font-semibold text-white group-hover:text-primary-orange transition-colors line-clamp-2">
+                    {related.data.title}
+                  </h3>
+                  <span class="text-xs text-dark-text mt-2 block">{dateFormat(related.data.date)}</span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  </article>
+</BaseLayout>

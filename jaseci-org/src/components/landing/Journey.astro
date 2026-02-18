@@ -1,0 +1,68 @@
+---
+const milestones = [
+  {
+    year: "2020",
+    title: "Research Begins",
+    description: "Jaseci started as a research project at the University of Michigan, exploring AI-first programming paradigms.",
+  },
+  {
+    year: "2021",
+    title: "First Public Release",
+    description: "Jaseci 1.0 released with graph-based programming model and AI integration capabilities.",
+  },
+  {
+    year: "2022",
+    title: "Growing Community",
+    description: "Open-source community grows. Multiple research papers published on data spatial programming.",
+  },
+  {
+    year: "2023",
+    title: "Jac Language",
+    description: "Jac programming language launched as a Python superset with native AI constructs.",
+  },
+  {
+    year: "2024",
+    title: "Full Stack & Scale",
+    description: "jac-client and jac-scale introduced, enabling full-stack development and zero-config deployment.",
+  },
+  {
+    year: "2025",
+    title: "Production Ready",
+    description: "Enterprise adoption begins. Jac ecosystem matures with tooling, IDE support, and comprehensive documentation.",
+  },
+];
+---
+
+<section class="section relative">
+  <div class="container max-w-5xl mx-auto px-4">
+    <div class="text-center mb-16 reveal-on-scroll">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+        The <span class="text-primary-orange">Journey</span>
+      </h2>
+    </div>
+
+    <div class="relative">
+      <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-light-bg/30 md:-translate-x-px"></div>
+
+      {milestones.map((milestone, index) => (
+        <div
+          class:list={[
+            "relative flex items-start mb-12 last:mb-0 reveal-on-scroll",
+            index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse",
+          ]}
+          style={`transition-delay: ${index * 100}ms`}
+        >
+          <div class="absolute left-4 md:left-1/2 w-3 h-3 rounded-full bg-primary-orange border-2 border-dark-bg -translate-x-1.5 mt-1.5 z-10"></div>
+
+          <div class:list={["ml-12 md:ml-0 md:w-1/2", index % 2 === 0 ? "md:pr-12 md:text-right" : "md:pl-12"]}>
+            <span class="inline-block px-3 py-1 rounded-full bg-primary-orange/10 text-primary-orange text-xs font-bold mb-2">
+              {milestone.year}
+            </span>
+            <h3 class="text-lg font-semibold text-white mb-1">{milestone.title}</h3>
+            <p class="text-sm text-dark-text leading-relaxed">{milestone.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,112 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ["./src/**/*.{astro,html,js,jsx,md,mdx,ts,tsx}"],
+  theme: {
+    screens: {
+      sm: "540px",
+      md: "768px",
+      lg: "1024px",
+      xl: "1280px",
+      "2xl": "1536px",
+    },
+    container: {
+      center: true,
+      padding: "2rem",
+    },
+    extend: {
+      colors: {
+        text: "#E4E4E7",
+        light: "#A1A1AA",
+        dark: "#FAFAFA",
+        primary: "#F97316",
+        secondary: "#FB923C",
+        body: "#0A0A0A",
+        border: "#27272A",
+        "theme-light": "#18181B",
+        "theme-dark": "#0A0A0A",
+        "primary-orange": "#ff6b35",
+        "primary-yellow": "#f7931e",
+        "dark-bg": "#1a1a1a",
+        "medium-bg": "#2d2d2d",
+        "light-bg": "#404040",
+        "dark-text": "#cccccc",
+        "light-text": "#ffffff",
+        glass: "rgba(45, 45, 45, 0.7)",
+        about: {
+          background: "#09090b",
+          foreground: "#fafafa",
+          card: "#18181b",
+          primary: "#f97316",
+          secondary: "#3f3f46",
+          accent: "#fb923c",
+          "muted-foreground": "#a1a1aa",
+          border: "#27272a",
+        },
+        community: {
+          background: "#09090b",
+          "card-bg": "rgba(24, 24, 27, 0.55)",
+          "card-bg-hover": "#18181b",
+          border: "#27272a",
+          text: "#e7e7ea",
+          muted: "#a1a1aa",
+          primary: "#f97316",
+        },
+      },
+      backgroundImage: {
+        "gradient-primary": "linear-gradient(90deg, #fb923c, #f97316)",
+        "gradient-border": "linear-gradient(90deg, #fb923c, #ea580c)",
+      },
+      fontSize: {
+        base: "16px",
+        h1: "2.488rem",
+        "h1-sm": "1.99rem",
+        h2: "2.074rem",
+        "h2-sm": "1.659rem",
+        h3: "1.728rem",
+        "h3-sm": "1.382rem",
+        h4: "1.44rem",
+        h5: "1.2rem",
+        h6: "1rem",
+      },
+      fontFamily: {
+        primary: ["Inter", "sans-serif"],
+      },
+      animation: {
+        "gradient-border": "gradient-border 4s ease infinite",
+        bounce: "bounce 0.6s ease",
+        pulse: "pulse 1.5s infinite",
+        fadeInLine: "fadeInLine 0.5s ease forwards",
+        blink: "blink 1s infinite",
+        "blob-pulse": "blob-pulse 8s infinite alternate ease-in-out",
+      },
+      keyframes: {
+        "blob-pulse": {
+          "0%": { transform: "scale(1) rotate(0deg)" },
+          "100%": { transform: "scale(1.2) rotate(45deg)" },
+        },
+        "gradient-border": {
+          "0%, 100%": { backgroundPosition: "0% 50%" },
+          "50%": { backgroundPosition: "100% 50%" },
+        },
+        bounce: {
+          "0%, 20%, 60%, 100%": { transform: "translateY(0) scale(1)" },
+          "40%": { transform: "translateY(-10px) scale(1.1)" },
+          "80%": { transform: "translateY(-5px) scale(1.05)" },
+        },
+        pulse: {
+          "0%, 100%": { transform: "scale(1)", opacity: "1" },
+          "50%": { transform: "scale(1.05)", opacity: "0.8" },
+        },
+        fadeInLine: {
+          from: { opacity: "0", transform: "translateX(-10px)" },
+          to: { opacity: "1", transform: "translateX(0)" },
+        },
+        blink: {
+          "0%, 50%": { opacity: "1" },
+          "51%, 100%": { opacity: "0" },
+        },
+      },
+    },
+  },
+  plugins: [require("@tailwindcss/typography")],
+};

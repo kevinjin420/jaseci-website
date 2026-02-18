@@ -1,0 +1,62 @@
+---
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+import SeoMeta from "@components/SeoMeta.astro";
+import { siteConfig } from "@data/config";
+import "@styles/global.scss";
+
+interface Props {
+  title?: string;
+  meta_title?: string;
+  description?: string;
+  image?: string;
+  canonical?: string;
+  noindex?: boolean;
+}
+
+const { title, meta_title, description, image, canonical, noindex } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href={siteConfig.favicon} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <SeoMeta
+      title={title}
+      meta_title={meta_title}
+      description={description}
+      image={image}
+      canonical={canonical}
+      noindex={noindex}
+    />
+
+    <script
+      is:inline
+      async
+      src={`https://www.googletagmanager.com/gtag/js?id=${siteConfig.ga_id}`}
+    ></script>
+    <script is:inline define:vars={{ gaId: siteConfig.ga_id }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag("js", new Date());
+      gtag("config", gaId);
+    </script>
+  </head>
+  <body>
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

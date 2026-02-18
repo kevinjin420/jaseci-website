@@ -1,0 +1,89 @@
+---
+const cards = [
+  {
+    title: "AI Without Prompt Engineering",
+    description: "Replace function bodies with LLMs using Meaning Typed Programming. The function signature IS the specification.",
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 14.5M14.25 3.104c.251.023.501.05.75.082M19.8 14.5l-2.303 2.303a2.25 2.25 0 01-1.591.659H8.094a2.25 2.25 0 01-1.591-.659L4.2 14.5m15.6 0l.4.396a2.25 2.25 0 010 3.182l-.63.63M4.2 14.5l-.4.396a2.25 2.25 0 000 3.182l.63.63"/></svg>`,
+  },
+  {
+    title: "Object-Spatial Programming",
+    description: "Model data as traversable graphs with nodes and walkers. Build AI agents that navigate knowledge naturally.",
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7.5 21L3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5"/></svg>`,
+  },
+  {
+    title: "Full-Stack in One Language",
+    description: "Write React components, backend APIs, and AI integrations in a single .jac file. No context switching.",
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"/></svg>`,
+  },
+  {
+    title: "Zero to Infinite Scale",
+    description: "Deploy locally with jac start, scale to Kubernetes with one flag. Same code, auto-provisioned infrastructure.",
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>`,
+  },
+];
+---
+
+<section id="why-we-built" class="section relative">
+  <div class="container max-w-7xl mx-auto px-4">
+    <div class="text-center mb-16 reveal-on-scroll">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+        Why We Built <span class="text-primary-orange">Jac</span>
+      </h2>
+      <p class="text-dark-text max-w-2xl mx-auto">
+        Modern software demands AI integration, graph-based data models, and instant scalability. Existing languages were never designed for this.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {cards.map((card, index) => (
+        <div
+          class="reveal-on-scroll group p-6 rounded-2xl bg-medium-bg/50 border border-light-bg/30 hover:border-primary-orange/40 transition-all duration-300"
+          style={`transition-delay: ${index * 100}ms`}
+        >
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-primary-orange/10 text-primary-orange flex items-center justify-center group-hover:bg-primary-orange/20 transition-colors">
+              <Fragment set:html={card.icon} />
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-white mb-2">{card.title}</h3>
+              <p class="text-sm text-dark-text leading-relaxed">{card.description}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  function initScrollReveal() {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("revealed");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    document.querySelectorAll(".reveal-on-scroll").forEach((el) => observer.observe(el));
+  }
+
+  initScrollReveal();
+  document.addEventListener("astro:after-swap", initScrollReveal);
+</script>
+
+<style>
+  .reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  .reveal-on-scroll.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>

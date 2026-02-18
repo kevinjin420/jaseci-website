@@ -1,0 +1,39 @@
+---
+import { siteConfig } from "@data/config";
+import { plainify } from "@lib/text-converter";
+
+interface Props {
+  title?: string;
+  meta_title?: string;
+  description?: string;
+  image?: string;
+  canonical?: string;
+  noindex?: boolean;
+}
+
+const { title, meta_title, description, image, canonical, noindex } = Astro.props;
+
+const resolvedTitle = plainify(meta_title || title || siteConfig.title);
+const resolvedDescription = plainify(description || siteConfig.meta_description);
+const resolvedImage = `${siteConfig.base_url}${image || siteConfig.meta_image}`;
+const currentUrl = new URL(Astro.url.pathname, siteConfig.base_url).href;
+---
+
+<title>{resolvedTitle}</title>
+
+{canonical && <link rel="canonical" href={canonical} />}
+{noindex && <meta name="robots" content="noindex,nofollow" />}
+
+<meta name="description" content={resolvedDescription} />
+<meta name="author" content={siteConfig.meta_author} />
+
+<meta property="og:title" content={resolvedTitle} />
+<meta property="og:description" content={resolvedDescription} />
+<meta property="og:type" content="website" />
+<meta property="og:url" content={currentUrl} />
+<meta property="og:image" content={resolvedImage} />
+
+<meta name="twitter:title" content={resolvedTitle} />
+<meta name="twitter:description" content={resolvedDescription} />
+<meta name="twitter:image" content={resolvedImage} />
+<meta name="twitter:card" content="summary_large_image" />

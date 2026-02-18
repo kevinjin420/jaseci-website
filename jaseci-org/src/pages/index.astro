@@ -1,0 +1,38 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Hero from "@components/landing/Hero.astro";
+import WhyWeBuilt from "@components/landing/WhyWeBuilt.astro";
+import JacSuperset from "@components/landing/JacSuperset.astro";
+import JacClient from "@components/landing/JacClient.astro";
+import JacScale from "@components/landing/JacScale.astro";
+import Journey from "@components/landing/Journey.astro";
+import Carousel from "@components/react/Carousel";
+import VerticalTabs from "@components/react/VerticalTabs";
+import { gettingStartedSlides, featuresSlides } from "@data/landing";
+import { jacTabsData, pythonTabsData, tabsData } from "@data/verticalTabs";
+---
+
+<BaseLayout title="Jac & Jaseci: The AI-First Programming Language">
+  <Hero />
+  <WhyWeBuilt />
+  <VerticalTabs
+    client:visible
+    jacTabs={jacTabsData}
+    pythonTabs={pythonTabsData}
+    tabs={tabsData}
+  />
+  <JacSuperset />
+  <JacClient />
+  <JacScale />
+  <Carousel
+    client:visible
+    slides={gettingStartedSlides}
+    title="Get Started"
+  />
+  <Carousel
+    client:visible
+    slides={featuresSlides}
+    title="Key Features"
+  />
+  <Journey />
+</BaseLayout>

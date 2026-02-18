@@ -1,0 +1,74 @@
+---
+interface Props {
+  currentPage: number;
+  totalPages: number;
+  basePath: string;
+}
+
+const { currentPage, totalPages, basePath } = Astro.props;
+
+function pageUrl(page: number): string {
+  if (page === 1) return basePath;
+  return `${basePath}/${page}`;
+}
+
+const prevUrl = currentPage > 1 ? pageUrl(currentPage - 1) : null;
+const nextUrl = currentPage < totalPages ? pageUrl(currentPage + 1) : null;
+
+const pages: Array<number | "..."> = [];
+for (let i = 1; i <= totalPages; i++) {
+  if (i === 1 || i === totalPages || (i >= currentPage - 1 && i <= currentPage + 1)) {
+    pages.push(i);
+  } else if (pages[pages.length - 1] !== "...") {
+    pages.push("...");
+  }
+}
+---
+
+{totalPages > 1 && (
+  <nav class="flex items-center justify-center gap-2 mt-12" aria-label="Pagination">
+    {prevUrl ? (
+      <a
+        href={prevUrl}
+        class="px-4 py-2 rounded-lg bg-medium-bg/50 border border-light-bg/30 text-dark-text hover:text-white hover:border-light-bg/60 transition-all text-sm"
+      >
+        Previous
+      </a>
+    ) : (
+      <span class="px-4 py-2 rounded-lg bg-medium-bg/30 border border-light-bg/20 text-dark-text/50 text-sm cursor-not-allowed">
+        Previous
+      </span>
+    )}
+
+    {pages.map((page) =>
+      page === "..." ? (
+        <span class="px-2 text-dark-text">...</span>
+      ) : (
+        <a
+          href={pageUrl(page)}
+          class:list={[
+            "w-10 h-10 flex items-center justify-center rounded-lg text-sm transition-all",
+            page === currentPage
+              ? "bg-primary-orange text-white"
+              : "bg-medium-bg/50 border border-light-bg/30 text-dark-text hover:text-white hover:border-light-bg/60",
+          ]}
+        >
+          {page}
+        </a>
+      )
+    )}
+
+    {nextUrl ? (
+      <a
+        href={nextUrl}
+        class="px-4 py-2 rounded-lg bg-medium-bg/50 border border-light-bg/30 text-dark-text hover:text-white hover:border-light-bg/60 transition-all text-sm"
+      >
+        Next
+      </a>
+    ) : (
+      <span class="px-4 py-2 rounded-lg bg-medium-bg/30 border border-light-bg/20 text-dark-text/50 text-sm cursor-not-allowed">
+        Next
+      </span>
+    )}
+  </nav>
+)}
