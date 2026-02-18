@@ -2,7 +2,7 @@ name: Deploy Jaseci Website to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches: [main, skj/to-static]
     paths:
       - 'jaseci-org/**'
   workflow_dispatch:
