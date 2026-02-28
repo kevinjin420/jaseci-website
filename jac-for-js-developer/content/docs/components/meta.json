@@ -1,9 +1,0 @@
-{
-  "title": "Components",
-  "pages": [
-    "basic-components",
-    "props",
-    "children",
-    "jsx-in-jac"
-  ]
-}
